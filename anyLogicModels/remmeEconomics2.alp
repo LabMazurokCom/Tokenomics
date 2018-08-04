@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061745" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomics2]]></Name>
@@ -7398,7 +7398,7 @@ public class Strategy implements Serializable {
 
     public void addNode(RemmeNode node) {
         avgLiquid = (avgLiquid * nodesQ + node.getRealMoney()) / (nodesQ + 1);
-        avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney()) / (nodesQ + 1);
+        avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney() - Utils.stake) / (nodesQ + 1);
         updateTexts();
         nodesQ++;
     }
@@ -7428,7 +7428,7 @@ public class Strategy implements Serializable {
     public void updateTexts() {
         if(Math.abs(lastAvgTotal - getAvgTotal()) >= epsillon * getAvgTotal()){
             lastAvgTotal = Utils.round((int) getAvgTotal(), 3);
-            textAvgTotal.setText((int)(lastAvgTotal - Utils.stake));
+            textAvgTotal.setText((int)(lastAvgTotal));
         }
         if(Math.abs(lastAvgLiquid - avgLiquid) >= epsillon * avgLiquid) {
             lastAvgLiquid = Utils.round((int)avgLiquid, 3);
@@ -7436,7 +7436,7 @@ public class Strategy implements Serializable {
         }
         if(Math.abs(lastAvgFrozen - avgFrozen) >= epsillon * avgFrozen) {
             lastAvgFrozen = Utils.round((int)avgFrozen, 3);
-            textAvgFrozen.setText((int)(lastAvgFrozen - Utils.stake));
+            textAvgFrozen.setText((int)(lastAvgFrozen));
         }
     }
 
