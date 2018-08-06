@@ -258,6 +258,51 @@ import java.text.DecimalFormat;]]></Import>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1533586145720</Id>
+					<Name><![CDATA[yearPaybackCertsPerSecond]]></Name>
+					<X>270</X><Y>-60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[(double) 665000 / secondsInYear]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1533586862466</Id>
+					<Name><![CDATA[formatOneDigitAfterDot]]></Name>
+					<X>270</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[DecimalFormat]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new DecimalFormat("#.0");]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1533586916434</Id>
+					<Name><![CDATA[formatTwoDigitsAfterDot]]></Name>
+					<X>270</X><Y>-350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[DecimalFormat]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new DecimalFormat("#.00");]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1533292804735</Id>
 					<Name><![CDATA[blockChain]]></Name>
@@ -1436,18 +1481,18 @@ switch(timeType){
 		timeString = Integer.toString((int)time(MINUTE));
 		break;
 	case 2:
-		timeString = new DecimalFormat("#.#").format(time(HOUR));
+		timeString = formatOneDigitAfterDot.format(time(HOUR));
 		break;
 	case 3:
-		timeString = new DecimalFormat("#.#").format(time(DAY));
+		timeString = formatOneDigitAfterDot.format(time(DAY));
 		break;
 	case 4:
-		timeString = new DecimalFormat("#.#").format(time(WEEK));
+		timeString = formatOneDigitAfterDot.format(time(WEEK));
 		break;
 	case 5:
-		timeString = new DecimalFormat("#.#").format(time(MONTH));
+		timeString = formatOneDigitAfterDot.format(time(MONTH));
 		break;
-	default: timeString = new DecimalFormat("#.##").format(time(YEAR));
+	default: timeString = formatTwoDigitsAfterDot.format(time(YEAR));
 }
 return timeString;]]></Body>
 				</Function>
@@ -1528,7 +1573,7 @@ return timeString;]]></Body>
 						<Parameter>
 							<Name><![CDATA[rate]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[(double)remmeNodes.length * Utils.stake / ((1 - tax) * secondsInYear * 25)]]></Code>
+								<Code><![CDATA[yearPaybackCertsPerSecond]]></Code>
 								<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
 							</Value>
 						</Parameter>
@@ -4720,7 +4765,7 @@ genesisNodeMoney = masterNode.getMoney();]]></Code>
 					<BasicProperties Width="270" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[source.rate = (double)remmeNodes.length * Utils.stake / ((1 - tax) * value * secondsInYear * 25);
+						<ActionCode><![CDATA[source.rate = yearPaybackCertsPerSecond / value;//(double)remmeNodes.length * Utils.stake / ((1 - tax) * value * secondsInYear * 25);
 //traceln(source.rate);
 //stream /= 10;
 source.onChange();]]></ActionCode>
