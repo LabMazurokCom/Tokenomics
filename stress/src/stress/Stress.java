@@ -10,16 +10,23 @@ package stress;
  * @author igor
  */
 public class Stress {
-
+    static int quantityOfMasterNodes = 300;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        System.out.println("Hello, World!");
-        System.out.println("Hello, World!");
-        System.out.println("Hello, World!");
-        // TODO code application logic here
+        // To burn remchain
+        MasterNode remChain[];
+        remChain = new MasterNode[quantityOfMasterNodes];
+        for(int i = 0; i < quantityOfMasterNodes; ++i) {
+            remChain[i] = new MasterNode(i);
+        }
+        // To animate remchain
+        for(int i = 0; i < quantityOfMasterNodes; ++i) {
+            (new Thread(remChain[i])).start();
+        }
+        System.out.println("Bye for now!");
     }
     
 }
