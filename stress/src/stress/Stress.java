@@ -19,6 +19,8 @@ public class Stress {
         System.out.println("Hello, World!");
         System.out.println("Hello, World!");
         System.out.println("Hello, World!");
+        Thread thread = new Thread(new MasterMode);
+        thread.st
         // TODO code application logic here
     }
     
