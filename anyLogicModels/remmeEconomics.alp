@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomics]]></Name>
@@ -1528,8 +1528,8 @@ return timeString;]]></Body>
 						<Parameter>
 							<Name><![CDATA[rate]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[(double)remmeNodes.length * Utils.stake / ((1 - tax) * paybackSlider.getValue() * secondsInYear * 25)]]></Code>
-								<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+								<Code><![CDATA[(double)remmeNodes.length * Utils.stake / ((1 - tax) * secondsInYear * 25)]]></Code>
+								<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
