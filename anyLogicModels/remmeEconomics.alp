@@ -303,6 +303,36 @@ import java.text.DecimalFormat;]]></Import>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1533727051862</Id>
+					<Name><![CDATA[queueSize]]></Name>
+					<X>440</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1533757522095</Id>
+					<Name><![CDATA[blockStat]]></Name>
+					<X>550</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[BlockStatistic]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new BlockStatistic(1);]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1533292804735</Id>
 					<Name><![CDATA[blockChain]]></Name>
@@ -797,41 +827,6 @@ import java.text.DecimalFormat;]]></Import>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>0</X><Y>-40</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870247</Id>
-					<Name><![CDATA[connector28]]></Name>
-					<X>40</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[source]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Source]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>320</X><Y>0</Y></Point>
-						<Point><X>330</X><Y>0</Y></Point>
-						<Point><X>340</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1410,6 +1405,139 @@ import java.text.DecimalFormat;]]></Import>
 						<Point><X>110</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
+				<Connector>
+					<Id>1533726885182</Id>
+					<Name><![CDATA[connector11]]></Name>
+					<X>150</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[blockCreator]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[source]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-110</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533726897304</Id>
+					<Name><![CDATA[connector10]]></Name>
+					<X>380</X><Y>570</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutput]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput]]></ClassName>
+						<ItemName><![CDATA[outT]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>10</Y></Point>
+						<Point><X>-170</X><Y>10</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533726897305</Id>
+					<Name><![CDATA[connector13]]></Name>
+					<X>190</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutput]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[blockCreator]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533727004379</Id>
+					<Name><![CDATA[connector14]]></Name>
+					<X>200</X><Y>670</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[sink]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutput]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput]]></ClassName>
+						<ItemName><![CDATA[outF]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-80</Y></Point>
+					</Points>
+				</Connector>
 			</Connectors>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -1463,31 +1591,8 @@ return remmeNodes;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1533648055361</Id>
-					<Name><![CDATA[updateSourceRate]]></Name>
-					<X>270</X><Y>-30</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double rate;
-if(orderMode.getValue() == 0){
-	traceln(paybackSlider.getValue());
-	rate = yearPaybackCertsPerSecond / paybackSlider.getValue();
-}
-else{
-	traceln(1);
-	rate = (double) yearPaybackCertsPerSecond / (paybackSlider.getValue() * blockSize.getIntValue());
-}
-source.rate = rate;
-source.onChange();
-return rate;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[Order]]></ReturnType>
-					<Id>1533651913520</Id>
+					<Id>1533730074251</Id>
 					<Name><![CDATA[getRandomCert]]></Name>
 					<X>480</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -1499,9 +1604,34 @@ return rate;]]></Body>
 	long randomMax = min(maxCerts, Utils.binPow(10, (int)(Math.log(1/Math.random())/log(10))));
 	long randomMin = randomMax / 10;
 	long certsNum = (long) (ceil(randomMin + Math.random() * (randomMax - randomMin)));
-	return new Order(UUID.randomUUID(), 25 * certsNum, 365, -1, false);
+	return new Order(UUID.randomUUID(), 25 * certsNum, 365, -1, false, time(SECOND));
 }
-else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, false);]]></Body>
+else return new Order(UUID.randomUUID(), 25, 365, -1, false, time(SECOND));]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1533730209549</Id>
+					<Name><![CDATA[updateSourceRate]]></Name>
+					<X>270</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[double rate;
+if(orderMode.getValue() == 0){
+	//traceln(paybackSlider.getValue());
+	rate = yearPaybackCertsPerSecond / paybackSlider.getValue();
+}
+else{
+	//traceln(1);
+	blockCreator.freeAll();
+	queueSize = 0;
+	blockCreator.capacity = blockSize.getIntValue();
+	rate = (double) remmeNodes.length * Utils.stake / (25 * (1 - tax) * secondsInYear * paybackSlider.getValue());
+}
+source.rate = rate;
+source.onChange();]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -1554,7 +1684,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 				<EmbeddedObject>
 					<Id>1533292869915</Id>
 					<Name><![CDATA[source]]></Name>
-					<X>10</X><Y>560</Y>
+					<X>10</X><Y>570</Y>
 					<Label><X>35</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1793,7 +1923,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1935,7 +2065,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2080,7 +2210,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3674,7 +3804,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3816,7 +3946,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3959,7 +4089,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4101,7 +4231,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4243,7 +4373,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4385,7 +4515,7 @@ else return new Order(UUID.randomUUID(), 25 * blockSize.getIntValue(), 365, -1, 
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4633,6 +4763,289 @@ genesisNodeMoney = masterNode.getMoney();]]></Code>
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1533726883845</Id>
+					<Name><![CDATA[blockCreator]]></Name>
+					<X>150</X><Y>560</Y>
+					<Label><X>-70</X><Y>30</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Wait]]></ClassName>
+							<ItemName><![CDATA[1412336243169]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entityLocation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableTimeout]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[timeout]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enablePreemption]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[queuing]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[priority]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[comparisonForPreemption]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[restoreEntityLocationOnExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[forceStatisticsCollection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[//traceln(self.size());
+//traceln(agent.creationTime);
+if(orderMode.getValue() == 0){
+	self.free(self.get(0));
+}
+else{
+	if(queueSize != 0){
+		self.get(0).payment += agent.payment;
+		agent.deleted = true;
+	}
+	queueSize++;
+	if(queueSize == blockSize.getIntValue()){
+		blockStat.commitBlock(agent.creationTime, self.iterator());
+		self.freeAll();
+		queueSize = 0;
+	}
+}]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExitTimeout]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExitPreempted]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1533726895096</Id>
+					<Name><![CDATA[selectOutput]]></Name>
+					<X>180</X><Y>570</Y>
+					<Label><X>30</X><Y>20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[SelectOutput]]></ClassName>
+							<ItemName><![CDATA[1412336242931]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[conditionIsProbabilistic]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[false]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[condition]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[!agent.deleted]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExitTrue]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExitFalse]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1533727001419</Id>
+					<Name><![CDATA[sink]]></Name>
+					<X>200</X><Y>660</Y>
+					<Label><X>-5</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Sink]]></ClassName>
+							<ItemName><![CDATA[1412336242929]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[destroyEntity]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
@@ -4660,7 +5073,7 @@ genesisNodeMoney = masterNode.getMoney();]]></Code>
 				<Group>
 					<Id>1533371215494</Id>
 					<Name><![CDATA[payback]]></Name>
-					<X>770</X><Y>490</Y>
+					<X>770</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4687,7 +5100,7 @@ genesisNodeMoney = masterNode.getMoney();]]></Code>
 					<Text><![CDATA[Payback Period, years]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -4764,18 +5177,15 @@ genesisNodeMoney = masterNode.getMoney();]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1533298724010</Id>
 					<Name><![CDATA[paybackSlider]]></Name>
-					<X>-110</X><Y>60</Y>
+					<X>-110</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="270" Height="20">
+					<BasicProperties Width="270" Height="10">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[source.rate = yearPaybackCertsPerSecond / value;//(double)remmeNodes.length * Utils.stake / ((1 - tax) * value * secondsInYear * 25);
-//traceln(source.rate);
-//stream /= 10;
-source.onChange();]]></ActionCode>
+						<ActionCode><![CDATA[updateSourceRate()]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[1]]></DefaultValueCode>
@@ -4792,7 +5202,7 @@ source.onChange();]]></ActionCode>
 				<Group>
 					<Id>1533371728414</Id>
 					<Name><![CDATA[frozen]]></Name>
-					<X>200</X><Y>430</Y>
+					<X>200</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4819,7 +5229,7 @@ source.onChange();]]></ActionCode>
 					<Text><![CDATA[Frozen Rewards, REM]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5115,7 +5525,7 @@ source.onChange();]]></ActionCode>
 					<Text><![CDATA[Liquid Rewards, REM]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5411,7 +5821,7 @@ source.onChange();]]></ActionCode>
 					<Text><![CDATA[Reputation, %]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5702,7 +6112,7 @@ source.onChange();]]></ActionCode>
 				<Group>
 					<Id>1533374864717</Id>
 					<Name><![CDATA[Total]]></Name>
-					<X>770</X><Y>490</Y>
+					<X>770</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5729,7 +6139,7 @@ source.onChange();]]></ActionCode>
 					<Text><![CDATA[Average Total Reward, REM]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5824,49 +6234,6 @@ source.onChange();]]></ActionCode>
 
 				</Group>
 				<Text>
-					<Id>1533557549635</Id>
-					<Name><![CDATA[modelTime]]></Name>
-					<X>950</X><Y>435</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[0]]></Text>
-					<TextCode><![CDATA[Utils.getTime((long)time(SECOND))]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>20</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>RIGHT</Alignment>
-				</Text>
-				<Text>
-					<Id>1533560891945</Id>
-					<Name><![CDATA[text28]]></Name>
-					<X>660</X><Y>400</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Model Time:]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>20</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
 					<Id>1533580372663</Id>
 					<Name><![CDATA[avgPossibleUnfreezeNoUnfreeze]]></Name>
 					<X>140</X><Y>240</Y>
@@ -5912,7 +6279,7 @@ source.onChange();]]></ActionCode>
 				<Group>
 					<Id>1533666567128</Id>
 					<Name><![CDATA[modeGroup]]></Name>
-					<X>810</X><Y>40</Y>
+					<X>820</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5926,7 +6293,7 @@ source.onChange();]]></ActionCode>
 				<Text>
 					<Id>1533666487221</Id>
 					<Name><![CDATA[text29]]></Name>
-					<X>105</X><Y>-15</Y>
+					<X>80</X><Y>-14</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5937,32 +6304,10 @@ source.onChange();]]></ActionCode>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[orders per block
-(for block 
-mode only)]]></Text>
+(block mode only)]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1533666530723</Id>
-					<Name><![CDATA[text30]]></Name>
-					<X>-60</X><Y>-40</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[MODE]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>24</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5973,12 +6318,12 @@ mode only)]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1533647280761</Id>
 					<Name><![CDATA[orderMode]]></Name>
-					<X>-180</X><Y>-20</Y>
+					<X>-180</X><Y>-10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="150" Height="50">
+					<BasicProperties Width="150" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -5987,6 +6332,7 @@ mode only)]]></Text>
 }
 else{
 	blockSize.setEnabled(true);
+	blockStat = new BlockStatistic(blockSize.getIntValue());
 }
 updateSourceRate();]]></ActionCode>
 					</BasicProperties>
@@ -6007,12 +6353,13 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="80" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
 						<Enabled>false</Enabled>
-						<ActionCode><![CDATA[updateSourceRate();]]></ActionCode>
+						<ActionCode><![CDATA[blockStat = new BlockStatistic(self.getIntValue());
+updateSourceRate();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
@@ -6023,6 +6370,173 @@ updateSourceRate();]]></ActionCode>
 			</Controls>
 
 				</Group>
+				<Group>
+					<Id>1533670062666</Id>
+					<Name><![CDATA[group]]></Name>
+					<X>720</X><Y>470</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Shapes>
+				<Text>
+					<Id>1533557549635</Id>
+					<Name><![CDATA[modelTime]]></Name>
+					<X>40</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[0]]></Text>
+					<TextCode><![CDATA[Utils.getTime((long)time(SECOND))]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1533560891945</Id>
+					<Name><![CDATA[text28]]></Name>
+					<X>-60</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Model Time:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Shapes>
+
+				</Group>
+				<Text>
+					<Id>1533759590928</Id>
+					<Name><![CDATA[maxWaitTime]]></Name>
+					<X>710</X><Y>30</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[0]]></Text>
+					<TextCode><![CDATA[Utils.getTime((long)blockStat.getMaxWaitTime())]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1533759748651</Id>
+					<Name><![CDATA[avgWaitTime]]></Name>
+					<X>710</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[0]]></Text>
+					<TextCode><![CDATA[Utils.getTime((long)blockStat.getAvgWaitTime())]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1533761151614</Id>
+					<Name><![CDATA[text30]]></Name>
+					<X>490</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Order expectation time:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1533761251492</Id>
+					<Name><![CDATA[text31]]></Name>
+					<X>670</X><Y>30</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[max:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1533761290455</Id>
+					<Name><![CDATA[text32]]></Name>
+					<X>670</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[avg:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Areas>
 				<Area>
@@ -6254,6 +6768,30 @@ updateSourceRate();]]></ActionCode>
 						<ParameterEditor>
 							<Id>1532970585517</Id>
 							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1533757847096</Id>
+					<Name><![CDATA[creationTime]]></Name>
+					<X>50</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[time(SECOND)]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1533757847094</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
@@ -8142,6 +8680,50 @@ public class Strategy implements Serializable {
 			<Text><![CDATA[public interface TimeWrapper {
     double getTime();
 }]]></Text>
+		</JavaClass>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1533757419152</Id>
+			<Name><![CDATA[BlockStatistic]]></Name>
+			<Text><![CDATA[import java.util.Iterator;
+
+/**
+ * Created by Кирилл on 08.08.2018.
+ */
+public class BlockStatistic {
+    private int ordersPerBlock;
+    private double maxWaitTime;
+    private double avgWaitTime;
+    private int blocksCommitted;
+
+    public BlockStatistic(int ordersPerBlock){
+        this.ordersPerBlock = ordersPerBlock;
+        this.maxWaitTime = 0;
+        this.avgWaitTime = 0;
+        blocksCommitted = 0;
+    }
+
+    public double getMaxWaitTime() {
+        return maxWaitTime;
+    }
+
+    public double getAvgWaitTime() {
+        return avgWaitTime;
+    }
+
+    public void commitBlock(double commitTime, Iterator<Order> iterator){
+        double sumOfWaitTimes = 0;
+        double curMax  = commitTime - iterator.next().creationTime;
+        sumOfWaitTimes += curMax;
+        while (iterator.hasNext()){
+            sumOfWaitTimes += commitTime - iterator.next().creationTime;
+        }
+        this.maxWaitTime = Math.max(curMax, this.maxWaitTime);
+        avgWaitTime = (avgWaitTime * ordersPerBlock * blocksCommitted + sumOfWaitTimes) / ((blocksCommitted + 1) * ordersPerBlock);
+        blocksCommitted++;
+    }
+}
+]]></Text>
 		</JavaClass>
 	</JavaClasses>
     <RequiredLibraryReference>
