@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomics]]></Name>
@@ -1630,6 +1630,7 @@ else{
 	blockCreator.capacity = blockSize.getIntValue();
 	rate = (double) remmeNodes.length * Utils.stake / (25 * (1 - tax) * secondsInYear * paybackSlider.getValue());
 }
+blockStat = new BlockStatistic(blockSize.getIntValue());
 source.rate = rate;
 source.onChange();]]></Body>
 				</Function>
@@ -5073,8 +5074,8 @@ else{
 				<Group>
 					<Id>1533371215494</Id>
 					<Name><![CDATA[payback]]></Name>
-					<X>770</X><Y>450</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>755</X><Y>450</Y>
+					<Label><X>8.65</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
@@ -5087,7 +5088,7 @@ else{
 				<Text>
 					<Id>1533301271231</Id>
 					<Name><![CDATA[text16]]></Name>
-					<X>-110</X><Y>40</Y>
+					<X>-95.145</X><Y>33.962</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5108,7 +5109,7 @@ else{
 				<Text>
 					<Id>1533371195855</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>-130</X><Y>60</Y>
+					<X>-115</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5130,7 +5131,7 @@ else{
 				<Text>
 					<Id>1533371195858</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>20</X><Y>80</Y>
+					<X>-35</X><Y>80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5141,7 +5142,7 @@ else{
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[value]]></Text>
-					<TextCode><![CDATA[paybackSlider.getValue()]]></TextCode>
+					<TextCode><![CDATA[formatTwoDigitsAfterDot.format(paybackSlider.getValue())]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>10</Size>
@@ -5152,7 +5153,7 @@ else{
 				<Text>
 					<Id>1533371195857</Id>
 					<Name><![CDATA[text15]]></Name>
-					<X>180</X><Y>60</Y>
+					<X>45</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5177,12 +5178,12 @@ else{
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1533298724010</Id>
 					<Name><![CDATA[paybackSlider]]></Name>
-					<X>-110</X><Y>70</Y>
+					<X>-95.145</X><Y>59.434</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="270" Height="10">
+					<BasicProperties Width="115.145" Height="8.491">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[updateSourceRate()]]></ActionCode>
@@ -6289,30 +6290,6 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 
-			<Shapes>
-				<Text>
-					<Id>1533666487221</Id>
-					<Name><![CDATA[text29]]></Name>
-					<X>80</X><Y>-14</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[orders per block
-(block mode only)]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-			</Shapes>
 			<Controls>
 				<Control Type="RadioButtons">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
@@ -6323,7 +6300,7 @@ else{
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="150" Height="20">
+					<BasicProperties Width="190" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -6332,12 +6309,11 @@ else{
 }
 else{
 	blockSize.setEnabled(true);
-	blockStat = new BlockStatistic(blockSize.getIntValue());
 }
 updateSourceRate();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
+						<Font Name="Dialog" Size="12" Style="0"/>
 						<Orientation>HORIZONTAL</Orientation>
 						<Button><![CDATA[Separate Order]]></Button>
 						<Button><![CDATA[Block]]></Button>
@@ -6348,21 +6324,20 @@ updateSourceRate();]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1533647367037</Id>
 					<Name><![CDATA[blockSize]]></Name>
-					<X>-10</X><Y>-10</Y>
+					<X>10</X><Y>-10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="80" Height="20">
+					<BasicProperties Width="40" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
 						<Enabled>false</Enabled>
-						<ActionCode><![CDATA[blockStat = new BlockStatistic(self.getIntValue());
-updateSourceRate();]]></ActionCode>
+						<ActionCode><![CDATA[updateSourceRate();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
+						<Font Name="Dialog" Size="12" Style="0"/>
 						<DefaultValueCode><![CDATA["1"]]></DefaultValueCode>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
@@ -6430,10 +6405,24 @@ updateSourceRate();]]></ActionCode>
 			</Shapes>
 
 				</Group>
+				<Group>
+					<Id>1533818989685</Id>
+					<Name><![CDATA[waiting]]></Name>
+					<X>900</X><Y>515</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Shapes>
 				<Text>
 					<Id>1533759590928</Id>
 					<Name><![CDATA[maxWaitTime]]></Name>
-					<X>710</X><Y>30</Y>
+					<X>40</X><Y>-10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6447,7 +6436,7 @@ updateSourceRate();]]></ActionCode>
 					<TextCode><![CDATA[Utils.getTime((long)blockStat.getMaxWaitTime())]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -6455,7 +6444,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1533759748651</Id>
 					<Name><![CDATA[avgWaitTime]]></Name>
-					<X>710</X><Y>50</Y>
+					<X>40</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6469,7 +6458,7 @@ updateSourceRate();]]></ActionCode>
 					<TextCode><![CDATA[Utils.getTime((long)blockStat.getAvgWaitTime())]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -6477,7 +6466,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1533761151614</Id>
 					<Name><![CDATA[text30]]></Name>
-					<X>490</X><Y>50</Y>
+					<X>-60</X><Y>-30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6487,10 +6476,10 @@ updateSourceRate();]]></ActionCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Order expectation time:]]></Text>
+					<Text><![CDATA[Waiting time]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -6498,7 +6487,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1533761251492</Id>
 					<Name><![CDATA[text31]]></Name>
-					<X>670</X><Y>30</Y>
+					<X>-30</X><Y>-10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6508,10 +6497,10 @@ updateSourceRate();]]></ActionCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[max:]]></Text>
+					<Text><![CDATA[maximum:]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>12</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -6519,7 +6508,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1533761290455</Id>
 					<Name><![CDATA[text32]]></Name>
-					<X>670</X><Y>50</Y>
+					<X>-20</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6529,10 +6518,34 @@ updateSourceRate();]]></ActionCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[avg:]]></Text>
+					<Text><![CDATA[average:]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>16</Size>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Shapes>
+
+				</Group>
+				<Text>
+					<Id>1533819573940</Id>
+					<Name><![CDATA[text33]]></Name>
+					<X>875</X><Y>553</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[certificates]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -8164,9 +8177,9 @@ public class RemmeNode implements Serializable {
     }
 
     private void updateReputation(){
-        //trace("updateRep " + reputation);
-        this.reputation = initialLiquid + (1 - tax - initialLiquid) * (1 - Math.exp(-k * (frozenMoney - initialStake)));//
-        //traceln(" " + reputation);
+    	double n = 5.5; //REMME
+    	reputation = Math.min(1 - tax, (1 - tax - initialLiquid) * (frozenMoney - Utils.stake) / ((n - 1) * Utils.stake) + initialLiquid);
+        //this.reputation = initialLiquid + (1 - tax - initialLiquid) * (1 - Math.exp(-k * (frozenMoney - initialStake)));
     }
 
     public boolean getReady() {
