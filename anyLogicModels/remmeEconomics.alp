@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomics]]></Name>
@@ -5183,7 +5183,7 @@ else{
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="115.145" Height="8.491">
+					<BasicProperties Width="115" Height="8">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[updateSourceRate()]]></ActionCode>
@@ -6373,7 +6373,7 @@ updateSourceRate();]]></ActionCode>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[0]]></Text>
-					<TextCode><![CDATA[Utils.getTime((long)time(SECOND))]]></TextCode>
+					<TextCode><![CDATA[Utils.getTime((long)time(SECOND), 2)]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -6433,7 +6433,7 @@ updateSourceRate();]]></ActionCode>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[0]]></Text>
-					<TextCode><![CDATA[Utils.getTime((long)blockStat.getMaxWaitTime())]]></TextCode>
+					<TextCode><![CDATA[Utils.getTime((long)blockStat.getMaxWaitTime(), 1)]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -6455,7 +6455,7 @@ updateSourceRate();]]></ActionCode>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[0]]></Text>
-					<TextCode><![CDATA[Utils.getTime((long)blockStat.getAvgWaitTime())]]></TextCode>
+					<TextCode><![CDATA[Utils.getTime((long)blockStat.getAvgWaitTime(), 1)]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -8394,12 +8394,12 @@ public class RemmeMasterNode implements Serializable {
 			<Name><![CDATA[Utils]]></Name>
 			<Text><![CDATA[/**
  * Utils
- */	
+ */
 public class Utils {
-	
-	public static int stake = 250000;
-	private static double minHonesty = 0.9;
-	public static final int secondsInMinute = 60;
+
+    public static int stake = 250000;
+    private static double minHonesty = 0.9;
+    public static final int secondsInMinute = 60;
     public static final int secondsInHour = secondsInMinute * 60;
     public static final int secondsInDay = secondsInHour * 24;
     public static final int secondsInWeek = secondsInDay * 7;
@@ -8412,99 +8412,188 @@ public class Utils {
     public static final String hour = "hours";
     public static final String minute = "mins";
     public static final String second = "secs";
-    
+
+    public enum TimePeriod{
+        SECOND(1){
+            @Override
+            public String toString(){
+                return "secs";
+            }
+        },
+        MINUTE(SECOND.durability * 60){
+            @Override
+            public String toString(){
+                return "mins";
+            }
+        },
+        HOUR(MINUTE.durability * 60){
+            @Override
+            public String toString(){
+                return "hours";
+            }
+        },
+        DAY(HOUR.durability * 24){
+            @Override
+            public String toString(){
+                return "days";
+            }
+        },
+        WEEK(DAY.durability * 7){
+            @Override
+            public String toString(){
+                return "weeks";
+            }
+        },
+        MONTH(DAY.durability * 30){
+            @Override
+            public String toString(){
+                return "months";
+            }
+        },
+        YEAR(DAY.durability * 365){
+            @Override
+            public String toString(){
+                return "years";
+            }
+        };
+
+        private int durability;
+
+        TimePeriod(int durability){
+            this.durability = durability;
+        }
+
+        public int getDurability() {
+            return durability;
+        }
+    }
 
     /**
      * Конструктор по умолчанию
      */
     private Utils() {
     }
-    
+
     public static int round(int n, int digits){
         if(n < Utils.binPow(10, digits)){
             return n;
         }
-        else{
-            int divideIn = binPow(10, (int)Math.log10(n) - digits);
+        else {
+            int divideIn = binPow(10, (int) Math.log10(n) - digits);
             int temp = (n / divideIn);
-            if(temp % 10 >= 5){
+            if (temp % 10 >= 5) {
                 temp += 10;
             }
             temp = temp / 10 * 10 * divideIn;
             return temp;
         }
     }
-    
+
     public static int binPow(int a, int p) {
-    	if(p == 0) return 1;
-    	else if(p % 2 == 0) return binPow(a * a, p / 2);
-    	else return a * binPow(a, p - 1);
-    }
-    
-    public static String getTime(long time) {
-    	if(time >= secondsInYear) {
-    		int years =(int) (time / secondsInYear);
-    		time %= secondsInYear;
-    		int months = (int) (time / secondsInMonth);
-    		time %= secondsInMonth;
-    		int weeks = (int) (Math.round((double)time / secondsInWeek));
-    		return new StringBuilder().append(years).append(" ").append(year).append(", ").append(months).append(" ").append(month).append(" and ").append(weeks).append(" "). append(week).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
-    	else if(time >= secondsInMonth) {
-    		int months = (int) (time / secondsInMonth);
-    		time %= secondsInMonth;
-    		int weeks = (int) (time / secondsInWeek);
-    		time %= secondsInWeek;
-    		int days = (int) (Math.round((double)time / secondsInDay));
-    		return new StringBuilder().append(months).append(" ").append(month).append(", ").append(weeks).append(" "). append(week).append(" and ").append(days).append(" ").append(day).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
-    	else if(time >= secondsInWeek) {
-    		int weeks = (int) (time / secondsInWeek);
-    		time %= secondsInWeek;
-    		int days = (int) (time / secondsInDay);
-    		time %= secondsInDay;
-    		int hours = (int) (Math.round((double)time / secondsInHour));
-    		return new StringBuilder().append(weeks).append(" "). append(week).append(", ").append(days).append(" ").append(day).append(" and ").append(hours).append(" ").append(hour).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
-    	else if(time >= secondsInDay) {
-    		int days = (int) (time / secondsInDay);
-    		time %= secondsInDay;
-    		int hours = (int) (time / secondsInHour);
-    		time %= secondsInHour;
-    		int minutes = (int) (Math.round((double)time / secondsInMinute));
-    		return new StringBuilder().append(days).append(" ").append(day).append(", ").append(hours).append(" ").append(hour).append(" and ").append(minutes).append(" ").append(minute).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
-    	else if(time >= secondsInHour) {
-    		int hours = (int) (time / secondsInHour);
-    		time %= secondsInHour;
-    		int minutes = (int) (time / secondsInMinute);
-    		time %= secondsInMinute;
-    		int seconds = (int) time;
-    		return new StringBuilder().append(hours).append(" ").append(hour).append(", ").append(minutes).append(" ").append(minute).append(" and ").append(seconds).append(" ").append(second).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
-    	else if(time >= secondsInMinute) {
-    		int minutes = (int) (time / secondsInMinute);
-    		time %= secondsInMinute;
-    		int seconds = (int) time;
-    		return new StringBuilder().append(minutes).append(" ").append(minute).append(" and ").append(seconds).append(" ").append(second).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
-    	else {
-    		int seconds = (int) time;
-    		return new StringBuilder().append(seconds).append(" ").append(second).toString();
-    		//return Long.toString(time / secondsInYear).concat(time % secondsIn)
-    	}
+        if(p == 0) return 1;
+        else if(p % 2 == 0) return binPow(a * a, p / 2);
+        else return a * binPow(a, p - 1);
     }
 
-	@Override
-	public String toString() {
-		return super.toString();
-	}
+    public static String getTime(long time, int digits){
+        int level;
+        if(time >= secondsInYear) {
+            level = 7;
+        }
+        else if(time >= secondsInMonth) {
+            level = 6;
+        }
+        else if(time >= secondsInWeek) {
+            level = 5;
+        }
+        else if(time >= secondsInDay) {
+            level = 4;
+        }
+        else if(time >= secondsInHour) {
+            level = 3;
+        }
+        else if(time >= secondsInMinute) {
+            level = 2;
+        }
+        else {
+            level = 1;
+        }
+        int workTo = Math.min(level, digits);
+        int[] times = new int[workTo];
+        StringBuilder formattedTime = new StringBuilder();
+        for(int i = 0; i < workTo - 1; i++){
+            times[i] = (int) (time / TimePeriod.values()[level - 1 - i].durability);
+            time %= TimePeriod.values()[level - 1 - i].durability;
+        }
+        times[workTo - 1] = (int) Math.round((double) time / TimePeriod.values()[level - workTo].durability);
+        formattedTime.append(times[0]).append(" ").append(TimePeriod.values()[level - 1]);
+        for(int i = 1; i < workTo - 1; i++){
+            formattedTime.append(", ").append(times[i]).append(" ").append(TimePeriod.values()[level - 1 - i]);
+        }
+        if(workTo > 1){
+            formattedTime.append(" and ").append(times[workTo - 1]).append(" ").append(TimePeriod.values()[level - 1 - (workTo - 1)]);
+        }
+        return formattedTime.toString();
+    }
+
+    /*public static String getTimeFormatted(long time, int level, int digits, int curDigit) {
+        if(time >= secondsInYear) {
+            getFormattedTime(time, ) //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+        else if(time >= secondsInMonth) {
+            int months = (int) (time / secondsInMonth);
+            time %= secondsInMonth;
+            int weeks = (int) (time / secondsInWeek);
+            time %= secondsInWeek;
+            int days = (int) (Math.round((double)time / secondsInDay));
+            return new StringBuilder().append(months).append(" ").append(month).append(", ").append(weeks).append(" "). append(week).append(" and ").append(days).append(" ").append(day).toString();
+            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+        else if(time >= secondsInWeek) {
+            int weeks = (int) (time / secondsInWeek);
+            time %= secondsInWeek;
+            int days = (int) (time / secondsInDay);
+            time %= secondsInDay;
+            int hours = (int) (Math.round((double)time / secondsInHour));
+            return new StringBuilder().append(weeks).append(" "). append(week).append(", ").append(days).append(" ").append(day).append(" and ").append(hours).append(" ").append(hour).toString();
+            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+        else if(time >= secondsInDay) {
+            int days = (int) (time / secondsInDay);
+            time %= secondsInDay;
+            int hours = (int) (time / secondsInHour);
+            time %= secondsInHour;
+            int minutes = (int) (Math.round((double)time / secondsInMinute));
+            return new StringBuilder().append(days).append(" ").append(day).append(", ").append(hours).append(" ").append(hour).append(" and ").append(minutes).append(" ").append(minute).toString();
+            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+        else if(time >= secondsInHour) {
+            int hours = (int) (time / secondsInHour);
+            time %= secondsInHour;
+            int minutes = (int) (time / secondsInMinute);
+            time %= secondsInMinute;
+            int seconds = (int) time;
+            return new StringBuilder().append(hours).append(" ").append(hour).append(", ").append(minutes).append(" ").append(minute).append(" and ").append(seconds).append(" ").append(second).toString();
+            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+        else if(time >= secondsInMinute) {
+            int minutes = (int) (time / secondsInMinute);
+            time %= secondsInMinute;
+            int seconds = (int) time;
+            return new StringBuilder().append(minutes).append(" ").append(minute).append(" and ").append(seconds).append(" ").append(second).toString();
+            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+        else {
+            int seconds = (int) time;
+            return new StringBuilder().append(seconds).append(" ").append(second).toString();
+            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
+        }
+    }*/
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
 } ]]></Text>
 		</JavaClass>
@@ -8751,6 +8840,6 @@ public class BlockStatistic {
 		<VersionMinor>3</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
-	<CloudModelUuid><![CDATA[f67981fb-4b8c-4081-b075-cfb02c504447]]></CloudModelUuid>
+	<CloudModelUuid><![CDATA[44d50a7c-ef44-4a00-b619-d81367e7ebd5]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
