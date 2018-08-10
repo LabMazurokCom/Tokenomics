@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsWhitePaperFree]]></Name>
+	<Name><![CDATA[remmeEconomicsFree]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -167,22 +167,7 @@ import java.text.DecimalFormat;]]></Import>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[RemmeMasterNode]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new RemmeMasterNode(tax)]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1533292804747</Id>
-					<Name><![CDATA[tax]]></Name>
-					<X>270</X><Y>-120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.1]]></Code>
+							<Code><![CDATA[new RemmeMasterNode()]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1577,14 +1562,13 @@ import java.text.DecimalFormat;]]></Import>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[RemmeNode[] remmeNodes = new RemmeNode[quantity];
-int stake = 250000;
 double minHonesty = 0.9;
 for(int i = 0; i < quantity / 2; i++) {
-    remmeNodes[i] = new RemmeNode(0, stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, tax, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy);
+    remmeNodes[i] = new RemmeNode(2 * Utils.stake, Utils.stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy);
     noUnfreezeStrategy.addNode(remmeNodes[i]);//remmeNodes[quantity -] = new RemmeNode(0, stake, nodeBlocks[(i + quantity / 2) * nodeBlocks.length / quantity], i + quantity / 2, tax, nodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / quantity);
 }
 for(int i = quantity / 2; i < quantity; i++) {
-    remmeNodes[i] = new RemmeNode(0, stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, tax, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy);
+    remmeNodes[i] = new RemmeNode(2 * Utils.stake, Utils.stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
 }
 return remmeNodes;]]></Body>
@@ -1604,9 +1588,9 @@ return remmeNodes;]]></Body>
 	long randomMax = min(maxCerts, Utils.binPow(10, (int)(Math.log(1/Math.random())/log(10))));
 	long randomMin = randomMax / 10;
 	long certsNum = (long) (ceil(randomMin + Math.random() * (randomMax - randomMin)));
-	return new Order(UUID.randomUUID(), 25 * certsNum, 365, -1, false, time(SECOND));
+	return new Order(UUID.randomUUID(), 25 * certsNum, 365, -1, false, time(SECOND), 1);
 }
-else return new Order(UUID.randomUUID(), 25, 365, -1, false, time(SECOND));]]></Body>
+else return new Order(UUID.randomUUID(), 25, 365, -1, false, time(SECOND), 1);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -1628,7 +1612,7 @@ else{
 	blockCreator.freeAll();
 	queueSize = 0;
 	blockCreator.capacity = blockSize.getIntValue();
-	rate = (double) remmeNodes.length * Utils.stake / (25 * (1 - tax) * secondsInYear * paybackSlider.getValue());
+	rate = (double) remmeNodes.length * Utils.stake / (25 * (1 - Utils.tax) * secondsInYear * paybackSlider.getValue());
 }
 blockStat = new BlockStatistic(blockSize.getIntValue());
 source.rate = rate;
@@ -1924,7 +1908,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2066,7 +2050,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2211,7 +2195,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3805,7 +3789,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3947,7 +3931,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4090,7 +4074,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4232,7 +4216,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4374,7 +4358,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4516,7 +4500,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4673,7 +4657,7 @@ source.onChange();]]></Body>
 							<Name><![CDATA[masterNodeService_onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[remmeNodes[agent.executor].addMoney(agent.payment);
-remmeNodes[agent.executor].getFrozenCerts().add(new ExecutedOrder(time(SECOND), 24 * 60 * 60 * agent.validity, (1 - tax - remmeNodes[agent.executor].getReputation()) * agent.payment));
+remmeNodes[agent.executor].getFrozenCerts().add(new ExecutedOrder(time(SECOND), 24 * 60 * 60 * agent.validity, (1 - Utils.tax - remmeNodes[agent.executor].getReputation()) * agent.payment));
 remmeNodes[agent.executor].checkPossibleUnfreeze(time(SECOND));
 if(agent.executor >= remmeNodes.length / 2){
 	remmeNodes[agent.executor].transferToLiquid(remmeNodes[agent.executor].getPossibleUnfreeze());
@@ -4703,7 +4687,7 @@ if(firstAgent){
 	firstAgent = false;
 }
 frozenChart.get(agent.executor).setValue(remmeNodes[agent.executor].getFrozenMoney() - Utils.stake);
-liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney());
+liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney() - 2 * Utils.stake);
 reputationChart.get(agent.executor).setValue(remmeNodes[agent.executor].getReputation() * 100);]]></Code>
 							</Value>
 						</Parameter>
@@ -4830,11 +4814,13 @@ if(orderMode.getValue() == 0){
 }
 else{
 	if(queueSize != 0){
+		self.get(0).blockSize++;
 		self.get(0).payment += agent.payment;
 		agent.deleted = true;
 	}
 	queueSize++;
 	if(queueSize == blockSize.getIntValue()){
+		self.get(0).blockSize = queueSize;
 		blockStat.commitBlock(agent.creationTime, self.iterator());
 		self.freeAll();
 		queueSize = 0;
@@ -6811,6 +6797,30 @@ updateSourceRate();]]></ActionCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1533918226242</Id>
+					<Name><![CDATA[blockSize]]></Name>
+					<X>50</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1533918226230</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<AgentLinks>
 				<AgentLink>
@@ -8114,36 +8124,32 @@ public class RemmeNode implements Serializable {
     private double reputation;
     private boolean ready;
     private int nodeNumber;
-    private double tax;
     private HashMap<UUID, Order> orders;
     private HashMap<UUID, Order> ordersForRemove;
     private int nodeBlocksQuantity;
     private double honesty;
     private List<ExecutedOrder> frozenCerts;
     private Strategy strategy;
-    private double fineCoefficient;
 
     public HashMap<UUID, Order> getOrders() {
         return orders;
     }
 
-    public RemmeNode(double realMoney, double frozenMoney, double possibleUnfreeze, Wait waitNode, int nodeNumber, double tax, int nodeBlocksQuantity, double honesty, Strategy strategy) {
+    public RemmeNode(double realMoney, double frozenMoney, double possibleUnfreeze, Wait waitNode, int nodeNumber, int nodeBlocksQuantity, double honesty, Strategy strategy) {
         this.realMoney = realMoney;
         this.frozenMoney = frozenMoney;
         this.possibleUnfreeze = possibleUnfreeze;
         this.waitNode = waitNode;
         this.nodeNumber = nodeNumber;
-        this.reputation = 1 - tax - initialLiquid;
+        this.reputation = 1 - Utils.tax - initialLiquid;
         this.ready = true;
         orders = new HashMap<>();
         ordersForRemove = new HashMap<>();
-        this.tax = tax;
         this.nodeBlocksQuantity = nodeBlocksQuantity;
-        nodesQuantity = max(nodesQuantity, nodeNumber + 1);
+        nodesQuantity = Math.max(nodesQuantity, nodeNumber + 1);
         this.honesty = honesty;
         frozenCerts = new LinkedList<>();
         this.strategy = strategy;
-        fineCoefficient = 1;
     }
 
     public double getHonesty() {
@@ -8172,26 +8178,23 @@ public class RemmeNode implements Serializable {
 
     public void addMoney(double money){
         realMoney += money * reputation;
-        frozenMoney += money *(1 - tax - reputation);
+        frozenMoney += money *(1 - Utils.tax - reputation);
         double lastRep = reputation;
         updateReputation();
-        strategy.addDiff(money * reputation,  money *(1 - tax - reputation), 0, reputation - lastRep);
+        strategy.addDiff(money * reputation,  money *(1 - Utils.tax - reputation), 0, reputation - lastRep);
     }
 
     private void updateReputation(){
         double n = 5.5; //REMME
-        reputation = Math.min(1 - tax, ((1 - tax - initialLiquid) * (frozenMoney - Utils.stake) / ((n - 1) * Utils.stake) + initialLiquid) * fineCoefficient);
-        //reputation = initialLiquid + (1 - tax - initialLiquid) * (1 - Math.exp(-k * (frozenMoney - initialStake))) * fineCoefficient;
-    }
-
-    public double getFineCoefficient() {
-        return fineCoefficient;
+        reputation = Math.min(1 - Utils.tax, ((1 - Utils.tax - initialLiquid) * (frozenMoney - Utils.stake) / ((n - 1) * Utils.stake) + initialLiquid));
+        //reputation = initialLiquid + (1 - Utils.tax - initialLiquid) * (1 - Math.exp(-k * (frozenMoney - initialStake))) * fineCoefficient;
     }
 
     public void toFine(double fine){
-        fineCoefficient *= (1 - fine);
+        frozenMoney -= fine;
         double lastRep = reputation;
         updateReputation();
+        strategy.addFrozen(-fine);
         strategy.addReputation(reputation - lastRep);
     }
 
@@ -8232,7 +8235,8 @@ public class RemmeNode implements Serializable {
 
     public void trySendCandidate(Algorand algorand){
         if(!orders.isEmpty() && ready) {
-            algorand.addCandidate(nodeNumber);
+            Order order = orders.entrySet().iterator().next().getValue();
+            algorand.addCandidate(new Bet(nodeNumber, order, (1 - Utils.tax) * Utils.minPrice * order.blockSize / Utils.tax));
         }
     }
 
@@ -8268,9 +8272,9 @@ public class RemmeNode implements Serializable {
         }
     }
 
-    public Order getRandomOrder() {
+    /*public Order getRandomOrder() {
         return orders.entrySet().iterator().next().getValue();
-    }
+    }*/
 
     public void transferToLiquid(double sum) {
         sum = Math.min(sum, possibleUnfreeze);
@@ -8297,6 +8301,11 @@ public class RemmeNode implements Serializable {
         strategy.addPossibleUnfreeze(possibleUnfreeze - lastPossibleUnfreeze);
     }
 
+    public void exactBet(Bet bet){
+        realMoney -= bet.getValue();
+        strategy.addLiquid(-bet.getValue());
+    }
+
     @Override
     public String toString() {
         return super.toString();
@@ -8314,91 +8323,87 @@ public class RemmeNode implements Serializable {
 		<JavaClass>
 			<Id>1532784121534</Id>
 			<Name><![CDATA[Algorand]]></Name>
-			<Text><![CDATA[import java.util.ArrayList;
+			<Text><![CDATA[import javafx.util.Pair;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Кирилл on 28.07.2018.
  */
 public class Algorand {
     //private static int a = 0;
-    private static int nodesForRun = 150;
-    private static final double standartFine = 0.15;
+    //private static int nodesForRun = 150;
+    // private static final double standartFine = 0.15;
     private RemmeNode[] remmeNodes;
-    private List<Integer> candidates;
+    private List<Bet> candidates;
     private int participians = 0;
+    private Random random;
+
     public Algorand(RemmeNode[] remmeNodes){
         candidates = new ArrayList<>();
         this.remmeNodes = remmeNodes;
+        random = new Random();
     }
 
-    public void addCandidate(Integer node){
+    public void addCandidate(Bet bet){
         //traceln("addC " + node);
-        if(Math.random() <= remmeNodes[node].getHonesty()) {
-            candidates.add(node);
+        if(bet.getValue() <= remmeNodes[bet.getNode()].getRealMoney() && bet.getValue() <= remmeNodes[bet.getNode()].getFrozenMoney() && Math.random() <= remmeNodes[bet.getNode()].getHonesty()) {
+            candidates.add(bet);
         }
         participians++;
-        remmeNodes[node].setReady(false);
-        if(participians == nodesForRun){
+        remmeNodes[bet.getNode()].setReady(false);
+        if(participians == remmeNodes.length){
             runAlgorand();
         }
     }
 
     private void runAlgorand(){
         //long time = System.currentTimeMillis();
+        double jacpot = 0;
         int winner = -1;
-        double[] normalizedReputations = normalize();
+        Order winOrder = null;
+        //double[] normalizedReputations = normalize();
+        //int n = 0;
         while(winner == -1){
-            int possibleWinner = getWinner(normalizedReputations);
-            if(possibleWinner == 74) {
-            	traceln(remmeNodes[74].getHonesty());
-            }
-            if(remmeNodes[possibleWinner].getHonesty() >= Math.random()){
-                winner = possibleWinner;
+            Bet possibleWinBet = getWinBet();
+            //double betValue = getBetValue(winOrder);
+            if(remmeNodes[possibleWinBet.getNode()].getHonesty() >= Math.random()){
+                winner = possibleWinBet.getNode();
+                winOrder = possibleWinBet.getOrder();
+                remmeNodes[winner].exactBet(possibleWinBet);
+                winOrder.payment += (possibleWinBet.getValue() + jacpot);
+                /*if(n > 1) {
+                	traceln(n);
+                }*/
             }
             else {
-                remmeNodes[possibleWinner].toFine(standartFine);
+                remmeNodes[possibleWinBet.getNode()].toFine(possibleWinBet.getValue());
+                jacpot += possibleWinBet.getValue();
+                //n++;
             }
         }
-        //int winner = (int) (Math.random() * candidates.size());
-        //int count = 0;
-        Order winOrder = remmeNodes[winner].getRandomOrder();
         getReadyForNewRound();
         //traceln(winnerNode);
         for (int i = 0; i < remmeNodes.length; i++) {
             remmeNodes[i].algoDone(this, winner, winOrder);
         }
-        //System.out.println(System.currentTimeMillis() - time);
     }
 
-    private double[] normalize(){
-        double sumOfReputations = 0;
-        for(int i = 0; i < candidates.size(); i++){
-            sumOfReputations += remmeNodes[candidates.get(i)].getReputation();
+    private Bet getWinBet(){
+        double[] hashes = new double[candidates.size()];
+        for(int i = 0; i < hashes.length; i++){
+            Bet curBet = candidates.get(i);
+            hashes[i] = random.nextDouble() / (curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney());
         }
-        double[] normalizeArray = new double[candidates.size()];
-        double lastSum = 0;
-        for(int i = 0; i < candidates.size() - 1; i++){
-            normalizeArray[i] = lastSum + remmeNodes[candidates.get(i)].getReputation() / sumOfReputations;
-            //traceln(normalizeArray[i]);
-            lastSum += remmeNodes[candidates.get(i)].getReputation() / sumOfReputations;
-        }
-        normalizeArray[candidates.size() - 1] = 1;
-        /*for(int i = 0; i < normalizeArray.length; i++){
-            traceln(normalizeArray[i]);
-        }*/
-        return normalizeArray;
-    }
-
-    private int getWinner(double[] normalizedReputations){
-        double random = Math.random();
-        int winner = - 1;
-        for(int i = 0; i < candidates.size() && winner == - 1; i++){
-            if(random <= normalizedReputations[i]){
-                winner = candidates.get(i);
+        int winner = 0;
+        for(int i = 1; i < hashes.length; i++){
+            if(hashes[i] < hashes[winner]){
+                winner = i;
             }
         }
-        return winner;
+        return candidates.get(winner);
     }
 
     private void getReadyForNewRound() {
@@ -8419,18 +8424,12 @@ public class Algorand {
  * RemmeMaterNode
  */
 public class RemmeMasterNode implements Serializable {
-    private double tax;
-    public double money;
-    RemmeMasterNode(double tax){
-        this.tax = tax;
-    }
-
-    public double getTax(){
-        return this.tax;
+    private double money;
+    RemmeMasterNode(){
     }
 
     public void collectTax(Order order){
-        money += order.payment * tax;
+        money += order.payment * Utils.tax;
     }
 
     public double getMoney() {
@@ -8450,14 +8449,11 @@ public class RemmeMasterNode implements Serializable {
  */
 public class Utils {
 
-    public static int stake = 250000;
-    private static double minHonesty = 0.9;
-    public static final int secondsInMinute = 60;
-    public static final int secondsInHour = secondsInMinute * 60;
-    public static final int secondsInDay = secondsInHour * 24;
-    public static final int secondsInWeek = secondsInDay * 7;
-    public static final int secondsInMonth = secondsInDay * 30;
-    public static final int secondsInYear = secondsInDay * 365;
+    public static final int stake = 250000;
+    public static final double minHonesty = 0.9;
+    public static final double tax = 0.1;
+    public static final double minPrice = 12.5;
+
     public static final String year = "years";
     public static final String month = "months";
     public static final String week = "weeks";
@@ -8550,22 +8546,22 @@ public class Utils {
 
     public static String getTime(long time, int digits){
         int level;
-        if(time >= secondsInYear) {
+        if(time >= TimePeriod.YEAR.durability) {
             level = 7;
         }
-        else if(time >= secondsInMonth) {
+        else if(time >= TimePeriod.MONTH.durability) {
             level = 6;
         }
-        else if(time >= secondsInWeek) {
+        else if(time >= TimePeriod.WEEK.durability) {
             level = 5;
         }
-        else if(time >= secondsInDay) {
+        else if(time >= TimePeriod.DAY.durability) {
             level = 4;
         }
-        else if(time >= secondsInHour) {
+        else if(time >= TimePeriod.HOUR.durability) {
             level = 3;
         }
-        else if(time >= secondsInMinute) {
+        else if(time >= TimePeriod.MINUTE.durability) {
             level = 2;
         }
         else {
@@ -8589,66 +8585,12 @@ public class Utils {
         return formattedTime.toString();
     }
 
-    /*public static String getTimeFormatted(long time, int level, int digits, int curDigit) {
-        if(time >= secondsInYear) {
-            getFormattedTime(time, ) //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-        else if(time >= secondsInMonth) {
-            int months = (int) (time / secondsInMonth);
-            time %= secondsInMonth;
-            int weeks = (int) (time / secondsInWeek);
-            time %= secondsInWeek;
-            int days = (int) (Math.round((double)time / secondsInDay));
-            return new StringBuilder().append(months).append(" ").append(month).append(", ").append(weeks).append(" "). append(week).append(" and ").append(days).append(" ").append(day).toString();
-            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-        else if(time >= secondsInWeek) {
-            int weeks = (int) (time / secondsInWeek);
-            time %= secondsInWeek;
-            int days = (int) (time / secondsInDay);
-            time %= secondsInDay;
-            int hours = (int) (Math.round((double)time / secondsInHour));
-            return new StringBuilder().append(weeks).append(" "). append(week).append(", ").append(days).append(" ").append(day).append(" and ").append(hours).append(" ").append(hour).toString();
-            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-        else if(time >= secondsInDay) {
-            int days = (int) (time / secondsInDay);
-            time %= secondsInDay;
-            int hours = (int) (time / secondsInHour);
-            time %= secondsInHour;
-            int minutes = (int) (Math.round((double)time / secondsInMinute));
-            return new StringBuilder().append(days).append(" ").append(day).append(", ").append(hours).append(" ").append(hour).append(" and ").append(minutes).append(" ").append(minute).toString();
-            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-        else if(time >= secondsInHour) {
-            int hours = (int) (time / secondsInHour);
-            time %= secondsInHour;
-            int minutes = (int) (time / secondsInMinute);
-            time %= secondsInMinute;
-            int seconds = (int) time;
-            return new StringBuilder().append(hours).append(" ").append(hour).append(", ").append(minutes).append(" ").append(minute).append(" and ").append(seconds).append(" ").append(second).toString();
-            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-        else if(time >= secondsInMinute) {
-            int minutes = (int) (time / secondsInMinute);
-            time %= secondsInMinute;
-            int seconds = (int) time;
-            return new StringBuilder().append(minutes).append(" ").append(minute).append(" and ").append(seconds).append(" ").append(second).toString();
-            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-        else {
-            int seconds = (int) time;
-            return new StringBuilder().append(seconds).append(" ").append(second).toString();
-            //return Long.toString(time / secondsInYear).concat(time % secondsIn)
-        }
-    }*/
-
     @Override
     public String toString() {
         return super.toString();
     }
 
-} ]]></Text>
+}]]></Text>
 		</JavaClass>
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>
@@ -8747,7 +8689,7 @@ public class Strategy implements Serializable {
     }
 
     public void addNode(RemmeNode node) {
-        avgLiquid = (avgLiquid * nodesQ + node.getRealMoney()) / (nodesQ + 1);
+        avgLiquid = (avgLiquid * nodesQ + node.getRealMoney() - 2 * Utils.stake) / (nodesQ + 1);
         avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney() - Utils.stake) / (nodesQ + 1);
         avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + node.getPossibleUnfreeze()) / (nodesQ + 1);
         avgReputation = (avgReputation * nodesQ + node.getReputation()) / (nodesQ + 1);
@@ -8877,6 +8819,37 @@ public class BlockStatistic {
         avgWaitTime = (avgWaitTime * ordersPerBlock * blocksCommitted + sumOfWaitTimes) / ((blocksCommitted + 1) * ordersPerBlock);
         blocksCommitted++;
     }
+}
+]]></Text>
+		</JavaClass>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1533926979404</Id>
+			<Name><![CDATA[Bet]]></Name>
+			<Text><![CDATA[public class Bet {
+    private int node;
+    private Order order;
+    private double value;
+
+    public Bet(int node, Order order, double value) {
+        this.node = node;
+        this.order = order;
+        this.value = value;
+    }
+
+    public int getNode() {
+        return node;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public double getValue() {
+        return value;
+    }
+    
+    private static final long serialVersionUID = 1L;
 }
 ]]></Text>
 		</JavaClass>
