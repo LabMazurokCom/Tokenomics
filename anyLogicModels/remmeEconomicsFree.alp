@@ -20,6 +20,25 @@
 			<Import><![CDATA[import java.lang.Math;
 import java.util.UUID;
 import java.text.DecimalFormat;]]></Import>
+			<StartupCode><![CDATA[for(int i = 0; i < remmeNodes.length / 2; i++){
+		Color nodeColor = new Color((int)(255-(double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), (int)((double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), 0);
+		frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+		liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+		//DataItem repDataItem = new DataItem();
+		//repDataItem.setValue(45);
+		reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+		reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
+	}
+	for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
+		Color nodeColor = new Color((int)(255-(double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), (int)((double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), 0);
+		frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+		liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+		//DataItem repDataItem = new DataItem();
+		//repDataItem.setValue(45);
+		reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+		reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
+	}
+	firstAgent = false;]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1532705097252</Id>
@@ -4661,30 +4680,6 @@ remmeNodes[agent.executor].getFrozenCerts().add(new ExecutedOrder(time(SECOND), 
 remmeNodes[agent.executor].checkPossibleUnfreeze(time(SECOND));
 if(agent.executor >= remmeNodes.length / 2){
 	remmeNodes[agent.executor].transferToLiquid(remmeNodes[agent.executor].getPossibleUnfreeze());
-}
-if(agent.executor == remmeNodes.length / 2){
-	//traceln(remmeNodes[agent.executor].getFrozenCerts().size());
-}
-if(firstAgent){
-	for(int i = 0; i < remmeNodes.length / 2; i++){
-		Color nodeColor = new Color((int)(255-(double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), (int)((double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), 0);
-		frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-		liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-		//DataItem repDataItem = new DataItem();
-		//repDataItem.setValue(45);
-		reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-		reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
-	}
-	for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
-		Color nodeColor = new Color((int)(255-(double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), (int)((double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), 0);
-		frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-		liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-		//DataItem repDataItem = new DataItem();
-		//repDataItem.setValue(45);
-		reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-		reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
-	}
-	firstAgent = false;
 }
 frozenChart.get(agent.executor).setValue(remmeNodes[agent.executor].getFrozenMoney() - Utils.stake);
 liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney() - 2 * Utils.stake);
