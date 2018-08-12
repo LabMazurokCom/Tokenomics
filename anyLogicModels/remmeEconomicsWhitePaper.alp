@@ -8840,6 +8840,6 @@ public class BlockStatistic {
 		<VersionMinor>3</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
-	<CloudModelUuid><![CDATA[44d50a7c-ef44-4a00-b619-d81367e7ebd5]]></CloudModelUuid>
+	<CloudModelUuid><![CDATA[f67981fb-4b8c-4081-b075-cfb02c504447]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
