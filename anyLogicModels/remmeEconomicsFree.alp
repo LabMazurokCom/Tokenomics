@@ -42,7 +42,7 @@ for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
 }
 ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-scheduledExecutorService.schedule(() -> pauseSimulation(), 500, TimeUnit.MILLISECONDS);]]></StartupCode>
+scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECONDS);]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1532705097252</Id>
