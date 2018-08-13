@@ -4,10 +4,10 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsFree]]></Name>
+	<Name><![CDATA[remmeEconomicsFree_2]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -30,15 +30,20 @@ import java.util.concurrent.TimeUnit;]]></Import>
 		//DataItem repDataItem = new DataItem();
 		//repDataItem.setValue(45);
 	reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+	frozenChart.get(i).setValue(remmeNodes[i].getFrozenMoney());
+	liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
 }
 for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
 	Color nodeColor = new Color((int)(255-(double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), (int)((double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), 0);
 	frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+	
 	liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
 		//DataItem repDataItem = new DataItem();
 		//repDataItem.setValue(45);
 	reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+	frozenChart.get(i).setValue(remmeNodes[i].getFrozenMoney());
+	liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
 }
 ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
@@ -4685,11 +4690,8 @@ remmeNodes[agent.executor].checkPossibleUnfreeze(time(SECOND));
 if(agent.executor >= remmeNodes.length / 2){
 	remmeNodes[agent.executor].transferToLiquid(remmeNodes[agent.executor].getPossibleUnfreeze());
 }
-else{
-	traceln(remmeNodes[agent.executor].getUnpossibleUnfreeze());
-}
-frozenChart.get(agent.executor).setValue(remmeNodes[agent.executor].getFrozenMoney() - Utils.stake);
-liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney() - Utils.startLiquid);
+frozenChart.get(agent.executor).setValue(remmeNodes[agent.executor].getFrozenMoney());
+liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney());
 reputationChart.get(agent.executor).setValue(remmeNodes[agent.executor].getReputation() * 100);]]></Code>
 							</Value>
 						</Parameter>
@@ -8419,7 +8421,7 @@ public class Algorand {
                 remmeNodes[possibleWinBet.getNode()].toFine(possibleWinBet.getValue());
                 jacpot += possibleWinBet.getValue();
                 if(!remmeNodes[possibleWinBet.getNode()].hasMoneyForBet(possibleWinBet)) {
-                	traceln("here");
+                	//traceln("here");
                 	candidates.remove(possibleWinBet);
                 }
                 //n++;
@@ -8723,7 +8725,7 @@ public class Strategy implements Serializable {
     }
 
     public void addNode(RemmeNode node) {
-        avgLiquid = (avgLiquid * nodesQ + node.getRealMoney() - Utils.startLiquid) / (nodesQ + 1);
+        avgLiquid = (avgLiquid * nodesQ + node.getRealMoney()) / (nodesQ + 1);
         avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney()) / (nodesQ + 1);
         avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + node.getPossibleUnfreeze()) / (nodesQ + 1);
         avgReputation = (avgReputation * nodesQ + node.getReputation()) / (nodesQ + 1);
