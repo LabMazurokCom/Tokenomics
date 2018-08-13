@@ -342,7 +342,7 @@ scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECOND
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[BlockStatistic]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new BlockStatistic(1);]]></Code>
+							<Code><![CDATA[new BlockStatistic(Utils.initialBlockSize);]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1723,7 +1723,7 @@ source.onChange();]]></Body>
 						<Parameter>
 							<Name><![CDATA[rate]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[yearPaybackCertsPerSecond]]></Code>
+								<Code><![CDATA[(remmeNodes.length * (Utils.stake + Utils.startLiquid + Utils.minPrice * Utils.initialBlockSize / Utils.tax - 3 * Utils.initialBlockSize))/ (25 * (1 - Utils.tax) * secondsInYear);]]></Code>
 								<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
 							</Value>
 						</Parameter>
@@ -6307,6 +6307,7 @@ updateSourceRate();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="12" Style="0"/>
+						<DefaultValueCode><![CDATA[1]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
 						<Button><![CDATA[Separate Order]]></Button>
 						<Button><![CDATA[Block]]></Button>
@@ -6326,12 +6327,12 @@ updateSourceRate();]]></ActionCode>
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
-						<Enabled>false</Enabled>
+						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[updateSourceRate();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="12" Style="0"/>
-						<DefaultValueCode><![CDATA["1"]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA[Integer.toString(Utils.initialBlockSize)]]></DefaultValueCode>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
@@ -8497,6 +8498,7 @@ public class Utils {
     public static final double minHonesty = 0.997;
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
+    public static final int initialBlockSize = 100;
 
     public enum TimePeriod{
         SECOND(1){
@@ -8582,6 +8584,9 @@ public class Utils {
 
     public static String getTime(long time, int digits){
         int level;
+        if((int)Math.round((double)(time % TimePeriod.YEAR.durability) / TimePeriod.MONTH.durability) >=  TimePeriod.YEAR.durability / TimePeriod.MONTH.durability) {
+        	time = (int)(ceil((double)time / TimePeriod.YEAR.durability)) * TimePeriod.YEAR.durability;
+        }
         if(time >= TimePeriod.YEAR.durability) {
             level = 7;
         }
@@ -8902,6 +8907,6 @@ public class BlockStatistic {
 		<VersionMinor>3</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
-	<CloudModelUuid><![CDATA[44d50a7c-ef44-4a00-b619-d81367e7ebd5]]></CloudModelUuid>
+	<CloudModelUuid><![CDATA[f75b5343-e63f-48ce-bc41-a11343bfc247]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
