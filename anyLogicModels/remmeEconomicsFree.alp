@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsFree_2]]></Name>
+	<Name><![CDATA[remmeEconomicsFree]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -282,7 +282,7 @@ scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECOND
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[(double) 665000 / secondsInYear]]></Code>
+							<Code><![CDATA[(double) 1150000 / secondsInYear]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1640,7 +1640,7 @@ else{
 	blockCreator.freeAll();
 	queueSize = 0;
 	blockCreator.capacity = blockSize.getIntValue();
-	rate = (double) remmeNodes.length * Utils.stake / (25 * (1 - Utils.tax) * secondsInYear * paybackSlider.getValue());
+	rate = (remmeNodes.length * (Utils.stake + Utils.startLiquid + Utils.minPrice * blockSize.getIntValue() / Utils.tax - 3 * blockSize.getIntValue()))/ (25 * (1 - Utils.tax) * secondsInYear * paybackSlider.getValue());
 }
 blockStat = new BlockStatistic(blockSize.getIntValue());
 source.rate = rate;
