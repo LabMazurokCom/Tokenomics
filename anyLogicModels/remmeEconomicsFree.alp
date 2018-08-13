@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsFree]]></Name>
@@ -1587,11 +1587,11 @@ scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECOND
 					<Body><![CDATA[RemmeNode[] remmeNodes = new RemmeNode[quantity];
 double minHonesty = 0.9;
 for(int i = 0; i < quantity / 2; i++) {
-    remmeNodes[i] = new RemmeNode(2 * Utils.stake, Utils.stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy);
+    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy);
     noUnfreezeStrategy.addNode(remmeNodes[i]);//remmeNodes[quantity -] = new RemmeNode(0, stake, nodeBlocks[(i + quantity / 2) * nodeBlocks.length / quantity], i + quantity / 2, tax, nodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / quantity);
 }
 for(int i = quantity / 2; i < quantity; i++) {
-    remmeNodes[i] = new RemmeNode(2 * Utils.stake, Utils.stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy);
+    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
 }
 return remmeNodes;]]></Body>
@@ -4685,8 +4685,11 @@ remmeNodes[agent.executor].checkPossibleUnfreeze(time(SECOND));
 if(agent.executor >= remmeNodes.length / 2){
 	remmeNodes[agent.executor].transferToLiquid(remmeNodes[agent.executor].getPossibleUnfreeze());
 }
+else{
+	traceln(remmeNodes[agent.executor].getUnpossibleUnfreeze());
+}
 frozenChart.get(agent.executor).setValue(remmeNodes[agent.executor].getFrozenMoney() - Utils.stake);
-liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney() - 2 * Utils.stake);
+liquidChart.get(agent.executor).setValue(remmeNodes[agent.executor].getRealMoney() - Utils.startLiquid);
 reputationChart.get(agent.executor).setValue(remmeNodes[agent.executor].getReputation() * 100);]]></Code>
 							</Value>
 						</Parameter>
@@ -5392,7 +5395,8 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
-					<Text><![CDATA[90%]]></Text>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -5688,7 +5692,8 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
-					<Text><![CDATA[90%]]></Text>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -5898,7 +5903,8 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
-					<Text><![CDATA[90%]]></Text>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -8118,7 +8124,7 @@ public class RemmeNode implements Serializable {
 
     private Wait waitNode;
     private double realMoney;
-    private double frozenMoney;
+    private double unpossibleUnfreeze;
     private double possibleUnfreeze;
     private double reputation;
     private boolean ready;
@@ -8134,9 +8140,9 @@ public class RemmeNode implements Serializable {
         return orders;
     }
 
-    public RemmeNode(double realMoney, double frozenMoney, double possibleUnfreeze, Wait waitNode, int nodeNumber, int nodeBlocksQuantity, double honesty, Strategy strategy) {
+    public RemmeNode(double realMoney, double unpossibleUnfreeze, double possibleUnfreeze, Wait waitNode, int nodeNumber, int nodeBlocksQuantity, double honesty, Strategy strategy) {
         this.realMoney = realMoney;
-        this.frozenMoney = frozenMoney;
+        this.unpossibleUnfreeze = unpossibleUnfreeze;
         this.possibleUnfreeze = possibleUnfreeze;
         this.waitNode = waitNode;
         this.nodeNumber = nodeNumber;
@@ -8162,13 +8168,17 @@ public class RemmeNode implements Serializable {
     public void setHonesty(double honesty) {
         this.honesty = honesty;
     }
+    
+    public double getUnpossibleUnfreeze() {
+    	return unpossibleUnfreeze;
+    }
 
     public double getRealMoney() {
         return realMoney;
     }
 
     public double getFrozenMoney() {
-        return frozenMoney;
+        return possibleUnfreeze + unpossibleUnfreeze;
     }
 
     public double getReputation() {
@@ -8177,20 +8187,26 @@ public class RemmeNode implements Serializable {
 
     public void addMoney(double money){
         realMoney += money * reputation;
-        frozenMoney += money *(1 - Utils.tax - reputation);
+        unpossibleUnfreeze += money *(1 - Utils.tax - reputation);
         double lastRep = reputation;
         updateReputation();
-        strategy.addDiff(money * reputation,  money *(1 - Utils.tax - reputation), 0, reputation - lastRep);
+        strategy.addDiff(money * lastRep,  money *(1 - Utils.tax - lastRep), 0, reputation - lastRep);
     }
 
     private void updateReputation(){
         double n = 5.5; //REMME
-        reputation = Math.min(1 - Utils.tax, ((1 - Utils.tax - initialLiquid) * (frozenMoney - Utils.stake) / ((n - 1) * Utils.stake) + initialLiquid));
+        reputation = Math.min(1 - Utils.tax, ((1 - Utils.tax - initialLiquid) * (getFrozenMoney() - Utils.stake) / ((n - 1) * Utils.stake) + initialLiquid));
         //reputation = initialLiquid + (1 - Utils.tax - initialLiquid) * (1 - Math.exp(-k * (frozenMoney - initialStake))) * fineCoefficient;
     }
 
     public void toFine(double fine){
-        frozenMoney -= fine;
+        if(unpossibleUnfreeze < fine){
+            double notEnough = fine - unpossibleUnfreeze;
+            unpossibleUnfreeze += notEnough;
+            possibleUnfreeze -= notEnough;
+            strategy.addPossibleUnfreeze(-notEnough);
+        }
+        unpossibleUnfreeze -= fine;
         double lastRep = reputation;
         updateReputation();
         strategy.addFrozen(-fine);
@@ -8235,7 +8251,8 @@ public class RemmeNode implements Serializable {
     public void trySendCandidate(Algorand algorand){
         if(!orders.isEmpty() && ready) {
             Order order = orders.entrySet().iterator().next().getValue();
-            algorand.addCandidate(new Bet(nodeNumber, order, (1 - Utils.tax) * Utils.minPrice * order.blockSize / Utils.tax));
+            double betValue = Math.max(Utils.minPrice * order.blockSize / Utils.tax - order.payment - Utils.minPrice * order.blockSize, 0);
+            algorand.addCandidate(new Bet(nodeNumber, order, betValue));
         }
     }
 
@@ -8277,7 +8294,6 @@ public class RemmeNode implements Serializable {
 
     public void transferToLiquid(double sum) {
         sum = Math.min(sum, possibleUnfreeze);
-        frozenMoney -= sum;
         possibleUnfreeze -= sum;
         realMoney += sum;
         double lastRep = reputation;
@@ -8288,19 +8304,43 @@ public class RemmeNode implements Serializable {
     public void checkPossibleUnfreeze(double time){
         double lastPossibleUnfreeze = possibleUnfreeze;
         Iterator<ExecutedOrder> it = frozenCerts.iterator();
+        double sumToUnfreeze = 0;
         while(it.hasNext()){
             ExecutedOrder order = it.next();
             double readyMoney = order.getReadyMoney(time);
-            possibleUnfreeze += readyMoney;
+            sumToUnfreeze += readyMoney;
             order.setMoneyUnfrozed(order.getMoneyUnfrozed() + readyMoney);
             if(order.getMoneyLeft() == 0){
                 it.remove();
             }
         }
+        sumToUnfreeze = Math.min(sumToUnfreeze, unpossibleUnfreeze);
+        unpossibleUnfreeze -= sumToUnfreeze;
+        possibleUnfreeze += sumToUnfreeze;
         strategy.addPossibleUnfreeze(possibleUnfreeze - lastPossibleUnfreeze);
     }
 
+    public double getMaxLiquidMoney() {
+        return realMoney + possibleUnfreeze;
+    }
+
+    public boolean hasMoneyForBet(Bet bet) {
+        if(getFrozenMoney() <= bet.getValue()) {
+            return false;
+        }
+        else {
+            double needToTransfer = Math.max(bet.getValue() - realMoney, 0);
+            double transfered = Math.min(needToTransfer, possibleUnfreeze);
+            //traceln(realMoney + transfered >= bet.getValue() && frozenMoney - transfered >= bet.getValue());
+            return (realMoney + transfered >= bet.getValue() && getFrozenMoney() - transfered >= bet.getValue());
+        }
+    }
+
     public void exactBet(Bet bet){
+        double diff = bet.getValue() - realMoney;
+        if(realMoney < bet.getValue()) {
+            transferToLiquid(diff);
+        }
         realMoney -= bet.getValue();
         strategy.addLiquid(-bet.getValue());
     }
@@ -8348,7 +8388,7 @@ public class Algorand {
 
     public void addCandidate(Bet bet){
         //traceln("addC " + node);
-        if(bet.getValue() <= remmeNodes[bet.getNode()].getRealMoney() && bet.getValue() <= remmeNodes[bet.getNode()].getFrozenMoney() && Math.random() <= remmeNodes[bet.getNode()].getHonesty()) {
+        if(remmeNodes[bet.getNode()].hasMoneyForBet(bet)) {
             candidates.add(bet);
         }
         participians++;
@@ -8378,6 +8418,10 @@ public class Algorand {
             else {
                 remmeNodes[possibleWinBet.getNode()].toFine(possibleWinBet.getValue());
                 jacpot += possibleWinBet.getValue();
+                if(!remmeNodes[possibleWinBet.getNode()].hasMoneyForBet(possibleWinBet)) {
+                	traceln("here");
+                	candidates.remove(possibleWinBet);
+                }
                 //n++;
             }
         }
@@ -8447,17 +8491,10 @@ public class RemmeMasterNode implements Serializable {
 public class Utils {
 
     public static final int stake = 250000;
-    public static final double minHonesty = 0.9;
+    public static final int startLiquid = 250000;
+    public static final double minHonesty = 0.997;
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
-
-    public static final String year = "years";
-    public static final String month = "months";
-    public static final String week = "weeks";
-    public static final String day = "days";
-    public static final String hour = "hours";
-    public static final String minute = "mins";
-    public static final String second = "secs";
 
     public enum TimePeriod{
         SECOND(1){
@@ -8686,8 +8723,8 @@ public class Strategy implements Serializable {
     }
 
     public void addNode(RemmeNode node) {
-        avgLiquid = (avgLiquid * nodesQ + node.getRealMoney() - 2 * Utils.stake) / (nodesQ + 1);
-        avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney() - Utils.stake) / (nodesQ + 1);
+        avgLiquid = (avgLiquid * nodesQ + node.getRealMoney() - Utils.startLiquid) / (nodesQ + 1);
+        avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney()) / (nodesQ + 1);
         avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + node.getPossibleUnfreeze()) / (nodesQ + 1);
         avgReputation = (avgReputation * nodesQ + node.getReputation()) / (nodesQ + 1);
         //updateTexts();
