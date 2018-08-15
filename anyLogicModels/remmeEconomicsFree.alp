@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsFree]]></Name>
@@ -8315,6 +8315,7 @@ public class RemmeNode implements Serializable {
     }*/
 
     public void transferToLiquid(double sum) {
+
     	double lastHasRightToUnfreeze = hasRightToUnfreeze();
         sum = Math.min(sum, lastHasRightToUnfreeze);
         possibleUnfreeze -= sum;
@@ -8406,11 +8407,13 @@ public class Algorand {
     private List<Bet> candidates;
     private int participians = 0;
     private Random random;
+    private double[] harringtonFunctionCoefficients;
 
     public Algorand(RemmeNode[] remmeNodes){
         candidates = new ArrayList<>();
         this.remmeNodes = remmeNodes;
         random = new Random();
+        calculateHarringtonFunctionCoefficients();
     }
 
     public void addCandidate(Bet bet){
@@ -8442,17 +8445,11 @@ public class Algorand {
                 //traceln(winner + " lost");
             }
             else {
-            	if(possibleWinBet.getNode() == 0) {
-                	traceln(remmeNodes[possibleWinBet.getNode()].getFrozenMoney());
-                }
                 remmeNodes[possibleWinBet.getNode()].toFine(possibleWinBet.getValue());
-                if(possibleWinBet.getNode() == 0) {
-                	traceln(remmeNodes[possibleWinBet.getNode()].getFrozenMoney());
-                }
                 jacpot += possibleWinBet.getValue();
                 if(!remmeNodes[possibleWinBet.getNode()].hasMoneyForBet(possibleWinBet)) {
-                	//traceln("here");
-                	candidates.remove(possibleWinBet);
+                    //traceln("here");
+                    candidates.remove(possibleWinBet);
                 }
                 //n++;
             }
@@ -8468,7 +8465,7 @@ public class Algorand {
         double[] hashes = new double[candidates.size()];
         for(int i = 0; i < hashes.length; i++){
             Bet curBet = candidates.get(i);
-            hashes[i] = random.nextDouble() / (curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney());
+            hashes[i] = random.nextDouble() / (harringtonFunction(remmeNodes[curBet.getNode()].getHonesty())* (curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney()));
         }
         int winner = 0;
         for(int i = 1; i < hashes.length; i++){
@@ -8476,12 +8473,24 @@ public class Algorand {
                 winner = i;
             }
         }
+        traceln(candidates.get(winner).getNode());
         return candidates.get(winner);
     }
 
     private void getReadyForNewRound() {
         candidates.clear();
         participians = 0;
+    }
+
+    private void calculateHarringtonFunctionCoefficients(){
+        harringtonFunctionCoefficients = new double[2];
+        double delta = 0.0001;
+        harringtonFunctionCoefficients[1] = Math.log(Math.log(1/(1-delta))) / (1 - Utils.normalHonesty);
+        harringtonFunctionCoefficients[0] = -harringtonFunctionCoefficients[1] * Utils.normalHonesty;
+    }
+
+    private double harringtonFunction(double x){
+        return Math.exp(-Math.exp((harringtonFunctionCoefficients[0] + harringtonFunctionCoefficients[1] * x)));
     }
     private static final long serialVersionUID = 2L;
 }
@@ -8524,7 +8533,8 @@ public class Utils {
 
     public static final int stake = 250000;
     public static final int startLiquid = 250000;
-    public static final double minHonesty = 0.9;
+    public static final double minHonesty = 0.997;
+    public static final double normalHonesty = minHonesty;
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
     public static final int initialBlockSize = 100;
@@ -8614,7 +8624,7 @@ public class Utils {
     public static String getTime(long time, int digits){
         int level;
         if((int)Math.round((double)(time % TimePeriod.YEAR.durability) / TimePeriod.MONTH.durability) >=  TimePeriod.YEAR.durability / TimePeriod.MONTH.durability) {
-        	time = (int)(ceil((double)time / TimePeriod.YEAR.durability)) * TimePeriod.YEAR.durability;
+            time = (int)(ceil((double)time / TimePeriod.YEAR.durability)) * TimePeriod.YEAR.durability;
         }
         if(time >= TimePeriod.YEAR.durability) {
             level = 7;
