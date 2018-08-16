@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsFree]]></Name>
@@ -23,33 +23,31 @@ import java.text.DecimalFormat;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;]]></Import>
-			<StartupCode><![CDATA[for(int i = 0; i < remmeNodes.length / 2; i++){
+			<StartupCode><![CDATA[/*for(int i = 0; i < remmeNodes.length / 2; i++){
 	Color nodeColor = new Color((int)(255-(double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), (int)((double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), 0);
 	frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
-	liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+	//liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
 		//DataItem repDataItem = new DataItem();
 		//repDataItem.setValue(45);
 	reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
 	frozenChart.get(i).setValue(remmeNodes[i].getFrozenMoney());
-	liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
+	//liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
 }
 for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
 	Color nodeColor = new Color((int)(255-(double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), (int)((double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), 0);
 	frozenChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
 	
-	liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+	//liquidChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
 		//DataItem repDataItem = new DataItem();
 		//repDataItem.setValue(45);
 	reputationChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
 	frozenChart.get(i).setValue(remmeNodes[i].getFrozenMoney());
-	liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
+	//liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
-}
+}*/
 ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECONDS);
-Strategy.noUnfreezeStrategy = new Strategy(liquidChart, frozenChart, reputationChart);
-Strategy.maxUnfreezeStrategy = new Strategy(liquidChart, frozenChart, reputationChart);]]></StartupCode>
+scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECONDS);]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1532705097252</Id>
@@ -299,7 +297,7 @@ Strategy.maxUnfreezeStrategy = new Strategy(liquidChart, frozenChart, reputation
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Strategy]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new Strategy(liquidChart, frozenChart, reputationChart)]]></Code>
+							<Code><![CDATA[new Strategy()]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -314,14 +312,14 @@ Strategy.maxUnfreezeStrategy = new Strategy(liquidChart, frozenChart, reputation
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Strategy]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new Strategy(liquidChart, frozenChart, reputationChart)]]></Code>
+							<Code><![CDATA[new Strategy()]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1534429050506</Id>
 					<Name><![CDATA[remmeNodes]]></Name>
-					<X>640</X><Y>-90</Y>
+					<X>220</X><Y>-280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5920,7 +5918,7 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
+					<AutoUpdate>true</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
 					<OccurrenceDate>1533196800000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
@@ -5928,8 +5926,8 @@ updateSourceRate();]]></ActionCode>
 						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Code><![CDATA[2]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>390</Width>
@@ -5956,6 +5954,906 @@ updateSourceRate();]]></ActionCode>
 						<TextColor>-12566464</TextColor>
 					</Labels>
 					<ShowLegend>false</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[0].getReputation() * 100]]></Expression>
+					<Color>-65536</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[1].getReputation() * 100]]></Expression>
+					<Color>-326912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[2].getReputation() * 100]]></Expression>
+					<Color>-522752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation2]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[3].getReputation() * 100]]></Expression>
+					<Color>-783872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation3]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[4].getReputation() * 100]]></Expression>
+					<Color>-979712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation4]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[5].getReputation() * 100]]></Expression>
+					<Color>-1175296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation5]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[6].getReputation() * 100]]></Expression>
+					<Color>-1436672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation6]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[7].getReputation() * 100]]></Expression>
+					<Color>-1632512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation7]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[8].getReputation() * 100]]></Expression>
+					<Color>-1893632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation8]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[9].getReputation() * 100]]></Expression>
+					<Color>-2089472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation9]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[10].getReputation() * 100]]></Expression>
+					<Color>-2285056</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation10]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[11].getReputation() * 100]]></Expression>
+					<Color>-2546432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation11]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[12].getReputation() * 100]]></Expression>
+					<Color>-2742272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation12]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[13].getReputation() * 100]]></Expression>
+					<Color>-3003392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation13]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[14].getReputation() * 100]]></Expression>
+					<Color>-3199232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation14]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[15].getReputation() * 100]]></Expression>
+					<Color>-3394816</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation15]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[16].getReputation() * 100]]></Expression>
+					<Color>-3656192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation16]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[17].getReputation() * 100]]></Expression>
+					<Color>-3852032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation17]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[18].getReputation() * 100]]></Expression>
+					<Color>-4113152</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation18]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[19].getReputation() * 100]]></Expression>
+					<Color>-4308992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation19]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[20].getReputation() * 100]]></Expression>
+					<Color>-4504576</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation20]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[21].getReputation() * 100]]></Expression>
+					<Color>-4765952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation21]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[22].getReputation() * 100]]></Expression>
+					<Color>-4961792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation22]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[23].getReputation() * 100]]></Expression>
+					<Color>-5222912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation23]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[24].getReputation() * 100]]></Expression>
+					<Color>-5418752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation24]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[25].getReputation() * 100]]></Expression>
+					<Color>-5614336</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation25]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[26].getReputation() * 100]]></Expression>
+					<Color>-5875712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation26]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[27].getReputation() * 100]]></Expression>
+					<Color>-6071552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation27]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[28].getReputation() * 100]]></Expression>
+					<Color>-6332672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation28]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[29].getReputation() * 100]]></Expression>
+					<Color>-6528512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation29]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[30].getReputation() * 100]]></Expression>
+					<Color>-6724096</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation30]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[31].getReputation() * 100]]></Expression>
+					<Color>-6985472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation31]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[32].getReputation() * 100]]></Expression>
+					<Color>-7181312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation32]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[33].getReputation() * 100]]></Expression>
+					<Color>-7442432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation33]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[34].getReputation() * 100]]></Expression>
+					<Color>-7638272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation34]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[35].getReputation() * 100]]></Expression>
+					<Color>-7833856</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation35]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[36].getReputation() * 100]]></Expression>
+					<Color>-8095232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation36]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[37].getReputation() * 100]]></Expression>
+					<Color>-8291072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation37]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[38].getReputation() * 100]]></Expression>
+					<Color>-8552192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation38]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[39].getReputation() * 100]]></Expression>
+					<Color>-8748032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation39]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[40].getReputation() * 100]]></Expression>
+					<Color>-8943616</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation40]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[41].getReputation() * 100]]></Expression>
+					<Color>-9204992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation41]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[42].getReputation() * 100]]></Expression>
+					<Color>-9400832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation42]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[43].getReputation() * 100]]></Expression>
+					<Color>-9661952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation43]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[44].getReputation() * 100]]></Expression>
+					<Color>-9857792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation44]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[45].getReputation() * 100]]></Expression>
+					<Color>-10053376</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation45]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[46].getReputation() * 100]]></Expression>
+					<Color>-10314752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation46]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[47].getReputation() * 100]]></Expression>
+					<Color>-10510592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation47]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[48].getReputation() * 100]]></Expression>
+					<Color>-10771712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation48]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[49].getReputation() * 100]]></Expression>
+					<Color>-10967552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation49]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[50].getReputation() * 100]]></Expression>
+					<Color>-11163136</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation50]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[51].getReputation() * 100]]></Expression>
+					<Color>-11424512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation51]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[52].getReputation() * 100]]></Expression>
+					<Color>-11620352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation52]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[53].getReputation() * 100]]></Expression>
+					<Color>-11881472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation53]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[54].getReputation() * 100]]></Expression>
+					<Color>-12077312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation54]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[55].getReputation() * 100]]></Expression>
+					<Color>-12272896</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation55]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[56].getReputation() * 100]]></Expression>
+					<Color>-12534272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation56]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[57].getReputation() * 100]]></Expression>
+					<Color>-12730112</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation57]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[58].getReputation() * 100]]></Expression>
+					<Color>-12991232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation58]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[59].getReputation() * 100]]></Expression>
+					<Color>-13187072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation59]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[60].getReputation() * 100]]></Expression>
+					<Color>-13382656</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation60]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[61].getReputation() * 100]]></Expression>
+					<Color>-13644032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation61]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[62].getReputation() * 100]]></Expression>
+					<Color>-13839872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation62]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[63].getReputation() * 100]]></Expression>
+					<Color>-14100992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation63]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[64].getReputation() * 100]]></Expression>
+					<Color>-14296832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation64]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[65].getReputation() * 100]]></Expression>
+					<Color>-14492416</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation65]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[66].getReputation() * 100]]></Expression>
+					<Color>-14753792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation66]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[67].getReputation() * 100]]></Expression>
+					<Color>-14949632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation67]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[68].getReputation() * 100]]></Expression>
+					<Color>-15210752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation68]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[69].getReputation() * 100]]></Expression>
+					<Color>-15406592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation69]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[70].getReputation() * 100]]></Expression>
+					<Color>-15602176</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation70]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[71].getReputation() * 100]]></Expression>
+					<Color>-15863552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation71]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[72].getReputation() * 100]]></Expression>
+					<Color>-16059392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation72]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[73].getReputation() * 100]]></Expression>
+					<Color>-16320512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation73]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[74].getReputation() * 100]]></Expression>
+					<Color>-16516352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation74]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[75].getReputation() * 100]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation75]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[76].getReputation() * 100]]></Expression>
+					<Color>-16516352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation76]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[77].getReputation() * 100]]></Expression>
+					<Color>-16320512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation77]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[78].getReputation() * 100]]></Expression>
+					<Color>-16059392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation78]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[79].getReputation() * 100]]></Expression>
+					<Color>-15863552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation79]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[80].getReputation() * 100]]></Expression>
+					<Color>-15602176</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation80]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[81].getReputation() * 100]]></Expression>
+					<Color>-15406592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation81]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[82].getReputation() * 100]]></Expression>
+					<Color>-15210752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation82]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[83].getReputation() * 100]]></Expression>
+					<Color>-14949632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation83]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[84].getReputation() * 100]]></Expression>
+					<Color>-14753792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation84]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[85].getReputation() * 100]]></Expression>
+					<Color>-14492416</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation85]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[86].getReputation() * 100]]></Expression>
+					<Color>-14296832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation86]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[87].getReputation() * 100]]></Expression>
+					<Color>-14100992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation87]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[88].getReputation() * 100]]></Expression>
+					<Color>-13839872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation88]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[89].getReputation() * 100]]></Expression>
+					<Color>-13644032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation89]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[90].getReputation() * 100]]></Expression>
+					<Color>-13382656</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation90]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[91].getReputation() * 100]]></Expression>
+					<Color>-13187072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation91]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[92].getReputation() * 100]]></Expression>
+					<Color>-12991232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation92]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[93].getReputation() * 100]]></Expression>
+					<Color>-12730112</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation93]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[94].getReputation() * 100]]></Expression>
+					<Color>-12534272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation94]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[95].getReputation() * 100]]></Expression>
+					<Color>-12272896</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation95]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[96].getReputation() * 100]]></Expression>
+					<Color>-12077312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation96]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[97].getReputation() * 100]]></Expression>
+					<Color>-11881472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation97]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[98].getReputation() * 100]]></Expression>
+					<Color>-11620352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation98]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[99].getReputation() * 100]]></Expression>
+					<Color>-11424512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation99]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[100].getReputation() * 100]]></Expression>
+					<Color>-11163136</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation100]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[101].getReputation() * 100]]></Expression>
+					<Color>-10967552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation101]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[102].getReputation() * 100]]></Expression>
+					<Color>-10771712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation102]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[103].getReputation() * 100]]></Expression>
+					<Color>-10510592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation103]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[104].getReputation() * 100]]></Expression>
+					<Color>-10314752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation104]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[105].getReputation() * 100]]></Expression>
+					<Color>-10053376</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation105]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[106].getReputation() * 100]]></Expression>
+					<Color>-9857792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation106]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[107].getReputation() * 100]]></Expression>
+					<Color>-9661952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation107]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[108].getReputation() * 100]]></Expression>
+					<Color>-9400832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation108]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[109].getReputation() * 100]]></Expression>
+					<Color>-9204992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation109]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[110].getReputation() * 100]]></Expression>
+					<Color>-8943616</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation110]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[111].getReputation() * 100]]></Expression>
+					<Color>-8748032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation111]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[112].getReputation() * 100]]></Expression>
+					<Color>-8552192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation112]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[113].getReputation() * 100]]></Expression>
+					<Color>-8291072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation113]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[114].getReputation() * 100]]></Expression>
+					<Color>-8095232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation114]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[115].getReputation() * 100]]></Expression>
+					<Color>-7833856</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation115]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[116].getReputation() * 100]]></Expression>
+					<Color>-7638272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation116]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[117].getReputation() * 100]]></Expression>
+					<Color>-7442432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation117]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[118].getReputation() * 100]]></Expression>
+					<Color>-7181312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation118]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[119].getReputation() * 100]]></Expression>
+					<Color>-6985472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation119]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[120].getReputation() * 100]]></Expression>
+					<Color>-6724096</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation120]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[121].getReputation() * 100]]></Expression>
+					<Color>-6528512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation121]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[122].getReputation() * 100]]></Expression>
+					<Color>-6332672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation122]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[123].getReputation() * 100]]></Expression>
+					<Color>-6071552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation123]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[124].getReputation() * 100]]></Expression>
+					<Color>-5875712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation124]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[125].getReputation() * 100]]></Expression>
+					<Color>-5614336</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation125]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[126].getReputation() * 100]]></Expression>
+					<Color>-5418752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation126]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[127].getReputation() * 100]]></Expression>
+					<Color>-5222912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation127]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[128].getReputation() * 100]]></Expression>
+					<Color>-4961792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation128]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[129].getReputation() * 100]]></Expression>
+					<Color>-4765952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation129]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[130].getReputation() * 100]]></Expression>
+					<Color>-4504576</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation130]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[131].getReputation() * 100]]></Expression>
+					<Color>-4308992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation131]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[132].getReputation() * 100]]></Expression>
+					<Color>-4113152</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation132]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[133].getReputation() * 100]]></Expression>
+					<Color>-3852032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation133]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[134].getReputation() * 100]]></Expression>
+					<Color>-3656192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation134]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[135].getReputation() * 100]]></Expression>
+					<Color>-3394816</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation135]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[136].getReputation() * 100]]></Expression>
+					<Color>-3199232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation136]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[137].getReputation() * 100]]></Expression>
+					<Color>-3003392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation137]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[138].getReputation() * 100]]></Expression>
+					<Color>-2742272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation138]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[139].getReputation() * 100]]></Expression>
+					<Color>-2546432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation139]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[140].getReputation() * 100]]></Expression>
+					<Color>-2285056</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation140]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[141].getReputation() * 100]]></Expression>
+					<Color>-2089472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation141]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[142].getReputation() * 100]]></Expression>
+					<Color>-1893632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation142]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[143].getReputation() * 100]]></Expression>
+					<Color>-1632512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation143]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[144].getReputation() * 100]]></Expression>
+					<Color>-1436672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation144]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[145].getReputation() * 100]]></Expression>
+					<Color>-1175296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation145]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[146].getReputation() * 100]]></Expression>
+					<Color>-979712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation146]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[147].getReputation() * 100]]></Expression>
+					<Color>-783872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation147]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[148].getReputation() * 100]]></Expression>
+					<Color>-522752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation148]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[149].getReputation() * 100]]></Expression>
+					<Color>-326912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemReputation149]]></Title>
+					</DataItem>
 					<ScaleFromExpression><![CDATA[45]]></ScaleFromExpression>
 					<ScaleToExpression><![CDATA[100]]></ScaleToExpression>
 					<ScaleType>AUTO</ScaleType>
@@ -6217,7 +7115,7 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
+					<AutoUpdate>true</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
 					<OccurrenceDate>1533196800000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
@@ -6225,8 +7123,8 @@ updateSourceRate();]]></ActionCode>
 						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Code><![CDATA[2]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>390</Width>
@@ -6253,6 +7151,906 @@ updateSourceRate();]]></ActionCode>
 						<TextColor>-12566464</TextColor>
 					</Labels>
 					<ShowLegend>false</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[0].getFrozenMoney()]]></Expression>
+					<Color>-65536</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[1].getFrozenMoney()]]></Expression>
+					<Color>-326912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[2].getFrozenMoney()]]></Expression>
+					<Color>-522752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen2]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[3].getFrozenMoney()]]></Expression>
+					<Color>-783872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen3]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[4].getFrozenMoney()]]></Expression>
+					<Color>-979712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen4]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[5].getFrozenMoney()]]></Expression>
+					<Color>-1175296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen5]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[6].getFrozenMoney()]]></Expression>
+					<Color>-1436672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen6]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[7].getFrozenMoney()]]></Expression>
+					<Color>-1632512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen7]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[8].getFrozenMoney()]]></Expression>
+					<Color>-1893632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen8]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[9].getFrozenMoney()]]></Expression>
+					<Color>-2089472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen9]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[10].getFrozenMoney()]]></Expression>
+					<Color>-2285056</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen10]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[11].getFrozenMoney()]]></Expression>
+					<Color>-2546432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen11]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[12].getFrozenMoney()]]></Expression>
+					<Color>-2742272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen12]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[13].getFrozenMoney()]]></Expression>
+					<Color>-3003392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen13]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[14].getFrozenMoney()]]></Expression>
+					<Color>-3199232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen14]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[15].getFrozenMoney()]]></Expression>
+					<Color>-3394816</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen15]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[16].getFrozenMoney()]]></Expression>
+					<Color>-3656192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen16]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[17].getFrozenMoney()]]></Expression>
+					<Color>-3852032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen17]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[18].getFrozenMoney()]]></Expression>
+					<Color>-4113152</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen18]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[19].getFrozenMoney()]]></Expression>
+					<Color>-4308992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen19]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[20].getFrozenMoney()]]></Expression>
+					<Color>-4504576</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen20]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[21].getFrozenMoney()]]></Expression>
+					<Color>-4765952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen21]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[22].getFrozenMoney()]]></Expression>
+					<Color>-4961792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen22]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[23].getFrozenMoney()]]></Expression>
+					<Color>-5222912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen23]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[24].getFrozenMoney()]]></Expression>
+					<Color>-5418752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen24]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[25].getFrozenMoney()]]></Expression>
+					<Color>-5614336</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen25]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[26].getFrozenMoney()]]></Expression>
+					<Color>-5875712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen26]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[27].getFrozenMoney()]]></Expression>
+					<Color>-6071552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen27]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[28].getFrozenMoney()]]></Expression>
+					<Color>-6332672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen28]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[29].getFrozenMoney()]]></Expression>
+					<Color>-6528512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen29]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[30].getFrozenMoney()]]></Expression>
+					<Color>-6724096</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen30]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[31].getFrozenMoney()]]></Expression>
+					<Color>-6985472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen31]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[32].getFrozenMoney()]]></Expression>
+					<Color>-7181312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen32]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[33].getFrozenMoney()]]></Expression>
+					<Color>-7442432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen33]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[34].getFrozenMoney()]]></Expression>
+					<Color>-7638272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen34]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[35].getFrozenMoney()]]></Expression>
+					<Color>-7833856</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen35]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[36].getFrozenMoney()]]></Expression>
+					<Color>-8095232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen36]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[37].getFrozenMoney()]]></Expression>
+					<Color>-8291072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen37]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[38].getFrozenMoney()]]></Expression>
+					<Color>-8552192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen38]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[39].getFrozenMoney()]]></Expression>
+					<Color>-8748032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen39]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[40].getFrozenMoney()]]></Expression>
+					<Color>-8943616</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen40]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[41].getFrozenMoney()]]></Expression>
+					<Color>-9204992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen41]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[42].getFrozenMoney()]]></Expression>
+					<Color>-9400832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen42]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[43].getFrozenMoney()]]></Expression>
+					<Color>-9661952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen43]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[44].getFrozenMoney()]]></Expression>
+					<Color>-9857792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen44]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[45].getFrozenMoney()]]></Expression>
+					<Color>-10053376</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen45]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[46].getFrozenMoney()]]></Expression>
+					<Color>-10314752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen46]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[47].getFrozenMoney()]]></Expression>
+					<Color>-10510592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen47]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[48].getFrozenMoney()]]></Expression>
+					<Color>-10771712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen48]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[49].getFrozenMoney()]]></Expression>
+					<Color>-10967552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen49]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[50].getFrozenMoney()]]></Expression>
+					<Color>-11163136</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen50]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[51].getFrozenMoney()]]></Expression>
+					<Color>-11424512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen51]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[52].getFrozenMoney()]]></Expression>
+					<Color>-11620352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen52]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[53].getFrozenMoney()]]></Expression>
+					<Color>-11881472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen53]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[54].getFrozenMoney()]]></Expression>
+					<Color>-12077312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen54]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[55].getFrozenMoney()]]></Expression>
+					<Color>-12272896</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen55]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[56].getFrozenMoney()]]></Expression>
+					<Color>-12534272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen56]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[57].getFrozenMoney()]]></Expression>
+					<Color>-12730112</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen57]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[58].getFrozenMoney()]]></Expression>
+					<Color>-12991232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen58]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[59].getFrozenMoney()]]></Expression>
+					<Color>-13187072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen59]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[60].getFrozenMoney()]]></Expression>
+					<Color>-13382656</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen60]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[61].getFrozenMoney()]]></Expression>
+					<Color>-13644032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen61]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[62].getFrozenMoney()]]></Expression>
+					<Color>-13839872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen62]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[63].getFrozenMoney()]]></Expression>
+					<Color>-14100992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen63]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[64].getFrozenMoney()]]></Expression>
+					<Color>-14296832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen64]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[65].getFrozenMoney()]]></Expression>
+					<Color>-14492416</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen65]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[66].getFrozenMoney()]]></Expression>
+					<Color>-14753792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen66]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[67].getFrozenMoney()]]></Expression>
+					<Color>-14949632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen67]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[68].getFrozenMoney()]]></Expression>
+					<Color>-15210752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen68]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[69].getFrozenMoney()]]></Expression>
+					<Color>-15406592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen69]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[70].getFrozenMoney()]]></Expression>
+					<Color>-15602176</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen70]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[71].getFrozenMoney()]]></Expression>
+					<Color>-15863552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen71]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[72].getFrozenMoney()]]></Expression>
+					<Color>-16059392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen72]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[73].getFrozenMoney()]]></Expression>
+					<Color>-16320512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen73]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[74].getFrozenMoney()]]></Expression>
+					<Color>-16516352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen74]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[75].getFrozenMoney()]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen75]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[76].getFrozenMoney()]]></Expression>
+					<Color>-16516352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen76]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[77].getFrozenMoney()]]></Expression>
+					<Color>-16320512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen77]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[78].getFrozenMoney()]]></Expression>
+					<Color>-16059392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen78]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[79].getFrozenMoney()]]></Expression>
+					<Color>-15863552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen79]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[80].getFrozenMoney()]]></Expression>
+					<Color>-15602176</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen80]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[81].getFrozenMoney()]]></Expression>
+					<Color>-15406592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen81]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[82].getFrozenMoney()]]></Expression>
+					<Color>-15210752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen82]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[83].getFrozenMoney()]]></Expression>
+					<Color>-14949632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen83]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[84].getFrozenMoney()]]></Expression>
+					<Color>-14753792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen84]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[85].getFrozenMoney()]]></Expression>
+					<Color>-14492416</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen85]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[86].getFrozenMoney()]]></Expression>
+					<Color>-14296832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen86]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[87].getFrozenMoney()]]></Expression>
+					<Color>-14100992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen87]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[88].getFrozenMoney()]]></Expression>
+					<Color>-13839872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen88]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[89].getFrozenMoney()]]></Expression>
+					<Color>-13644032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen89]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[90].getFrozenMoney()]]></Expression>
+					<Color>-13382656</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen90]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[91].getFrozenMoney()]]></Expression>
+					<Color>-13187072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen91]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[92].getFrozenMoney()]]></Expression>
+					<Color>-12991232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen92]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[93].getFrozenMoney()]]></Expression>
+					<Color>-12730112</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen93]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[94].getFrozenMoney()]]></Expression>
+					<Color>-12534272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen94]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[95].getFrozenMoney()]]></Expression>
+					<Color>-12272896</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen95]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[96].getFrozenMoney()]]></Expression>
+					<Color>-12077312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen96]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[97].getFrozenMoney()]]></Expression>
+					<Color>-11881472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen97]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[98].getFrozenMoney()]]></Expression>
+					<Color>-11620352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen98]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[99].getFrozenMoney()]]></Expression>
+					<Color>-11424512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen99]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[100].getFrozenMoney()]]></Expression>
+					<Color>-11163136</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen100]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[101].getFrozenMoney()]]></Expression>
+					<Color>-10967552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen101]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[102].getFrozenMoney()]]></Expression>
+					<Color>-10771712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen102]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[103].getFrozenMoney()]]></Expression>
+					<Color>-10510592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen103]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[104].getFrozenMoney()]]></Expression>
+					<Color>-10314752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen104]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[105].getFrozenMoney()]]></Expression>
+					<Color>-10053376</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen105]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[106].getFrozenMoney()]]></Expression>
+					<Color>-9857792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen106]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[107].getFrozenMoney()]]></Expression>
+					<Color>-9661952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen107]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[108].getFrozenMoney()]]></Expression>
+					<Color>-9400832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen108]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[109].getFrozenMoney()]]></Expression>
+					<Color>-9204992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen109]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[110].getFrozenMoney()]]></Expression>
+					<Color>-8943616</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen110]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[111].getFrozenMoney()]]></Expression>
+					<Color>-8748032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen111]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[112].getFrozenMoney()]]></Expression>
+					<Color>-8552192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen112]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[113].getFrozenMoney()]]></Expression>
+					<Color>-8291072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen113]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[114].getFrozenMoney()]]></Expression>
+					<Color>-8095232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen114]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[115].getFrozenMoney()]]></Expression>
+					<Color>-7833856</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen115]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[116].getFrozenMoney()]]></Expression>
+					<Color>-7638272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen116]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[117].getFrozenMoney()]]></Expression>
+					<Color>-7442432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen117]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[118].getFrozenMoney()]]></Expression>
+					<Color>-7181312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen118]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[119].getFrozenMoney()]]></Expression>
+					<Color>-6985472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen119]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[120].getFrozenMoney()]]></Expression>
+					<Color>-6724096</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen120]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[121].getFrozenMoney()]]></Expression>
+					<Color>-6528512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen121]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[122].getFrozenMoney()]]></Expression>
+					<Color>-6332672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen122]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[123].getFrozenMoney()]]></Expression>
+					<Color>-6071552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen123]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[124].getFrozenMoney()]]></Expression>
+					<Color>-5875712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen124]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[125].getFrozenMoney()]]></Expression>
+					<Color>-5614336</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen125]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[126].getFrozenMoney()]]></Expression>
+					<Color>-5418752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen126]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[127].getFrozenMoney()]]></Expression>
+					<Color>-5222912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen127]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[128].getFrozenMoney()]]></Expression>
+					<Color>-4961792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen128]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[129].getFrozenMoney()]]></Expression>
+					<Color>-4765952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen129]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[130].getFrozenMoney()]]></Expression>
+					<Color>-4504576</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen130]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[131].getFrozenMoney()]]></Expression>
+					<Color>-4308992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen131]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[132].getFrozenMoney()]]></Expression>
+					<Color>-4113152</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen132]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[133].getFrozenMoney()]]></Expression>
+					<Color>-3852032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen133]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[134].getFrozenMoney()]]></Expression>
+					<Color>-3656192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen134]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[135].getFrozenMoney()]]></Expression>
+					<Color>-3394816</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen135]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[136].getFrozenMoney()]]></Expression>
+					<Color>-3199232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen136]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[137].getFrozenMoney()]]></Expression>
+					<Color>-3003392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen137]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[138].getFrozenMoney()]]></Expression>
+					<Color>-2742272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen138]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[139].getFrozenMoney()]]></Expression>
+					<Color>-2546432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen139]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[140].getFrozenMoney()]]></Expression>
+					<Color>-2285056</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen140]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[141].getFrozenMoney()]]></Expression>
+					<Color>-2089472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen141]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[142].getFrozenMoney()]]></Expression>
+					<Color>-1893632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen142]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[143].getFrozenMoney()]]></Expression>
+					<Color>-1632512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen143]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[144].getFrozenMoney()]]></Expression>
+					<Color>-1436672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen144]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[145].getFrozenMoney()]]></Expression>
+					<Color>-1175296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen145]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[146].getFrozenMoney()]]></Expression>
+					<Color>-979712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen146]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[147].getFrozenMoney()]]></Expression>
+					<Color>-783872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen147]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[148].getFrozenMoney()]]></Expression>
+					<Color>-522752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen148]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[149].getFrozenMoney()]]></Expression>
+					<Color>-326912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemFrozen149]]></Title>
+					</DataItem>
 					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
 					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
 					<ScaleType>AUTO</ScaleType>
@@ -6514,16 +8312,16 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
+					<AutoUpdate>true</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1533196800000</OccurrenceDate>
+					<OccurrenceDate>1534406400000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
 						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						<Code><![CDATA[2]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>390</Width>
@@ -6550,6 +8348,906 @@ updateSourceRate();]]></ActionCode>
 						<TextColor>-12566464</TextColor>
 					</Labels>
 					<ShowLegend>false</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[0].getRealMoney()]]></Expression>
+					<Color>-65536</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid0]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[1].getRealMoney()]]></Expression>
+					<Color>-326912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[2].getRealMoney()]]></Expression>
+					<Color>-522752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid2]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[3].getRealMoney()]]></Expression>
+					<Color>-783872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid3]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[4].getRealMoney()]]></Expression>
+					<Color>-979712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid4]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[5].getRealMoney()]]></Expression>
+					<Color>-1175296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid5]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[6].getRealMoney()]]></Expression>
+					<Color>-1436672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid6]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[7].getRealMoney()]]></Expression>
+					<Color>-1632512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid7]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[8].getRealMoney()]]></Expression>
+					<Color>-1893632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid8]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[9].getRealMoney()]]></Expression>
+					<Color>-2089472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid9]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[10].getRealMoney()]]></Expression>
+					<Color>-2285056</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid10]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[11].getRealMoney()]]></Expression>
+					<Color>-2546432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid11]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[12].getRealMoney()]]></Expression>
+					<Color>-2742272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid12]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[13].getRealMoney()]]></Expression>
+					<Color>-3003392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid13]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[14].getRealMoney()]]></Expression>
+					<Color>-3199232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid14]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[15].getRealMoney()]]></Expression>
+					<Color>-3394816</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid15]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[16].getRealMoney()]]></Expression>
+					<Color>-3656192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid16]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[17].getRealMoney()]]></Expression>
+					<Color>-3852032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid17]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[18].getRealMoney()]]></Expression>
+					<Color>-4113152</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid18]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[19].getRealMoney()]]></Expression>
+					<Color>-4308992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid19]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[20].getRealMoney()]]></Expression>
+					<Color>-4504576</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid20]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[21].getRealMoney()]]></Expression>
+					<Color>-4765952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid21]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[22].getRealMoney()]]></Expression>
+					<Color>-4961792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid22]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[23].getRealMoney()]]></Expression>
+					<Color>-5222912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid23]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[24].getRealMoney()]]></Expression>
+					<Color>-5418752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid24]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[25].getRealMoney()]]></Expression>
+					<Color>-5614336</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid25]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[26].getRealMoney()]]></Expression>
+					<Color>-5875712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid26]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[27].getRealMoney()]]></Expression>
+					<Color>-6071552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid27]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[28].getRealMoney()]]></Expression>
+					<Color>-6332672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid28]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[29].getRealMoney()]]></Expression>
+					<Color>-6528512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid29]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[30].getRealMoney()]]></Expression>
+					<Color>-6724096</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid30]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[31].getRealMoney()]]></Expression>
+					<Color>-6985472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid31]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[32].getRealMoney()]]></Expression>
+					<Color>-7181312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid32]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[33].getRealMoney()]]></Expression>
+					<Color>-7442432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid33]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[34].getRealMoney()]]></Expression>
+					<Color>-7638272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid34]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[35].getRealMoney()]]></Expression>
+					<Color>-7833856</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid35]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[36].getRealMoney()]]></Expression>
+					<Color>-8095232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid36]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[37].getRealMoney()]]></Expression>
+					<Color>-8291072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid37]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[38].getRealMoney()]]></Expression>
+					<Color>-8552192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid38]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[39].getRealMoney()]]></Expression>
+					<Color>-8748032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid39]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[40].getRealMoney()]]></Expression>
+					<Color>-8943616</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid40]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[41].getRealMoney()]]></Expression>
+					<Color>-9204992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid41]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[42].getRealMoney()]]></Expression>
+					<Color>-9400832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid42]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[43].getRealMoney()]]></Expression>
+					<Color>-9661952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid43]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[44].getRealMoney()]]></Expression>
+					<Color>-9857792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid44]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[45].getRealMoney()]]></Expression>
+					<Color>-10053376</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid45]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[46].getRealMoney()]]></Expression>
+					<Color>-10314752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid46]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[47].getRealMoney()]]></Expression>
+					<Color>-10510592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid47]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[48].getRealMoney()]]></Expression>
+					<Color>-10771712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid48]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[49].getRealMoney()]]></Expression>
+					<Color>-10967552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid49]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[50].getRealMoney()]]></Expression>
+					<Color>-11163136</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid50]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[51].getRealMoney()]]></Expression>
+					<Color>-11424512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid51]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[52].getRealMoney()]]></Expression>
+					<Color>-11620352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid52]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[53].getRealMoney()]]></Expression>
+					<Color>-11881472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid53]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[54].getRealMoney()]]></Expression>
+					<Color>-12077312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid54]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[55].getRealMoney()]]></Expression>
+					<Color>-12272896</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid55]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[56].getRealMoney()]]></Expression>
+					<Color>-12534272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid56]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[57].getRealMoney()]]></Expression>
+					<Color>-12730112</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid57]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[58].getRealMoney()]]></Expression>
+					<Color>-12991232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid58]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[59].getRealMoney()]]></Expression>
+					<Color>-13187072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid59]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[60].getRealMoney()]]></Expression>
+					<Color>-13382656</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid60]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[61].getRealMoney()]]></Expression>
+					<Color>-13644032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid61]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[62].getRealMoney()]]></Expression>
+					<Color>-13839872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid62]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[63].getRealMoney()]]></Expression>
+					<Color>-14100992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid63]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[64].getRealMoney()]]></Expression>
+					<Color>-14296832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid64]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[65].getRealMoney()]]></Expression>
+					<Color>-14492416</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid65]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[66].getRealMoney()]]></Expression>
+					<Color>-14753792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid66]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[67].getRealMoney()]]></Expression>
+					<Color>-14949632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid67]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[68].getRealMoney()]]></Expression>
+					<Color>-15210752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid68]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[69].getRealMoney()]]></Expression>
+					<Color>-15406592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid69]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[70].getRealMoney()]]></Expression>
+					<Color>-15602176</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid70]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[71].getRealMoney()]]></Expression>
+					<Color>-15863552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid71]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[72].getRealMoney()]]></Expression>
+					<Color>-16059392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid72]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[73].getRealMoney()]]></Expression>
+					<Color>-16320512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid73]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[74].getRealMoney()]]></Expression>
+					<Color>-16516352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid74]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[75].getRealMoney()]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid75]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[76].getRealMoney()]]></Expression>
+					<Color>-16516352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid76]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[77].getRealMoney()]]></Expression>
+					<Color>-16320512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid77]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[78].getRealMoney()]]></Expression>
+					<Color>-16059392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid78]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[79].getRealMoney()]]></Expression>
+					<Color>-15863552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid79]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[80].getRealMoney()]]></Expression>
+					<Color>-15602176</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid80]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[81].getRealMoney()]]></Expression>
+					<Color>-15406592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid81]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[82].getRealMoney()]]></Expression>
+					<Color>-15210752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid82]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[83].getRealMoney()]]></Expression>
+					<Color>-14949632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid83]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[84].getRealMoney()]]></Expression>
+					<Color>-14753792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid84]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[85].getRealMoney()]]></Expression>
+					<Color>-14492416</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid85]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[86].getRealMoney()]]></Expression>
+					<Color>-14296832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid86]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[87].getRealMoney()]]></Expression>
+					<Color>-14100992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid87]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[88].getRealMoney()]]></Expression>
+					<Color>-13839872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid88]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[89].getRealMoney()]]></Expression>
+					<Color>-13644032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid89]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[90].getRealMoney()]]></Expression>
+					<Color>-13382656</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid90]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[91].getRealMoney()]]></Expression>
+					<Color>-13187072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid91]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[92].getRealMoney()]]></Expression>
+					<Color>-12991232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid92]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[93].getRealMoney()]]></Expression>
+					<Color>-12730112</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid93]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[94].getRealMoney()]]></Expression>
+					<Color>-12534272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid94]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[95].getRealMoney()]]></Expression>
+					<Color>-12272896</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid95]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[96].getRealMoney()]]></Expression>
+					<Color>-12077312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid96]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[97].getRealMoney()]]></Expression>
+					<Color>-11881472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid97]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[98].getRealMoney()]]></Expression>
+					<Color>-11620352</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid98]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[99].getRealMoney()]]></Expression>
+					<Color>-11424512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid99]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[100].getRealMoney()]]></Expression>
+					<Color>-11163136</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid100]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[101].getRealMoney()]]></Expression>
+					<Color>-10967552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid101]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[102].getRealMoney()]]></Expression>
+					<Color>-10771712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid102]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[103].getRealMoney()]]></Expression>
+					<Color>-10510592</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid103]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[104].getRealMoney()]]></Expression>
+					<Color>-10314752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid104]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[105].getRealMoney()]]></Expression>
+					<Color>-10053376</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid105]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[106].getRealMoney()]]></Expression>
+					<Color>-9857792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid106]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[107].getRealMoney()]]></Expression>
+					<Color>-9661952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid107]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[108].getRealMoney()]]></Expression>
+					<Color>-9400832</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid108]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[109].getRealMoney()]]></Expression>
+					<Color>-9204992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid109]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[110].getRealMoney()]]></Expression>
+					<Color>-8943616</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid110]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[111].getRealMoney()]]></Expression>
+					<Color>-8748032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid111]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[112].getRealMoney()]]></Expression>
+					<Color>-8552192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid112]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[113].getRealMoney()]]></Expression>
+					<Color>-8291072</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid113]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[114].getRealMoney()]]></Expression>
+					<Color>-8095232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid114]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[115].getRealMoney()]]></Expression>
+					<Color>-7833856</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid115]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[116].getRealMoney()]]></Expression>
+					<Color>-7638272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid116]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[117].getRealMoney()]]></Expression>
+					<Color>-7442432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid117]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[118].getRealMoney()]]></Expression>
+					<Color>-7181312</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid118]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[119].getRealMoney()]]></Expression>
+					<Color>-6985472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid119]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[120].getRealMoney()]]></Expression>
+					<Color>-6724096</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid120]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[121].getRealMoney()]]></Expression>
+					<Color>-6528512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid121]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[122].getRealMoney()]]></Expression>
+					<Color>-6332672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid122]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[123].getRealMoney()]]></Expression>
+					<Color>-6071552</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid123]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[124].getRealMoney()]]></Expression>
+					<Color>-5875712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid124]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[125].getRealMoney()]]></Expression>
+					<Color>-5614336</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid125]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[126].getRealMoney()]]></Expression>
+					<Color>-5418752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid126]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[127].getRealMoney()]]></Expression>
+					<Color>-5222912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid127]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[128].getRealMoney()]]></Expression>
+					<Color>-4961792</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid128]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[129].getRealMoney()]]></Expression>
+					<Color>-4765952</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid129]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[130].getRealMoney()]]></Expression>
+					<Color>-4504576</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid130]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[131].getRealMoney()]]></Expression>
+					<Color>-4308992</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid131]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[132].getRealMoney()]]></Expression>
+					<Color>-4113152</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid132]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[133].getRealMoney()]]></Expression>
+					<Color>-3852032</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid133]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[134].getRealMoney()]]></Expression>
+					<Color>-3656192</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid134]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[135].getRealMoney()]]></Expression>
+					<Color>-3394816</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid135]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[136].getRealMoney()]]></Expression>
+					<Color>-3199232</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid136]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[137].getRealMoney()]]></Expression>
+					<Color>-3003392</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid137]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[138].getRealMoney()]]></Expression>
+					<Color>-2742272</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid138]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[139].getRealMoney()]]></Expression>
+					<Color>-2546432</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid139]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[140].getRealMoney()]]></Expression>
+					<Color>-2285056</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid140]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[141].getRealMoney()]]></Expression>
+					<Color>-2089472</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid141]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[142].getRealMoney()]]></Expression>
+					<Color>-1893632</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid142]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[143].getRealMoney()]]></Expression>
+					<Color>-1632512</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid143]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[144].getRealMoney()]]></Expression>
+					<Color>-1436672</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid144]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[145].getRealMoney()]]></Expression>
+					<Color>-1175296</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid145]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[146].getRealMoney()]]></Expression>
+					<Color>-979712</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid146]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[147].getRealMoney()]]></Expression>
+					<Color>-783872</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid147]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[148].getRealMoney()]]></Expression>
+					<Color>-522752</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid148]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[remmeNodes[149].getRealMoney()]]></Expression>
+					<Color>-326912</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[itemLiquid149]]></Title>
+					</DataItem>
 					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
 					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
 					<ScaleType>AUTO</ScaleType>
@@ -8540,7 +11238,7 @@ public class Utils {
 
     public static final int stake = 250000;
     public static final int startLiquid = 250000;
-    public static final double minHonesty = 0.5;
+    public static final double minHonesty = 0.997;
     public static final double normalHonesty = minHonesty;
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
@@ -8750,10 +11448,7 @@ public class ExecutedOrder implements Serializable {
 import java.util.List;
 import java.util.ArrayList;
 public class Strategy implements Serializable {
-	public static Strategy noUnfreezeStrategy;
-	public static Strategy maxUnfreezeStrategy;
     private static double epsillon = 0.01;
-    private List<RemmeNode> remmeNodes;
     private double avgLiquid;
     private double avgPossibleUnfreeze;
     private double avgFrozen;
@@ -8765,20 +11460,12 @@ public class Strategy implements Serializable {
     //private ShapeText textAvgTotal;
     ///private ShapeText textAvgLiquid;
     //private ShapeText textAvgFrozen;
-    BarChart liquidChart;
-    BarChart frozenChart;
-    BarChart reputationChart;
-
-    public Strategy(BarChart liquidChart, BarChart frozenChart, BarChart reputationChart) {
+    public Strategy() {
         avgLiquid = 0;
         avgPossibleUnfreeze = 0;
         avgFrozen = 0;
         avgReputation = 0;
         nodesQ = 0;
-        this.liquidChart = liquidChart;
-        this.frozenChart = frozenChart;
-        this.reputationChart = reputationChart;
-        this.remmeNodes = new ArrayList<>();
         //lastAvgTotal = 0;
         //lastAvgLiquid = 0;
         //lastAvgFrozen = 0;
@@ -8794,32 +11481,19 @@ public class Strategy implements Serializable {
         avgReputation = (avgReputation * nodesQ + node.getReputation()) / (nodesQ + 1);
         //updateTexts();
         nodesQ++;
-        remmeNodes.add(node);
     }
 
     public void addLiquid(double sum, int nodeNum) {
-    	if(liquidChart == null) {
-    		throw new RuntimeException();
-    	}
-    	liquidChart.get(nodeNum).setValue(remmeNodes.get(nodeNum).getRealMoney());
         avgLiquid = (avgLiquid * nodesQ + sum) / nodesQ;
         //updateTexts();
     }
 
     public void addFrozen(double sum, int nodeNum) {
-    	if(liquidChart == null) {
-    		throw new RuntimeException();
-    	}
-    	liquidChart.get(nodeNum).setValue(remmeNodes.get(nodeNum).getFrozenMoney());
         avgFrozen = (avgFrozen * nodesQ + sum) / nodesQ;
         //updateTexts();
     }
 
     public void addReputation(double sum, int nodeNum) {
-    	if(liquidChart == null) {
-    		throw new RuntimeException();
-    	}
-    	liquidChart.get(nodeNum).setValue(remmeNodes.get(nodeNum).getReputation());
         avgReputation = (avgReputation * nodesQ + sum) / nodesQ;
     }
 
