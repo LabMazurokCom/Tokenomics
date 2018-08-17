@@ -47,7 +47,13 @@ for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
 }*/
 ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECONDS);]]></StartupCode>
+scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECONDS);
+ScheduledExecutorService scheduledChartUpdater = Executors.newSingleThreadScheduledExecutor();
+scheduledChartUpdater.scheduleAtFixedRate(() -> {
+	liquidChart.updateData();
+	frozenChart.updateData();
+	reputationChart.updateData();
+}, 0, 5, TimeUnit.SECONDS);]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1532705097252</Id>
@@ -1590,9 +1596,9 @@ scheduledExecutorService.schedule(this::pauseSimulation, 1, TimeUnit.MILLISECOND
 	long randomMax = min(maxCerts, Utils.binPow(10, (int)(Math.log(1/Math.random())/log(10))));
 	long randomMin = randomMax / 10;
 	long certsNum = (long) (ceil(randomMin + Math.random() * (randomMax - randomMin)));
-	return new Order(UUID.randomUUID(), 25 * certsNum, 365, -1, false, time(SECOND), 1);
+	return new Order(UUID.randomUUID(), 25 * certsNum, 0, 365, -1, false, time(SECOND), 1);
 }
-else return new Order(UUID.randomUUID(), 25, 365, -1, false, time(SECOND), 1);]]></Body>
+else return new Order(UUID.randomUUID(), 25, 0, 365, -1, false, time(SECOND), 1);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -1951,7 +1957,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2093,7 +2099,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2238,7 +2244,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3832,7 +3838,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -3974,7 +3980,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4117,7 +4123,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4259,7 +4265,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4401,7 +4407,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4543,7 +4549,7 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Order(original.publicKey, original.payment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
+								<Code><![CDATA[new Order(original.publicKey, original.payment, original.noFreezePayment, original.validity, original.executor, original.deleted, original.creationTime, original.blockSize)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -4699,8 +4705,9 @@ return remmeNodes;]]></Body>
 						<Parameter>
 							<Name><![CDATA[remmeNodeservice_onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[remmeNodes[agent.executor].addMoney(agent.payment);
-remmeNodes[agent.executor].getFrozenCerts().add(new ExecutedOrder(time(SECOND), 24 * 60 * 60 * agent.validity, (1 - Utils.tax - remmeNodes[agent.executor].getReputation()) * agent.payment));
+								<Code><![CDATA[remmeNodes[agent.executor].addMoney(agent.payment + agent.noFreezePayment);
+remmeNodes[agent.executor].getFrozenCerts().add(new ExecutedOrder(time(SECOND), 24 * 60 * 60 * agent.validity, (1 - Utils.tax - remmeNodes[agent.executor].getReputation()) * (agent.payment)));
+remmeNodes[agent.executor].getFrozenCerts().add(new ExecutedOrder(time(SECOND), 0, (1 - Utils.tax - remmeNodes[agent.executor].getReputation()) * agent.noFreezePayment));
 remmeNodes[agent.executor].checkPossibleUnfreeze(time(SECOND));
 if(agent.executor >= remmeNodes.length / 2){
 	remmeNodes[agent.executor].transferToLiquid(remmeNodes[agent.executor].getPossibleUnfreeze());
@@ -5719,106 +5726,6 @@ updateSourceRate();]]></ActionCode>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
-				<Group>
-					<Id>1534418211756</Id>
-					<Name><![CDATA[honesty]]></Name>
-					<X>-20</X><Y>130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-
-			<Shapes>
-				<Image>
-					<Id>1534418211758</Id>
-					<Name><![CDATA[image]]></Name>
-					<X>-130</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>330</Width>
-					<Height>20</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
-				<Text>
-					<Id>1534418211760</Id>
-					<Name><![CDATA[text]]></Name>
-					<X>-20</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1</Color>
-					<Text><![CDATA[Honesty of Node]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1534418211762</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>-120</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1</Color>
-					<Text><![CDATA[97,7%]]></Text>
-					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1534418211764</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>160</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[100%]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-			</Shapes>
-
-				</Group>
 				<Text>
 					<Id>1534418211766</Id>
 					<Name><![CDATA[text25]]></Name>
@@ -5918,7 +5825,7 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
+					<AutoUpdate>false</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
 					<OccurrenceDate>1533196800000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
@@ -7005,106 +6912,6 @@ updateSourceRate();]]></ActionCode>
 					</Font>
 					<Alignment>RIGHT</Alignment>
 				</Text>
-				<Group>
-					<Id>1534418243543</Id>
-					<Name><![CDATA[honesty2]]></Name>
-					<X>-20</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-
-			<Shapes>
-				<Image>
-					<Id>1534418243545</Id>
-					<Name><![CDATA[image5]]></Name>
-					<X>-130</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>330</Width>
-					<Height>20</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
-				<Text>
-					<Id>1534418243547</Id>
-					<Name><![CDATA[text21]]></Name>
-					<X>-20</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1</Color>
-					<Text><![CDATA[Honesty of Node]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1534418243549</Id>
-					<Name><![CDATA[text22]]></Name>
-					<X>-120</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1</Color>
-					<Text><![CDATA[97,7%]]></Text>
-					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1534418243551</Id>
-					<Name><![CDATA[text23]]></Name>
-					<X>160</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[100%]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-			</Shapes>
-
-				</Group>
 			</Shapes>
 			<Charts>
     			<BarChart>
@@ -7115,7 +6922,7 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
+					<AutoUpdate>false</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
 					<OccurrenceDate>1533196800000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
@@ -8227,7 +8034,7 @@ updateSourceRate();]]></ActionCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
+					<AutoUpdate>false</AutoUpdate>
 					<OccurrenceAtTime>true</OccurrenceAtTime>
 					<OccurrenceDate>1534406400000</OccurrenceDate>
 					<OccurrenceTime Class="CodeUnitValue">
@@ -9194,27 +9001,6 @@ updateSourceRate();]]></ActionCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Text>
-					<Id>1534496459367</Id>
-					<Name><![CDATA[text29]]></Name>
-					<X>220</X><Y>290</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[100%]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
 					<Id>1534496481871</Id>
 					<Name><![CDATA[text34]]></Name>
 					<X>270</X><Y>290</Y>
@@ -9300,7 +9086,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776058</Id>
 					<Name><![CDATA[text19]]></Name>
-					<X>52.948</X><Y>290</Y>
+					<X>52.94800000000001</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9322,7 +9108,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776060</Id>
 					<Name><![CDATA[text20]]></Name>
-					<X>172.263</X><Y>290</Y>
+					<X>202.263</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9333,6 +9119,296 @@ updateSourceRate();]]></ActionCode>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[100%]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1534498518805</Id>
+					<Name><![CDATA[image5]]></Name>
+					<X>50</X><Y>531</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>165</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1534498527265</Id>
+					<Name><![CDATA[image7]]></Name>
+					<X>381</X><Y>550</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>166</Width>
+					<Height>19</Height>
+					<Rotation>180.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1534498627503</Id>
+					<Name><![CDATA[text22]]></Name>
+					<X>55</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534498659424</Id>
+					<Name><![CDATA[text23]]></Name>
+					<X>110</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Honesty]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534498679380</Id>
+					<Name><![CDATA[text36]]></Name>
+					<X>200</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[100%]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534498701469</Id>
+					<Name><![CDATA[text38]]></Name>
+					<X>270</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Honesty]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534498716455</Id>
+					<Name><![CDATA[text39]]></Name>
+					<X>340</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1534498942517</Id>
+					<Name><![CDATA[image8]]></Name>
+					<X>620</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>165</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1534498965685</Id>
+					<Name><![CDATA[image9]]></Name>
+					<X>951</X><Y>309</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>166</Width>
+					<Height>19</Height>
+					<Rotation>180.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1534499079460</Id>
+					<Name><![CDATA[text40]]></Name>
+					<X>630</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534499100467</Id>
+					<Name><![CDATA[text41]]></Name>
+					<X>680</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Honesty]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534499116392</Id>
+					<Name><![CDATA[text42]]></Name>
+					<X>775</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[100%]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534499182548</Id>
+					<Name><![CDATA[text44]]></Name>
+					<X>850</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Honesty]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534499193927</Id>
+					<Name><![CDATA[text45]]></Name>
+					<X>910</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -9506,9 +9582,30 @@ updateSourceRate();]]></ActionCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1532762307313</Id>
+					<Id>1534502116694</Id>
+					<Name><![CDATA[noFreezePayment]]></Name>
+					<X>50</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1534502116692</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1534502257711</Id>
 					<Name><![CDATA[validity]]></Name>
-					<X>50</X><Y>140</Y>
+					<X>50</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9521,7 +9618,7 @@ updateSourceRate();]]></ActionCode>
 							<Code><![CDATA[365]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>0</Id>
+							<Id>1534502257709</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -9530,7 +9627,7 @@ updateSourceRate();]]></ActionCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1532767085543</Id>
+					<Id>1534502257719</Id>
 					<Name><![CDATA[executor]]></Name>
 					<X>50</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -9545,7 +9642,7 @@ updateSourceRate();]]></ActionCode>
 							<Code><![CDATA[-1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>1532767085541</Id>
+							<Id>1534502257717</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -9554,7 +9651,7 @@ updateSourceRate();]]></ActionCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1532970585519</Id>
+					<Id>1534502257724</Id>
 					<Name><![CDATA[deleted]]></Name>
 					<X>50</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -9569,7 +9666,7 @@ updateSourceRate();]]></ActionCode>
 							<Code><![CDATA[false]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>1532970585517</Id>
+							<Id>1534502257722</Id>
 							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -9578,7 +9675,7 @@ updateSourceRate();]]></ActionCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1533757847096</Id>
+					<Id>1534502257728</Id>
 					<Name><![CDATA[creationTime]]></Name>
 					<X>50</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -9593,7 +9690,7 @@ updateSourceRate();]]></ActionCode>
 							<Code><![CDATA[time(SECOND)]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>1533757847094</Id>
+							<Id>1534502257726</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -9602,7 +9699,7 @@ updateSourceRate();]]></ActionCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1533918226242</Id>
+					<Id>1534502257733</Id>
 					<Name><![CDATA[blockSize]]></Name>
 					<X>50</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -9617,7 +9714,7 @@ updateSourceRate();]]></ActionCode>
 							<Code><![CDATA[1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>1533918226230</Id>
+							<Id>1534502257731</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -11056,7 +11153,7 @@ public class RemmeNode implements Serializable {
     public void trySendCandidate(Algorand algorand){
         if(!orders.isEmpty() && ready) {
             Order order = orders.entrySet().iterator().next().getValue();
-            double betValue = Math.max(Utils.minPrice * order.blockSize / Utils.tax - order.payment - Utils.minPrice * order.blockSize, 0);
+            double betValue = Math.max(Utils.minPrice * order.blockSize / Utils.tax - order.payment, 0);
             algorand.addCandidate(new Bet(nodeNumber, order, betValue));
         }
     }
@@ -11130,6 +11227,18 @@ public class RemmeNode implements Serializable {
     public double getMaxLiquidMoney() {
         return realMoney + possibleUnfreeze;
     }
+    
+    public boolean hasMoneyForMandatoryBet(Bet bet) {
+    	return getFrozenMoney() + realMoney >= bet.getValue();
+    }
+    
+    public void exactMandatoryBet(Bet bet) {
+    	double fine = Math.max(bet.getValue() - realMoney, 0);
+    	realMoney -= (bet.getValue() - fine);
+    	strategy.addLiquid(bet.getValue() - fine, nodeNumber);
+    	toFine(fine);
+    	
+    }
 
     public boolean hasMoneyForBet(Bet bet) {
         if(getFrozenMoney() <= bet.getValue()) {
@@ -11194,29 +11303,40 @@ public class Algorand {
     private int participians = 0;
     private Random random;
     private double[] harringtonFunctionCoefficients;
-
+    private Bet mandatoryBet;
+    private Set<Integer> diedNodes;
     public Algorand(RemmeNode[] remmeNodes){
         candidates = new ArrayList<>();
         this.remmeNodes = remmeNodes;
         random = new Random();
         calculateHarringtonFunctionCoefficients();
+        mandatoryBet = new Bet(-1, null, 1);
+        diedNodes = new HashSet<>();
     }
 
     public void addCandidate(Bet bet){
+    	double jacpot = 0;
         //traceln("addC " + node);
-        if(remmeNodes[bet.getNode()].hasMoneyForBet(bet)) {
-            candidates.add(bet);
-        }
+    	if(remmeNodes[bet.getNode()].hasMoneyForMandatoryBet(mandatoryBet)) {
+    		remmeNodes[bet.getNode()].exactMandatoryBet(mandatoryBet);
+    		jacpot += mandatoryBet.getValue();
+            if(remmeNodes[bet.getNode()].hasMoneyForBet(bet)) {
+                candidates.add(bet);
+            }
+    	}
+    	else if(!diedNodes.contains(bet.getNode())){
+    		diedNodes.add(bet.getNode());
+    		traceln(bet.getNode() + " died");
+    	}
         participians++;
         remmeNodes[bet.getNode()].setReady(false);
         if(participians == remmeNodes.length){
-            runAlgorand();
+            runAlgorand(jacpot);
         }
     }
 
-    private void runAlgorand(){
+    private void runAlgorand(double jacpot){
         //long time = System.currentTimeMillis();
-        double jacpot = 0;
         int winner = -1;
         Order winOrder = null;
         //double[] normalizedReputations = normalize();
@@ -11227,7 +11347,7 @@ public class Algorand {
                 winner = possibleWinBet.getNode();
                 winOrder = possibleWinBet.getOrder();
                 remmeNodes[winner].exactBet(possibleWinBet);
-                winOrder.payment += (possibleWinBet.getValue() + jacpot);
+                winOrder.noFreezePayment += (possibleWinBet.getValue() + jacpot);
                 //traceln(winner + " lost");
             }
             else {
@@ -11499,6 +11619,9 @@ public class ExecutedOrder implements Serializable {
     }
 
     public double getReadyMoney(double curTime){
+    	if(validityInSeconds == 0) {
+    		return moneyTotal - moneyUnfrozed;
+    	}
         return Math.min(moneyTotal * (curTime - timeExecuted) / validityInSeconds - moneyUnfrozed, moneyTotal - moneyUnfrozed);
     }
     
