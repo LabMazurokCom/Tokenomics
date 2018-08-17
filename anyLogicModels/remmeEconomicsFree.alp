@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsFree]]></Name>
@@ -8205,8 +8205,8 @@ updateSourceRate();]]></ActionCode>
 				<Group>
 					<Id>1534424776052</Id>
 					<Name><![CDATA[honesty1]]></Name>
-					<X>-20</X><Y>130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>-85</X><Y>130</Y>
+					<Label><X>5.171</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
@@ -8215,91 +8215,6 @@ updateSourceRate();]]></ActionCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 
-			<Shapes>
-				<Image>
-					<Id>1534424776054</Id>
-					<Name><![CDATA[image4]]></Name>
-					<X>-130</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>330</Width>
-					<Height>20</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
-				<Text>
-					<Id>1534424776056</Id>
-					<Name><![CDATA[text18]]></Name>
-					<X>-20</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1</Color>
-					<Text><![CDATA[Honesty of Node]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1534424776058</Id>
-					<Name><![CDATA[text19]]></Name>
-					<X>-120</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-1</Color>
-					<Text><![CDATA[97,7%]]></Text>
-					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1534424776060</Id>
-					<Name><![CDATA[text20]]></Name>
-					<X>160</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[100%]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>14</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-			</Shapes>
 
 				</Group>
 			</Shapes>
@@ -9259,6 +9174,172 @@ updateSourceRate();]]></ActionCode>
 			</Charts>
 
 				</Group>
+				<Image>
+					<Id>1534496112894</Id>
+					<Name><![CDATA[image6]]></Name>
+					<X>381</X><Y>310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>166</Width>
+					<Height>19</Height>
+					<Rotation>180.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1534496459367</Id>
+					<Name><![CDATA[text29]]></Name>
+					<X>220</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[100%]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534496481871</Id>
+					<Name><![CDATA[text34]]></Name>
+					<X>270</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Honesty]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534496508700</Id>
+					<Name><![CDATA[text35]]></Name>
+					<X>340</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1534424776054</Id>
+					<Name><![CDATA[image4]]></Name>
+					<X>50</X><Y>291</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>165</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1534424776056</Id>
+					<Name><![CDATA[text18]]></Name>
+					<X>104.658</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Honesty]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534424776058</Id>
+					<Name><![CDATA[text19]]></Name>
+					<X>52.948</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[97,7%]]></Text>
+					<TextCode><![CDATA[formatOneDigitAfterDot.format(Utils.minHonesty * 100) + "%"]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534424776060</Id>
+					<Name><![CDATA[text20]]></Name>
+					<X>172.263</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[100%]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Areas>
 				<Area>
@@ -11238,7 +11319,7 @@ public class Utils {
 
     public static final int stake = 250000;
     public static final int startLiquid = 250000;
-    public static final double minHonesty = 0.997;
+    public static final double minHonesty = 0;
     public static final double normalHonesty = minHonesty;
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
