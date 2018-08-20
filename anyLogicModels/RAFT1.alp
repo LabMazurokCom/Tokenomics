@@ -110,16 +110,16 @@
 			<Variables>
 				<Variable Class="PlainVariable">
 					<Id>1534495881561</Id>
-					<Name><![CDATA[a]]></Name>
-					<X>110</X><Y>-10</Y>
+					<Name><![CDATA[countOfTacts]]></Name>
+					<X>370</X><Y>-10</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
+						<Type><![CDATA[int[]]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[10]]></Code>
+							<Code><![CDATA[{10, 10, 10, 10}]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -156,7 +156,22 @@
 				<Variable Class="PlainVariable">
 					<Id>1534512940236</Id>
 					<Name><![CDATA[nodesQueue]]></Name>
-					<X>10</X><Y>-10</Y>
+					<X>60</X><Y>-10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int[]]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[{0, 0, 0, 0}]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1534754745117</Id>
+					<Name><![CDATA[iAmLeader]]></Name>
+					<X>470</X><Y>-10</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -173,7 +188,7 @@
 				<Connector>
 					<Id>1534493518795</Id>
 					<Name><![CDATA[connector11]]></Name>
-					<X>320</X><Y>60</Y>
+					<X>320</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -200,13 +215,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-20</Y></Point>
+						<Point><X>0</X><Y>30</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534493523628</Id>
 					<Name><![CDATA[connector12]]></Name>
-					<X>310</X><Y>240</Y>
+					<X>310</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -233,13 +248,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-20</Y></Point>
+						<Point><X>0</X><Y>-30</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534493534438</Id>
 					<Name><![CDATA[connector13]]></Name>
-					<X>310</X><Y>360</Y>
+					<X>310</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -266,13 +281,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-20</Y></Point>
+						<Point><X>0</X><Y>30</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534493538703</Id>
 					<Name><![CDATA[connector14]]></Name>
-					<X>310</X><Y>560</Y>
+					<X>310</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -299,7 +314,7 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-20</Y></Point>
+						<Point><X>0</X><Y>-30</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -308,7 +323,7 @@
 					<X>270</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[raft1]]></PackageName>
@@ -341,7 +356,7 @@
 					<X>290</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[raft1]]></PackageName>
@@ -374,7 +389,7 @@
 					<X>240</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[raft1]]></PackageName>
@@ -407,7 +422,7 @@
 					<X>230</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[raft1]]></PackageName>
@@ -435,42 +450,9 @@
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1534500560617</Id>
-					<Name><![CDATA[connector7]]></Name>
-					<X>260</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[wait]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Wait]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>60</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1534500936953</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>250</X><Y>220</Y>
+					<X>250</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -497,14 +479,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>44</X><Y>0</Y></Point>
 						<Point><X>60</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534500943991</Id>
 					<Name><![CDATA[connector9]]></Name>
-					<X>250</X><Y>340</Y>
+					<X>250</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -537,7 +518,7 @@
 				<Connector>
 					<Id>1534500950555</Id>
 					<Name><![CDATA[connector10]]></Name>
-					<X>250</X><Y>540</Y>
+					<X>250</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -570,7 +551,7 @@
 				<Connector>
 					<Id>1534501464031</Id>
 					<Name><![CDATA[connector24]]></Name>
-					<X>420</X><Y>290</Y>
+					<X>420</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -597,15 +578,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>190</Y></Point>
-						<Point><X>-120</X><Y>190</Y></Point>
-						<Point><X>-110</X><Y>250</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>170</Y></Point>
+						<Point><X>-190</X><Y>170</Y></Point>
+						<Point><X>-110</X><Y>220</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534501483862</Id>
 					<Name><![CDATA[connector25]]></Name>
-					<X>420</X><Y>190</Y>
+					<X>420</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -632,18 +614,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-40</Y></Point>
-						<Point><X>220</X><Y>-40</Y></Point>
-						<Point><X>220</X><Y>-180</Y></Point>
-						<Point><X>-120</X><Y>-180</Y></Point>
-						<Point><X>-120</X><Y>-160</Y></Point>
-						<Point><X>-100</X><Y>-150</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>-30</Y></Point>
+						<Point><X>-180</X><Y>-30</Y></Point>
+						<Point><X>-100</X><Y>-130</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534501522157</Id>
 					<Name><![CDATA[connector26]]></Name>
-					<X>440</X><Y>210</Y>
+					<X>440</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -671,16 +651,15 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>40</X><Y>0</Y></Point>
-						<Point><X>40</X><Y>-80</Y></Point>
-						<Point><X>-140</X><Y>-80</Y></Point>
-						<Point><X>-140</X><Y>-160</Y></Point>
-						<Point><X>-120</X><Y>-170</Y></Point>
+						<Point><X>40</X><Y>-50</Y></Point>
+						<Point><X>-190</X><Y>-50</Y></Point>
+						<Point><X>-120</X><Y>-150</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534501543749</Id>
 					<Name><![CDATA[connector27]]></Name>
-					<X>440</X><Y>230</Y>
+					<X>440</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -707,16 +686,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>80</X><Y>0</Y></Point>
-						<Point><X>80</X><Y>80</Y></Point>
-						<Point><X>-130</X><Y>80</Y></Point>
-						<Point><X>-130</X><Y>110</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>230</Y></Point>
+						<Point><X>-140</X><Y>230</Y></Point>
+						<Point><X>-130</X><Y>130</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534501571243</Id>
 					<Name><![CDATA[connector28]]></Name>
-					<X>440</X><Y>270</Y>
+					<X>440</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -743,16 +722,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>60</X><Y>0</Y></Point>
-						<Point><X>60</X><Y>210</Y></Point>
-						<Point><X>-130</X><Y>210</Y></Point>
-						<Point><X>-130</X><Y>270</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>190</Y></Point>
+						<Point><X>-200</X><Y>190</Y></Point>
+						<Point><X>-130</X><Y>240</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534501581243</Id>
 					<Name><![CDATA[connector29]]></Name>
-					<X>440</X><Y>250</Y>
+					<X>440</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -780,15 +759,15 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>40</X><Y>0</Y></Point>
-						<Point><X>40</X><Y>50</Y></Point>
-						<Point><X>-130</X><Y>50</Y></Point>
-						<Point><X>-130</X><Y>90</Y></Point>
+						<Point><X>40</X><Y>210</Y></Point>
+						<Point><X>-130</X><Y>210</Y></Point>
+						<Point><X>-130</X><Y>110</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502252040</Id>
 					<Name><![CDATA[connector19]]></Name>
-					<X>390</X><Y>420</Y>
+					<X>420</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -815,14 +794,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-130</X><Y>0</Y></Point>
-						<Point><X>-80</X><Y>120</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>20</Y></Point>
+						<Point><X>-200</X><Y>20</Y></Point>
+						<Point><X>-110</X><Y>70</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502280904</Id>
 					<Name><![CDATA[connector20]]></Name>
-					<X>390</X><Y>320</Y>
+					<X>420</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -849,15 +830,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-160</Y></Point>
-						<Point><X>-150</X><Y>-210</Y></Point>
-						<Point><X>-70</X><Y>-280</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>-180</Y></Point>
+						<Point><X>-200</X><Y>-180</Y></Point>
+						<Point><X>-100</X><Y>-280</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502317375</Id>
 					<Name><![CDATA[connector30]]></Name>
-					<X>410</X><Y>340</Y>
+					<X>440</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -884,16 +866,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>-210</Y></Point>
-						<Point><X>-160</X><Y>-210</Y></Point>
-						<Point><X>-90</X><Y>-300</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-200</Y></Point>
+						<Point><X>-230</X><Y>-200</Y></Point>
+						<Point><X>-120</X><Y>-300</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502335471</Id>
 					<Name><![CDATA[connector31]]></Name>
-					<X>410</X><Y>360</Y>
+					<X>440</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -920,16 +902,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>190</X><Y>0</Y></Point>
-						<Point><X>190</X><Y>-80</Y></Point>
-						<Point><X>-130</X><Y>-80</Y></Point>
-						<Point><X>-100</X><Y>-140</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-220</Y></Point>
+						<Point><X>-130</X><Y>-220</Y></Point>
+						<Point><X>-130</X><Y>-170</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502367694</Id>
 					<Name><![CDATA[connector32]]></Name>
-					<X>410</X><Y>380</Y>
+					<X>440</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -943,6 +925,330 @@
 						<PackageName><![CDATA[raft1]]></PackageName>
 						<ClassName><![CDATA[MyAgent]]></ClassName>
 						<ItemName><![CDATA[port3]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay1]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-240</Y></Point>
+						<Point><X>-150</X><Y>-240</Y></Point>
+						<Point><X>-130</X><Y>-190</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502374268</Id>
+					<Name><![CDATA[connector33]]></Name>
+					<X>440</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent1]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port4]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay3]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>40</Y></Point>
+						<Point><X>-190</X><Y>40</Y></Point>
+						<Point><X>-130</X><Y>90</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502447555</Id>
+					<Name><![CDATA[connector35]]></Name>
+					<X>420</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port6]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay2]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>-130</Y></Point>
+						<Point><X>-160</X><Y>-130</Y></Point>
+						<Point><X>-110</X><Y>-230</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502491841</Id>
+					<Name><![CDATA[connector36]]></Name>
+					<X>420</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>-330</Y></Point>
+						<Point><X>-190</X><Y>-330</Y></Point>
+						<Point><X>-100</X><Y>-430</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502530416</Id>
+					<Name><![CDATA[connector22]]></Name>
+					<X>440</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port1]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-350</Y></Point>
+						<Point><X>-240</X><Y>-350</Y></Point>
+						<Point><X>-120</X><Y>-450</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502547769</Id>
+					<Name><![CDATA[connector37]]></Name>
+					<X>440</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port2]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay1]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-370</Y></Point>
+						<Point><X>-140</X><Y>-370</Y></Point>
+						<Point><X>-130</X><Y>-320</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502567800</Id>
+					<Name><![CDATA[connector38]]></Name>
+					<X>440</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port3]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay1]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-390</Y></Point>
+						<Point><X>-160</X><Y>-390</Y></Point>
+						<Point><X>-130</X><Y>-340</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502574592</Id>
+					<Name><![CDATA[connector39]]></Name>
+					<X>440</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port4]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay2]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-110</Y></Point>
+						<Point><X>-170</X><Y>-110</Y></Point>
+						<Point><X>-130</X><Y>-210</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502649134</Id>
+					<Name><![CDATA[connector41]]></Name>
+					<X>420</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent3]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port6]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay3]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>320</Y></Point>
+						<Point><X>-210</X><Y>320</Y></Point>
+						<Point><X>-110</X><Y>370</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534502671765</Id>
+					<Name><![CDATA[connector42]]></Name>
+					<X>420</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent3]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port]]></ItemName>
 					</SourceConnectableItemReference>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[raft1]]></PackageName>
@@ -957,337 +1263,15 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>60</X><Y>0</Y></Point>
-						<Point><X>60</X><Y>-90</Y></Point>
-						<Point><X>-170</X><Y>-90</Y></Point>
-						<Point><X>-100</X><Y>-160</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502374268</Id>
-					<Name><![CDATA[connector33]]></Name>
-					<X>410</X><Y>400</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent1]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port4]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay3]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>50</Y></Point>
-						<Point><X>-100</X><Y>50</Y></Point>
-						<Point><X>-100</X><Y>140</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502447555</Id>
-					<Name><![CDATA[connector35]]></Name>
-					<X>400</X><Y>590</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port6]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay2]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-120</X><Y>0</Y></Point>
-						<Point><X>-90</X><Y>-250</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502491841</Id>
-					<Name><![CDATA[connector36]]></Name>
-					<X>400</X><Y>490</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>220</X><Y>0</Y></Point>
-						<Point><X>220</X><Y>-320</Y></Point>
-						<Point><X>-150</X><Y>-320</Y></Point>
-						<Point><X>-80</X><Y>-450</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502530416</Id>
-					<Name><![CDATA[connector22]]></Name>
-					<X>420</X><Y>510</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port1]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>-400</Y></Point>
-						<Point><X>-200</X><Y>-400</Y></Point>
-						<Point><X>-100</X><Y>-470</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502547769</Id>
-					<Name><![CDATA[connector37]]></Name>
-					<X>420</X><Y>530</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port2]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay1]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>-230</Y></Point>
-						<Point><X>-170</X><Y>-230</Y></Point>
-						<Point><X>-110</X><Y>-310</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502567800</Id>
-					<Name><![CDATA[connector38]]></Name>
-					<X>420</X><Y>550</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port3]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay1]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>-260</Y></Point>
-						<Point><X>-210</X><Y>-260</Y></Point>
-						<Point><X>-110</X><Y>-330</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502574592</Id>
-					<Name><![CDATA[connector39]]></Name>
-					<X>420</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port4]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay2]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>30</X><Y>0</Y></Point>
-						<Point><X>30</X><Y>-140</Y></Point>
-						<Point><X>-180</X><Y>-140</Y></Point>
-						<Point><X>-110</X><Y>-230</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502649134</Id>
-					<Name><![CDATA[connector41]]></Name>
-					<X>420</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent3]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port6]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay3]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>150</X><Y>0</Y></Point>
-						<Point><X>150</X><Y>460</Y></Point>
-						<Point><X>-120</X><Y>460</Y></Point>
-						<Point><X>-110</X><Y>420</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534502671765</Id>
-					<Name><![CDATA[connector42]]></Name>
-					<X>420</X><Y>20</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent3]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay1]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>170</Y></Point>
-						<Point><X>-120</X><Y>170</Y></Point>
-						<Point><X>-110</X><Y>200</Y></Point>
+						<Point><X>60</X><Y>120</Y></Point>
+						<Point><X>-150</X><Y>120</Y></Point>
+						<Point><X>-110</X><Y>170</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502705476</Id>
 					<Name><![CDATA[connector43]]></Name>
-					<X>440</X><Y>40</Y>
+					<X>440</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1314,17 +1298,17 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>30</X><Y>0</Y></Point>
-						<Point><X>30</X><Y>100</Y></Point>
-						<Point><X>30</X><Y>140</Y></Point>
-						<Point><X>-160</X><Y>140</Y></Point>
-						<Point><X>-130</X><Y>180</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>90</Y></Point>
+						<Point><X>40</X><Y>100</Y></Point>
+						<Point><X>-180</X><Y>100</Y></Point>
+						<Point><X>-130</X><Y>150</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502714060</Id>
 					<Name><![CDATA[connector44]]></Name>
-					<X>440</X><Y>60</Y>
+					<X>440</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1351,16 +1335,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>260</Y></Point>
-						<Point><X>-150</X><Y>260</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>380</Y></Point>
+						<Point><X>-150</X><Y>380</Y></Point>
 						<Point><X>-130</X><Y>280</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502742986</Id>
 					<Name><![CDATA[connector45]]></Name>
-					<X>440</X><Y>80</Y>
+					<X>440</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1387,17 +1371,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>220</Y></Point>
-						<Point><X>-170</X><Y>220</Y></Point>
-						<Point><X>-170</X><Y>240</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>360</Y></Point>
+						<Point><X>-160</X><Y>360</Y></Point>
 						<Point><X>-130</X><Y>260</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534502755346</Id>
 					<Name><![CDATA[connector46]]></Name>
-					<X>440</X><Y>100</Y>
+					<X>440</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1424,84 +1407,16 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>140</X><Y>0</Y></Point>
-						<Point><X>140</X><Y>380</Y></Point>
-						<Point><X>-190</X><Y>380</Y></Point>
-						<Point><X>-130</X><Y>440</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534510065503</Id>
-					<Name><![CDATA[connector40]]></Name>
-					<X>360</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent3]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port5]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>40</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534512304143</Id>
-					<Name><![CDATA[connector18]]></Name>
-					<X>350</X><Y>220</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay1]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port5]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>20</X><Y>0</Y></Point>
-						<Point><X>20</X><Y>-10</Y></Point>
-						<Point><X>50</X><Y>-10</Y></Point>
+						<Point><X>40</X><Y>340</Y></Point>
+						<Point><X>-240</X><Y>340</Y></Point>
+						<Point><X>-130</X><Y>390</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1534512307151</Id>
 					<Name><![CDATA[connector23]]></Name>
-					<X>350</X><Y>340</Y>
+					<X>350</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1528,42 +1443,7 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>20</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1534512311751</Id>
-					<Name><![CDATA[connector34]]></Name>
-					<X>350</X><Y>540</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[delay3]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[myAgent2]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[raft1]]></PackageName>
-						<ClassName><![CDATA[MyAgent]]></ClassName>
-						<ItemName><![CDATA[port5]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>20</X><Y>0</Y></Point>
-						<Point><X>20</X><Y>-30</Y></Point>
-						<Point><X>30</X><Y>-30</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1629,9 +1509,9 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>40</X><Y>0</Y></Point>
-						<Point><X>40</X><Y>70</Y></Point>
-						<Point><X>70</X><Y>70</Y></Point>
+						<Point><X>30</X><Y>0</Y></Point>
+						<Point><X>30</X><Y>80</Y></Point>
+						<Point><X>70</X><Y>80</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1665,8 +1545,8 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>10</X><Y>0</Y></Point>
-						<Point><X>10</X><Y>250</Y></Point>
-						<Point><X>70</X><Y>250</Y></Point>
+						<Point><X>10</X><Y>210</Y></Point>
+						<Point><X>70</X><Y>210</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1700,8 +1580,8 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>30</X><Y>0</Y></Point>
-						<Point><X>30</X><Y>-30</Y></Point>
-						<Point><X>70</X><Y>-30</Y></Point>
+						<Point><X>30</X><Y>-50</Y></Point>
+						<Point><X>70</X><Y>-50</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1735,8 +1615,173 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>10</X><Y>0</Y></Point>
-						<Point><X>10</X><Y>-190</Y></Point>
-						<Point><X>80</X><Y>-190</Y></Point>
+						<Point><X>10</X><Y>-180</Y></Point>
+						<Point><X>70</X><Y>-180</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534754775103</Id>
+					<Name><![CDATA[connector4]]></Name>
+					<X>360</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent3]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port5]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534760960567</Id>
+					<Name><![CDATA[connector5]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[sink1]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[source5]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>420</X><Y>-110</Y></Point>
+						<Point><X>400</X><Y>-110</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534761886195</Id>
+					<Name><![CDATA[connector6]]></Name>
+					<X>250</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[wait]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>70</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534771910680</Id>
+					<Name><![CDATA[connector7]]></Name>
+					<X>350</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay3]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent2]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port5]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534771951821</Id>
+					<Name><![CDATA[connector18]]></Name>
+					<X>350</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[delay1]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[myAgent]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[port5]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -1798,7 +1843,7 @@ else{
 					<Id>1534493353560</Id>
 					<Name><![CDATA[source]]></Name>
 					<X>40</X><Y>220</Y>
-					<Label><X>-5</X><Y>-20</Y></Label>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -1899,7 +1944,7 @@ else{
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(1)]]></Code>
+								<Code><![CDATA[new Client()]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1987,7 +2032,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493466082</Id>
 					<Name><![CDATA[delay]]></Name>
-					<X>320</X><Y>20</Y>
+					<X>320</X><Y>30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2043,11 +2088,15 @@ else{
 							<Value Class="CodeValue">
 								<Code><![CDATA[if(agent instanceof Client){
 	Client client = (Client) agent;
+	iAmLeader[0] = 0;
 	if(client.type == 1) {
+		client.leader = 0;
 		nodesQueue[0]--;
 		client.type = 2;
 	}
 	else if(client.type == 2) {
+		leader[0] = client.leader;
+		term[0] = term[client.leader];
 		if(nodesQueue[0] != 0){
 			wait.get(0).type = -1;
 			wait.free(wait.get(0));
@@ -2061,27 +2110,38 @@ else{
 	Signal signal = (Signal) agent;
 	if(leader[0] == 0) {
 		if(nodesQueue[0] != 0){
-			signal.type = -1;
 			wait.free(wait.get(0));
 		}
+		signal.type = -1;
 		self.stopDelayForAll();
 	}
 	else {
 		if(signal.type == 2) {
-			leader[0] = signal.leader;
-			term[0] =  term[signal.leader];
-			signal.type = 3;
-			self.stopDelayForAll();
+			if(iAmLeader[0] == 0) {
+				leader[0] = signal.leader;
+				term[0] =  term[signal.leader];
+				signal.type = 3;
+				self.stopDelayForAll();
+			}
+			else {
+				signal.type = -1;
+				self.stopDelay(agent);
+			}
 		}
 		else if(signal.type == 3) {
-			leader[0] = 0;
+			iAmLeader[0]++;
+			self.stopDelay(agent);
 			signal.type = 4;
-			self.stopDelayForAll();
+			if(iAmLeader[0] == 3){
+				leader[0] = 0;
+				self.stopDelayForAll();
+			}
 		}
-		else if(self.size() == a) {
+		else if(self.size() >= countOfTacts[0]) {
 			signal.type = 2;
 			signal.leader = 0;
 			term[0]++;
+			iAmLeader[0] = 1;
 			self.stopDelayForAll();
 		}
 	}
@@ -2140,7 +2200,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493472144</Id>
 					<Name><![CDATA[delay1]]></Name>
-					<X>310</X><Y>200</Y>
+					<X>310</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2196,12 +2256,16 @@ else{
 							<Value Class="CodeValue">
 								<Code><![CDATA[if(agent instanceof Client){
 	Client client = (Client) agent;
+	iAmLeader[1] = 0;
 	if(client.type == 1) {
+		client.leader = 1;
 		nodesQueue[1]--;
 		client.type = 2;
 	}
 	else if(client.type == 2) {
-		if(nodesQueue[1] != 0) {	
+		leader[1] = client.leader;
+		term[1] = term[client.leader];
+		if(nodesQueue[1] != 0){
 			wait1.get(0).type = -1;
 			wait1.free(wait1.get(0));
 			nodesQueue[1]--;
@@ -2214,27 +2278,38 @@ else{
 	Signal signal = (Signal) agent;
 	if(leader[1] == 1) {
 		if(nodesQueue[1] != 0){
-			signal.type = -1;
 			wait1.free(wait1.get(0));
 		}
+		signal.type = -1;
 		self.stopDelayForAll();
 	}
 	else {
 		if(signal.type == 2) {
-			leader[1] = signal.leader;
-			term[1] =  term[signal.leader];
-			signal.type = 3;
-			self.stopDelayForAll();
+			if(iAmLeader[1] == 0) {
+				leader[1] = signal.leader;
+				term[1] =  term[signal.leader];
+				signal.type = 3;
+				self.stopDelayForAll();
+			}
+			else {
+				signal.type = -1;
+				self.stopDelay(agent);
+			}
 		}
 		else if(signal.type == 3) {
-			leader[1] = 1;
+			iAmLeader[1]++;
 			signal.type = 4;
-			self.stopDelayForAll();
+			self.stopDelay(agent);
+			if(iAmLeader[1] == 3){
+				leader[1] = 1;
+				self.stopDelayForAll();
+			}
 		}
-		else if(self.size() == a) {
+		else if(self.size() >= countOfTacts[1]) {
 			signal.type = 2;
 			signal.leader = 1;
 			term[1]++;
+			iAmLeader[1] = 1;
 			self.stopDelayForAll();
 		}
 	}
@@ -2293,7 +2368,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493479677</Id>
 					<Name><![CDATA[delay2]]></Name>
-					<X>310</X><Y>320</Y>
+					<X>310</X><Y>330</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2349,12 +2424,16 @@ else{
 							<Value Class="CodeValue">
 								<Code><![CDATA[if(agent instanceof Client){
 	Client client = (Client) agent;
+	iAmLeader[2] = 0;
 	if(client.type == 1) {
+		client.leader = 2;
 		nodesQueue[2]--;
 		client.type = 2;
 	}
-	else if (client.type == 2) {
-		if(nodesQueue[2] != 0) {
+	else if(client.type == 2) {
+		leader[2] = client.leader;
+		term[2] = term[client.leader];
+		if(nodesQueue[2] != 0){
 			wait2.get(0).type = -1;
 			wait2.free(wait2.get(0));
 			nodesQueue[2]--;
@@ -2367,27 +2446,38 @@ else{
 	Signal signal = (Signal) agent;
 	if(leader[2] == 2) {
 		if(nodesQueue[2] != 0){
-			signal.type = -1;
 			wait2.free(wait2.get(0));
 		}
+		signal.type = -1;
 		self.stopDelayForAll();
 	}
 	else {
 		if(signal.type == 2) {
-			leader[2] = signal.leader;
-			term[2] =  term[signal.leader];
-			signal.type = 3;
-			self.stopDelayForAll();
+			if(iAmLeader[2] == 0) {
+				leader[2] = signal.leader;
+				term[2] =  term[signal.leader];
+				signal.type = 3;
+				self.stopDelayForAll();
+			}
+			else {
+				signal.type = -1;
+				self.stopDelay(agent);
+			}
 		}
 		else if(signal.type == 3) {
-			leader[2] = 2;
+			iAmLeader[2]++;
 			signal.type = 4;
-			self.stopDelayForAll();
+			self.stopDelay(agent);
+			if(iAmLeader[2] == 3){
+				leader[2] = 2;
+				self.stopDelayForAll();
+			}
 		}
-		else if(self.size() == a) {
+		else if(self.size() >= countOfTacts[2]) {
 			signal.type = 2;
 			signal.leader = 2;
 			term[2]++;
+			iAmLeader[2] = 1;
 			self.stopDelayForAll();
 		}
 	}
@@ -2446,7 +2536,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493484094</Id>
 					<Name><![CDATA[delay3]]></Name>
-					<X>310</X><Y>520</Y>
+					<X>310</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2502,16 +2592,20 @@ else{
 							<Value Class="CodeValue">
 								<Code><![CDATA[if(agent instanceof Client){
 	Client client = (Client) agent;
+	iAmLeader[3] = 0;
 	if(client.type == 1) {
+		client.leader = 3;
 		nodesQueue[3]--;
 		client.type = 2;
 	}
-	else if (client.type == 2) {
-		if(nodesQueue[3] != 0) {
+	else if(client.type == 2) {
+		leader[3] = client.leader;
+		term[3] = term[client.leader];
+		if(nodesQueue[3] != 0){
 			wait3.get(0).type = -1;
 			wait3.free(wait3.get(0));
 			nodesQueue[3]--;
-			client.type = -1;	
+			client.type = -1;
 		}
 	}	 
 	self.stopDelayForAll();
@@ -2519,31 +2613,44 @@ else{
 else{
 	Signal signal = (Signal) agent;
 	if(leader[3] == 3) {
-		if(nodesQueue[3] != 0){
-			signal.type = -1;
+		if(nodesQueue[3] != 0) {
 			wait3.free(wait3.get(0));
 		}
+		signal.type = -1;
+		self.stopDelayForAll();
 	}
 	else {
 		if(signal.type == 2) {
-			leader[3] = signal.leader;
-			term[3] =  term[signal.leader];
-			signal.type = 3;
-			self.stopDelayForAll();
+			if(iAmLeader[3] == 0) {
+				leader[3] = signal.leader;
+				term[3] =  term[signal.leader];
+				signal.type = 3;
+				self.stopDelayForAll();
+			}
+			else {
+				signal.type = -1;
+				self.stopDelay(agent);
+			}
 		}
 		else if(signal.type == 3) {
-			leader[3] = 3;
+			iAmLeader[3]++;
 			signal.type = 4;
-			self.stopDelayForAll();
+			self.stopDelay(agent);
+			if(iAmLeader[3] == 3){
+				leader[3] = 3;
+				self.stopDelayForAll();
+			}
 		}
-		else if(self.size() == a) {
+		else if(self.size() >= countOfTacts[3]) {
 			signal.type = 2;
 			signal.leader = 3;
 			term[3]++;
+			iAmLeader[3] = 1;
 			self.stopDelayForAll();
 		}
 	}
-}]]></Code>
+}
+]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2598,7 +2705,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493517013</Id>
 					<Name><![CDATA[source1]]></Name>
-					<X>290</X><Y>50</Y>
+					<X>290</X><Y>10</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2788,7 +2895,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493521481</Id>
 					<Name><![CDATA[source2]]></Name>
-					<X>280</X><Y>230</Y>
+					<X>280</X><Y>220</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2978,7 +3085,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493533241</Id>
 					<Name><![CDATA[source3]]></Name>
-					<X>280</X><Y>350</Y>
+					<X>280</X><Y>310</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3168,7 +3275,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534493537873</Id>
 					<Name><![CDATA[source4]]></Name>
-					<X>280</X><Y>550</Y>
+					<X>280</X><Y>520</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3361,7 +3468,7 @@ else{
 					<X>220</X><Y>-130</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -3448,7 +3555,7 @@ else{
 					<X>270</X><Y>-130</Y>
 					<Label><X>-5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -3584,7 +3691,7 @@ else{
 					<X>290</X><Y>-90</Y>
 					<Label><X>-5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -3720,7 +3827,7 @@ else{
 					<X>240</X><Y>-110</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -3786,7 +3893,7 @@ else{
 					<X>180</X><Y>-130</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -3909,7 +4016,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534500559323</Id>
 					<Name><![CDATA[wait]]></Name>
-					<X>220</X><Y>20</Y>
+					<X>210</X><Y>30</Y>
 					<Label><X>5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4029,7 +4136,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534500935326</Id>
 					<Name><![CDATA[wait1]]></Name>
-					<X>210</X><Y>200</Y>
+					<X>210</X><Y>180</Y>
 					<Label><X>5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4149,7 +4256,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534500942990</Id>
 					<Name><![CDATA[wait2]]></Name>
-					<X>210</X><Y>320</Y>
+					<X>210</X><Y>330</Y>
 					<Label><X>5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4269,7 +4376,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534500949260</Id>
 					<Name><![CDATA[wait3]]></Name>
-					<X>210</X><Y>520</Y>
+					<X>210</X><Y>480</Y>
 					<Label><X>5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4389,7 +4496,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534501272634</Id>
 					<Name><![CDATA[myAgent]]></Name>
-					<X>400</X><Y>190</Y>
+					<X>400</X><Y>180</Y>
 					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4480,7 +4587,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534502191572</Id>
 					<Name><![CDATA[myAgent1]]></Name>
-					<X>370</X><Y>320</Y>
+					<X>400</X><Y>330</Y>
 					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4571,7 +4678,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534502385433</Id>
 					<Name><![CDATA[myAgent2]]></Name>
-					<X>380</X><Y>490</Y>
+					<X>400</X><Y>480</Y>
 					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4662,7 +4769,7 @@ else{
 				<EmbeddedObject>
 					<Id>1534502625635</Id>
 					<Name><![CDATA[myAgent3]]></Name>
-					<X>400</X><Y>20</Y>
+					<X>400</X><Y>30</Y>
 					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4773,19 +4880,19 @@ else{
 						<Parameter>
 							<Name><![CDATA[split_newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(((Client)original).type)]]></Code>
+								<Code><![CDATA[new Client(((Client)original).type, ((Client)original).leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[split1_newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(((Client)original).type)]]></Code>
+								<Code><![CDATA[new Client(((Client)original).type, ((Client)original).leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[split2_newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(((Client)original).type)]]></Code>
+								<Code><![CDATA[new Client(((Client)original).type, ((Client)original).leader)]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -4829,13 +4936,272 @@ else{
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1534760954685</Id>
+					<Name><![CDATA[source5]]></Name>
+					<X>370</X><Y>-120</Y>
+					<Label><X>-5</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Source]]></ClassName>
+							<ItemName><![CDATA[1412336242928]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[arrivalType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rate]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[1]]></Code>
+								<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[interarrivalTime]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateSchedule]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[modifyRate]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateExpression]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalSchedule]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[setAgentParametersFromDB]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[databaseTable]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalDate]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[multipleEntitiesPerArrival]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entitiesPerArrival]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[limitArrivals]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maxArrivals]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationX]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationY]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationZ]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLatitude]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLongitude]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationGeoPlaceName]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationXYZInNetwork]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNetwork]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationAttractor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[speed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[newEntity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[changeDimensions]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[length]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[width]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[height]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableCustomStartTime]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[startTime]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[addToCustomPopulation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[population]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[discardHangingEntities]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onBeforeArrival]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[if(leader[0] == leader[1] && leader[0] == leader[2] && leader[0] == leader[3]){
+	text9.setText(leader[0]);
+	//Integer.toString(leader[0]);
+}]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onDiscard]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1534760959055</Id>
+					<Name><![CDATA[sink1]]></Name>
+					<X>420</X><Y>-120</Y>
+					<Label><X>-5</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Sink]]></ClassName>
+							<ItemName><![CDATA[1412336242929]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[destroyEntity]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
 				<Group>
 					<Id>1534510930415</Id>
 					<Name><![CDATA[group]]></Name>
-					<X>750</X><Y>50</Y>
+					<X>600</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4870,7 +5236,7 @@ else{
 				<Text>
 					<Id>1534510908987</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>40</X><Y>0</Y>
+					<X>30</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4906,7 +5272,7 @@ else{
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
 						<Orientation>HORIZONTAL</Orientation>
-						<MinValue><![CDATA[1]]></MinValue>
+						<MinValue><![CDATA[0]]></MinValue>
 						<MaxValue><![CDATA[10]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>source.rate</Link>
@@ -4915,7 +5281,353 @@ else{
 			</Controls>
 
 				</Group>
+				<Text>
+					<Id>1534753911656</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>560</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[message speed]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534754058195</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>550</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[required number of tacts]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534754123067</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>650</X><Y>180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[first node]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534754165621</Id>
+					<Name><![CDATA[text5]]></Name>
+					<X>650</X><Y>230</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[second node]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534754169692</Id>
+					<Name><![CDATA[text6]]></Name>
+					<X>650</X><Y>280</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[third node]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534754173580</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>650</X><Y>330</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[fourth node]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534761040819</Id>
+					<Name><![CDATA[text8]]></Name>
+					<X>40</X><Y>40</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[leader]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534761064428</Id>
+					<Name><![CDATA[text9]]></Name>
+					<X>60</X><Y>70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[-1]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762909767</Id>
+					<Name><![CDATA[text10]]></Name>
+					<X>700</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[0]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762918199</Id>
+					<Name><![CDATA[text11]]></Name>
+					<X>770</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[10]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762970245</Id>
+					<Name><![CDATA[text12]]></Name>
+					<X>710</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[tacts speed]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
+			<Controls>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534753632656</Id>
+					<Name><![CDATA[editbox]]></Name>
+					<X>590</X><Y>173</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[countOfTacts[0] = Integer.parseInt(value);]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA["10"]]></DefaultValueCode>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534753870909</Id>
+					<Name><![CDATA[editbox1]]></Name>
+					<X>590</X><Y>223</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[countOfTacts[1] = Integer.parseInt(value);]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA["10"]]></DefaultValueCode>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534753875019</Id>
+					<Name><![CDATA[editbox2]]></Name>
+					<X>590</X><Y>273</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[countOfTacts[2] = Integer.parseInt(value);]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA["10"]]></DefaultValueCode>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534753878179</Id>
+					<Name><![CDATA[editbox3]]></Name>
+					<X>590</X><Y>323</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[countOfTacts[3] = Integer.parseInt(value);]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA["10"]]></DefaultValueCode>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534762708650</Id>
+					<Name><![CDATA[slider1]]></Name>
+					<X>690</X><Y>30</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[source1.rate = value;
+source2.rate = value;
+source3.rate = value;
+source4.rate = value;]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.5]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[10]]></MaxValue>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+			</Controls>
 
 		</ActiveObjectClass>
 		<!--   =========   Active Object Class   ========  -->
@@ -5031,6 +5743,30 @@ else{
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1534497439205</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1534755743374</Id>
+					<Name><![CDATA[leader]]></Name>
+					<X>50</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[-1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1534755743372</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -5890,6 +6626,39 @@ T agent - the agent.
 						<Point><X>0</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
+				<Connector>
+					<Id>1534756941913</Id>
+					<Name><![CDATA[connector7]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[sink]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[raft1]]></PackageName>
+						<ClassName><![CDATA[MyAgent]]></ClassName>
+						<ItemName><![CDATA[selectOutput6]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput5]]></ClassName>
+						<ItemName><![CDATA[out5]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>470</X><Y>390</Y></Point>
+						<Point><X>430</X><Y>390</Y></Point>
+					</Points>
+				</Connector>
 			</Connectors>
 			<AgentLinks>
 				<AgentLink>
@@ -6058,7 +6827,7 @@ T agent - the agent.
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[original instanceof Signal ? new Signal(((Signal)original).type, ((Signal)original).leader) : new Client(((Client)original).type)]]></Code>
+								<Code><![CDATA[original instanceof Signal ? new Signal(((Signal)original).type, ((Signal)original).leader) : new Client(((Client)original).type, ((Client)original).leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -6203,7 +6972,7 @@ T agent - the agent.
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[original instanceof Signal ? new Signal(((Signal)original).type, ((Signal)original).leader) : new Client(((Client)original).type)]]></Code>
+								<Code><![CDATA[original instanceof Signal ? new Signal(((Signal)original).type, ((Signal)original).leader) : new Client(((Client)original).type, ((Client)original).leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -6507,6 +7276,80 @@ T agent - the agent.
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1534756940213</Id>
+					<Name><![CDATA[sink]]></Name>
+					<X>470</X><Y>380</Y>
+					<Label><X>-5</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Sink]]></ClassName>
+							<ItemName><![CDATA[1412336242929]]></ItemName>
+						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Signal]]></Code>
+						</GenericParameterSubstituteValue>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[//traceln(agent.type);
+//traceln(agent.leader);
+//pauseSimulation();]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[destroyEntity]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
@@ -6530,7 +7373,7 @@ T agent - the agent.
 					<Width>41</Width>
 					<Height>101</Height>
 					<Rotation>0.0</Rotation>
-					<FillColor>-16728065</FillColor>
+					<FillColor>-14774017</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 			</Shapes>
@@ -7075,7 +7918,7 @@ Parameters T original - the original agent
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(original.type)]]></Code>
+								<Code><![CDATA[new Client(original.type, original.leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7220,7 +8063,7 @@ Parameters T original - the original agent
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(original.type)]]></Code>
+								<Code><![CDATA[new Client(original.type, original.leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -7365,7 +8208,7 @@ Parameters T original - the original agent
 						<Parameter>
 							<Name><![CDATA[newEntity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[new Client(original.type)]]></Code>
+								<Code><![CDATA[new Client(original.type, original.leader)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
