@@ -243,7 +243,7 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[DecimalFormat]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new DecimalFormat("#.0");]]></Code>
+							<Code><![CDATA[new DecimalFormat("0.0");]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -258,7 +258,7 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[DecimalFormat]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new DecimalFormat("#.00");]]></Code>
+							<Code><![CDATA[new DecimalFormat("0.00");]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1427,7 +1427,7 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 				<Connector>
 					<Id>1533726885182</Id>
 					<Name><![CDATA[connector11]]></Name>
-					<X>150</X><Y>580</Y>
+					<X>150</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1458,43 +1458,9 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1533726897304</Id>
-					<Name><![CDATA[connector10]]></Name>
-					<X>380</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[SelectOutput]]></ClassName>
-						<ItemName><![CDATA[outT]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>10</Y></Point>
-						<Point><X>-170</X><Y>10</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1533726897305</Id>
 					<Name><![CDATA[connector13]]></Name>
-					<X>190</X><Y>580</Y>
+					<X>190</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1554,7 +1520,40 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-80</Y></Point>
+						<Point><X>0</X><Y>-90</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1534773121481</Id>
+					<Name><![CDATA[connector10]]></Name>
+					<X>210</X><Y>570</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutput]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput]]></ClassName>
+						<ItemName><![CDATA[outT]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>170</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -1620,7 +1619,8 @@ else{
 	blockCreator.freeAll();
 	queueSize = 0;
 	blockCreator.capacity = blockSize.getIntValue();
-	rate = (remmeNodes.length * (Utils.stake + Utils.startLiquid + Utils.minPrice * blockSize.getIntValue() / Utils.tax - 3 * blockSize.getIntValue()))/ (25 * (1 - Utils.tax) * secondsInYear * paybackSlider.getValue());
+	//rate = remmeNodes.length * Utils.stake / (2 * Utils.minPrice * )
+	rate = (remmeNodes.length * (Utils.stake + Utils.minPrice * blockSize.getIntValue() / Utils.tax - 3 * blockSize.getIntValue()))/ (25 * (1 - Utils.tax) * secondsInYear * paybackSlider.getValue());
 }
 blockStat = new BlockStatistic(blockSize.getIntValue());
 source.rate = rate;
@@ -1715,209 +1715,6 @@ return remmeNodes;]]></Body>
 			</AgentLinks>
 
 			<EmbeddedObjects>
-				<EmbeddedObject>
-					<Id>1533292869915</Id>
-					<Name><![CDATA[source]]></Name>
-					<X>10</X><Y>570</Y>
-					<Label><X>35</X><Y>5</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Source]]></ClassName>
-					</ActiveObjectClass>
-					<GenericParameterSubstitute>
-						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-							<ClassName><![CDATA[Source]]></ClassName>
-							<ItemName><![CDATA[1412336242928]]></ItemName>
-						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Order]]></Code>
-						</GenericParameterSubstituteValue>
-					</GenericParameterSubstitute>
-					<Parameters>
-						<Parameter>
-							<Name><![CDATA[arrivalType]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rate]]></Name>
-							<Value Class="CodeUnitValue">
-								<Code><![CDATA[(remmeNodes.length * (Utils.stake + Utils.startLiquid + Utils.minPrice * Utils.initialBlockSize / Utils.tax - 3 * Utils.initialBlockSize))/ (25 * (1 - Utils.tax) * secondsInYear);]]></Code>
-								<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
-							</Value>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[interarrivalTime]]></Name>
-							<Value Class="CodeUnitValue">
-								<Code><![CDATA[5]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-							</Value>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rateSchedule]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modifyRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rateExpression]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[arrivalSchedule]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[setAgentParametersFromDB]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[databaseTable]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[arrivalDate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[multipleEntitiesPerArrival]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[entitiesPerArrival]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[limitArrivals]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxArrivals]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationType]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationX]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationY]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationZ]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationLatitude]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationLongitude]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationGeoPlaceName]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationXYZInNetwork]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationNetwork]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationNode]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[locationAttractor]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[speed]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[newEntity]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[getRandomCert();]]></Code>
-							</Value>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[changeDimensions]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[length]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[width]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[height]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[enableCustomStartTime]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[startTime]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[addToCustomPopulation]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[population]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[pushProtocol]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[discardHangingEntities]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[onBeforeArrival]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[//traceln(stream);]]></Code>
-							</Value>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[onAtExit]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[onExit]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[//traceln(agent);]]></Code>
-							</Value>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[onDiscard]]></Name>
-						</Parameter>
-					</Parameters>
-					<ReplicationFlag>false</ReplicationFlag>
-					<Replication Class="CodeValue">
-						<Code><![CDATA[100]]></Code>
-					</Replication>
-					<CollectionType>ARRAY_LIST_BASED</CollectionType>
-					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
-					<XCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</XCode>
-					<YCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</YCode>
-					<ZCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</ZCode>
-					<ColumnCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</ColumnCode>
-					<RowCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</RowCode>
-					<LatitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LatitudeCode>
-					<LongitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LongitudeCode>
-					<LocationNameCode Class="CodeValue">
-						<Code><![CDATA[""]]></Code>
-					</LocationNameCode>
-					<InitializationType>SPECIFIED_NUMBER</InitializationType>
-					<InitializationDatabaseTableQuery>
-						<TableReference>
-						</TableReference>
-					</InitializationDatabaseTableQuery>
-					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
-					<QuantityColumn>
-					</QuantityColumn>
-				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1533292869920</Id>
 					<Name><![CDATA[split]]></Name>
@@ -4730,7 +4527,10 @@ reputationChart.get(agent.executor).setValue(remmeNodes[agent.executor].getReput
 								<Code><![CDATA[remmeNodesNode.collectTax(agent);
 //chart.get(0).setValue(remmeNodesNode.getMoney());
 taxDataSet.add(time(SECOND), remmeNodesNode.getMoney());
-genesisNodeMoney = remmeNodesNode.getMoney();]]></Code>
+genesisNodeMoney = remmeNodesNode.getMoney();
+if(time(YEAR) >= 7.25){
+	//pauseSimulation();
+}]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -4777,7 +4577,7 @@ genesisNodeMoney = remmeNodesNode.getMoney();]]></Code>
 				<EmbeddedObject>
 					<Id>1533726883845</Id>
 					<Name><![CDATA[blockCreator]]></Name>
-					<X>150</X><Y>560</Y>
+					<X>150</X><Y>550</Y>
 					<Label><X>-70</X><Y>30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4909,7 +4709,7 @@ else{
 				<EmbeddedObject>
 					<Id>1533726895096</Id>
 					<Name><![CDATA[selectOutput]]></Name>
-					<X>180</X><Y>570</Y>
+					<X>180</X><Y>560</Y>
 					<Label><X>30</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5018,6 +4818,209 @@ else{
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[destroyEntity]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1534772142389</Id>
+					<Name><![CDATA[source]]></Name>
+					<X>10</X><Y>560</Y>
+					<Label><X>35</X><Y>5</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Source]]></ClassName>
+							<ItemName><![CDATA[1412336242928]]></ItemName>
+						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Order]]></Code>
+						</GenericParameterSubstituteValue>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[arrivalType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rate]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[(remmeNodes.length * (Utils.stake + Utils.minPrice * 100 / Utils.tax - 2 * 100))/ (25 * (1 - Utils.tax) * secondsInYear);]]></Code>
+								<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[interarrivalTime]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[5]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateSchedule]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[modifyRate]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateExpression]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalSchedule]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[setAgentParametersFromDB]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[databaseTable]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[arrivalDate]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[multipleEntitiesPerArrival]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entitiesPerArrival]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[limitArrivals]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maxArrivals]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationX]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationY]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationZ]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLatitude]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLongitude]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationGeoPlaceName]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationXYZInNetwork]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNetwork]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationAttractor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[speed]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[newEntity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[getRandomCert();]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[changeDimensions]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[length]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[width]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[height]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[enableCustomStartTime]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[startTime]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[addToCustomPopulation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[population]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[discardHangingEntities]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onBeforeArrival]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[//traceln(stream);]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[//traceln(agent);]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onDiscard]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -5269,7 +5272,7 @@ else{
 				<Text>
 					<Id>1533292869896</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>-10</X><Y>0</Y>
+					<X>-5</X><Y>-8</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5290,7 +5293,7 @@ else{
 				<Text>
 					<Id>1533292869898</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>-10</X><Y>20</Y>
+					<X>-5</X><Y>12</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5311,7 +5314,7 @@ else{
 				<Text>
 					<Id>1533293780020</Id>
 					<Name><![CDATA[avgTotalNoUnfreeze]]></Name>
-					<X>-15</X><Y>-2</Y>
+					<X>-10</X><Y>-10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5333,7 +5336,7 @@ else{
 				<Text>
 					<Id>1533293780022</Id>
 					<Name><![CDATA[avgTotalMaxUnfreeze]]></Name>
-					<X>-15</X><Y>18</Y>
+					<X>-10</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5358,7 +5361,7 @@ else{
 				<Text>
 					<Id>1533580372663</Id>
 					<Name><![CDATA[avgPossibleUnfreezeNoUnfreeze]]></Name>
-					<X>140</X><Y>240</Y>
+					<X>140</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5372,7 +5375,7 @@ else{
 					<TextCode><![CDATA[Utils.round((int)noUnfreezeStrategy.getAvgPossibleUnfreeze(), 3)]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>28</Size>
+						<Size>26</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>CENTER</Alignment>
@@ -5380,7 +5383,7 @@ else{
 				<Text>
 					<Id>1533583283082</Id>
 					<Name><![CDATA[avgLiquidNoUnfreeze1]]></Name>
-					<X>140</X><Y>220</Y>
+					<X>140</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5393,7 +5396,7 @@ else{
 					<Text><![CDATA[CAN BE UNFROZED:]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>10</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>CENTER</Alignment>
@@ -5470,7 +5473,7 @@ updateSourceRate();]]></ActionCode>
 				<Group>
 					<Id>1533670062666</Id>
 					<Name><![CDATA[group]]></Name>
-					<X>720</X><Y>470</Y>
+					<X>700</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5675,7 +5678,7 @@ updateSourceRate();]]></ActionCode>
 				<Group>
 					<Id>1534418211750</Id>
 					<Name><![CDATA[Reputation]]></Name>
-					<X>770</X><Y>160</Y>
+					<X>765</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5689,7 +5692,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418211752</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>-150</X><Y>-90</Y>
+					<X>-110</X><Y>-90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5710,7 +5713,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534418211754</Id>
 					<Name><![CDATA[image3]]></Name>
-					<X>15</X><Y>-70</Y>
+					<X>45</X><Y>-70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5719,7 +5722,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>1</Width>
-					<Height>200</Height>
+					<Height>170</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[black.jpg]]></ImageFile>
@@ -5729,7 +5732,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418211766</Id>
 					<Name><![CDATA[text25]]></Name>
-					<X>-70</X><Y>-65</Y>
+					<X>-50</X><Y>-70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5752,7 +5755,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418211768</Id>
 					<Name><![CDATA[text24]]></Name>
-					<X>100</X><Y>-65</Y>
+					<X>160</X><Y>-70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5774,7 +5777,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418211770</Id>
 					<Name><![CDATA[text27]]></Name>
-					<X>100</X><Y>20</Y>
+					<X>130</X><Y>-20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5796,7 +5799,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418211772</Id>
 					<Name><![CDATA[text26]]></Name>
-					<X>-70</X><Y>20</Y>
+					<X>-40</X><Y>-20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5820,7 +5823,7 @@ updateSourceRate();]]></ActionCode>
     			<BarChart>
 					<Id>1534418211775</Id>
 					<Name><![CDATA[reputationChart]]></Name>
-					<X>-190</X><Y>-80</Y>
+					<X>-160</X><Y>-80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5838,14 +5841,14 @@ updateSourceRate();]]></ActionCode>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>390</Width>
-					<Height>220</Height>
+					<Height>190</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>40</XOffset>
 						<YOffset>10</YOffset>
 						<Width>330</Width>
-						<Height>200</Height>
+						<Height>170</Height>
 						<BackgroundColor/>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -6819,7 +6822,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>1</Width>
-					<Height>200</Height>
+					<Height>170</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[black.jpg]]></ImageFile>
@@ -6829,7 +6832,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418243535</Id>
 					<Name><![CDATA[avgFrozenNoUnfreeze]]></Name>
-					<X>-70</X><Y>10</Y>
+					<X>-70</X><Y>-30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6851,7 +6854,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418243537</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>-140</X><Y>-70</Y>
+					<X>-140</X><Y>-80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6872,7 +6875,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418243539</Id>
 					<Name><![CDATA[avgFrozenMaxUnfreeze]]></Name>
-					<X>110</X><Y>10</Y>
+					<X>110</X><Y>-30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6894,7 +6897,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534418243541</Id>
 					<Name><![CDATA[text13]]></Name>
-					<X>160</X><Y>-70</Y>
+					<X>160</X><Y>-80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6935,14 +6938,14 @@ updateSourceRate();]]></ActionCode>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>390</Width>
-					<Height>220</Height>
+					<Height>190</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>40</XOffset>
 						<YOffset>10</YOffset>
 						<Width>330</Width>
-						<Height>200</Height>
+						<Height>170</Height>
 						<BackgroundColor/>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -7907,7 +7910,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776042</Id>
 					<Name><![CDATA[avgLiquidNoUnfreeze]]></Name>
-					<X>-60</X><Y>10</Y>
+					<X>-60</X><Y>-20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7971,7 +7974,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776048</Id>
 					<Name><![CDATA[avgLiquidMaxUnfreeze]]></Name>
-					<X>100</X><Y>10</Y>
+					<X>100</X><Y>-20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8002,28 +8005,13 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>1</Width>
-					<Height>200</Height>
+					<Height>170</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[black.jpg]]></ImageFile>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
-				<Group>
-					<Id>1534424776052</Id>
-					<Name><![CDATA[honesty1]]></Name>
-					<X>-85</X><Y>130</Y>
-					<Label><X>5.171</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-
-
-				</Group>
 			</Shapes>
 			<Charts>
     			<BarChart>
@@ -8047,14 +8035,14 @@ updateSourceRate();]]></ActionCode>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>390</Width>
-					<Height>220</Height>
+					<Height>190</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>40</XOffset>
 						<YOffset>10</YOffset>
 						<Width>330</Width>
-						<Height>200</Height>
+						<Height>170</Height>
 						<BackgroundColor/>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -8984,7 +8972,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534496112894</Id>
 					<Name><![CDATA[image6]]></Name>
-					<X>381</X><Y>310</Y>
+					<X>380</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9003,7 +8991,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534496481871</Id>
 					<Name><![CDATA[text34]]></Name>
-					<X>270</X><Y>290</Y>
+					<X>270</X><Y>259</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9024,7 +9012,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534496508700</Id>
 					<Name><![CDATA[text35]]></Name>
-					<X>340</X><Y>290</Y>
+					<X>340</X><Y>259</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9046,7 +9034,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534424776054</Id>
 					<Name><![CDATA[image4]]></Name>
-					<X>50</X><Y>291</Y>
+					<X>50</X><Y>261</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9065,7 +9053,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776056</Id>
 					<Name><![CDATA[text18]]></Name>
-					<X>104.658</X><Y>290</Y>
+					<X>120</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9086,7 +9074,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776058</Id>
 					<Name><![CDATA[text19]]></Name>
-					<X>52.94800000000001</X><Y>290</Y>
+					<X>52.948</X><Y>259</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9108,7 +9096,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534424776060</Id>
 					<Name><![CDATA[text20]]></Name>
-					<X>202.263</X><Y>290</Y>
+					<X>200</X><Y>259</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9129,7 +9117,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498518805</Id>
 					<Name><![CDATA[image5]]></Name>
-					<X>50</X><Y>531</Y>
+					<X>50</X><Y>501</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9148,7 +9136,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498527265</Id>
 					<Name><![CDATA[image7]]></Name>
-					<X>381</X><Y>550</Y>
+					<X>380</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9167,7 +9155,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534498627503</Id>
 					<Name><![CDATA[text22]]></Name>
-					<X>55</X><Y>530</Y>
+					<X>50</X><Y>500</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9189,7 +9177,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534498659424</Id>
 					<Name><![CDATA[text23]]></Name>
-					<X>110</X><Y>530</Y>
+					<X>110</X><Y>500</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9210,7 +9198,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534498679380</Id>
 					<Name><![CDATA[text36]]></Name>
-					<X>200</X><Y>530</Y>
+					<X>200</X><Y>500</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9231,7 +9219,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534498701469</Id>
 					<Name><![CDATA[text38]]></Name>
-					<X>270</X><Y>530</Y>
+					<X>270</X><Y>500</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9252,7 +9240,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534498716455</Id>
 					<Name><![CDATA[text39]]></Name>
-					<X>340</X><Y>530</Y>
+					<X>340</X><Y>500</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9274,7 +9262,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498942517</Id>
 					<Name><![CDATA[image8]]></Name>
-					<X>620</X><Y>290</Y>
+					<X>640</X><Y>261</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9293,7 +9281,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498965685</Id>
 					<Name><![CDATA[image9]]></Name>
-					<X>951</X><Y>309</Y>
+					<X>970</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9312,7 +9300,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499079460</Id>
 					<Name><![CDATA[text40]]></Name>
-					<X>630</X><Y>290</Y>
+					<X>645</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9334,7 +9322,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499100467</Id>
 					<Name><![CDATA[text41]]></Name>
-					<X>680</X><Y>290</Y>
+					<X>695</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9355,7 +9343,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499116392</Id>
 					<Name><![CDATA[text42]]></Name>
-					<X>775</X><Y>290</Y>
+					<X>795</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9376,7 +9364,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499182548</Id>
 					<Name><![CDATA[text44]]></Name>
-					<X>850</X><Y>290</Y>
+					<X>850</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9397,7 +9385,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499193927</Id>
 					<Name><![CDATA[text45]]></Name>
-					<X>910</X><Y>290</Y>
+					<X>920</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9413,6 +9401,92 @@ updateSourceRate();]]></ActionCode>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
 						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762286389</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>50</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Bankrupts:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762359436</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>130</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[0]]></Text>
+					<TextCode><![CDATA[algorand.getDiedNodesQuantity()]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762936133</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>50</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Don't work:]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534762936137</Id>
+					<Name><![CDATA[text21]]></Name>
+					<X>140</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[0]]></Text>
+					<TextCode><![CDATA[algorand.getUnemployedNodesQuantity()]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -11020,7 +11094,7 @@ public class RemmeNode implements Serializable {
 
     private Wait waitNode;
     private double realMoney;
-    private double unpossibleUnfreeze;
+    private double impossibleUnfreeze;
     private double possibleUnfreeze;
     private double reputation;
     private boolean ready;
@@ -11037,9 +11111,9 @@ public class RemmeNode implements Serializable {
         return orders;
     }
 
-    public RemmeNode(double realMoney, double unpossibleUnfreeze, double possibleUnfreeze, Wait waitNode, int nodeNumber, int nodeBlocksQuantity, double honesty, Strategy strategy, Main main) {
+    public RemmeNode(double realMoney, double impossibleUnfreeze, double possibleUnfreeze, Wait waitNode, int nodeNumber, int nodeBlocksQuantity, double honesty, Strategy strategy, Main main) {
         this.realMoney = realMoney;
-        this.unpossibleUnfreeze = unpossibleUnfreeze;
+        this.impossibleUnfreeze = impossibleUnfreeze;
         this.possibleUnfreeze = possibleUnfreeze;
         this.waitNode = waitNode;
         this.nodeNumber = nodeNumber;
@@ -11066,9 +11140,9 @@ public class RemmeNode implements Serializable {
     public void setHonesty(double honesty) {
         this.honesty = honesty;
     }
-    
-    public double getUnpossibleUnfreeze() {
-    	return unpossibleUnfreeze;
+
+    public double getImpossibleUnfreeze() {
+        return impossibleUnfreeze;
     }
 
     public double getRealMoney() {
@@ -11076,7 +11150,7 @@ public class RemmeNode implements Serializable {
     }
 
     public double getFrozenMoney() {
-        return possibleUnfreeze + unpossibleUnfreeze;
+        return possibleUnfreeze + impossibleUnfreeze;
     }
 
     public double getReputation() {
@@ -11084,39 +11158,52 @@ public class RemmeNode implements Serializable {
     }
 
     public void addMoney(double money){
-    	double lastHasRightToUnfreeze = hasRightToUnfreeze();
-        realMoney += money * reputation;
-        unpossibleUnfreeze += money *(1 - Utils.tax - reputation);
-        double lastRep = reputation;
+        addLiquid(money * reputation);
+        //double lastHasRightToUnfreeze = hasRightToUnfreeze();
+        addImpossibleUnfreeze(money *(1 - Utils.tax - reputation));
         updateReputation();
-        strategy.addDiff(money * lastRep,  money *(1 - Utils.tax - lastRep), hasRightToUnfreeze() - lastHasRightToUnfreeze, reputation - lastRep, nodeNumber);
     }
 
+    private void addLiquid(double sum){
+        realMoney += sum;
+        strategy.setLiquid(realMoney, nodeNumber);
+    }
+
+    private void addImpossibleUnfreeze(double sum){
+        impossibleUnfreeze += sum;
+        strategy.setFrozen(getFrozenMoney(), nodeNumber);
+        strategy.setPossibleUnfreeze(hasRightToUnfreeze(), nodeNumber);
+    }
+    
+    private void addPossibleUnfreeze(double sum){
+        possibleUnfreeze += sum;
+        strategy.setFrozen(getFrozenMoney(), nodeNumber);
+        strategy.setPossibleUnfreeze(hasRightToUnfreeze(), nodeNumber);
+    }
+    
     private void updateReputation(){
         double n = 5.5; //REMME
         reputation = Math.min(1 - Utils.tax, ((1 - Utils.tax - initialLiquid) * (getFrozenMoney() - Utils.stake) / ((n - 1) * Utils.stake) + initialLiquid));
+        strategy.setReputation(reputation, nodeNumber);
         //reputation = initialLiquid + (1 - Utils.tax - initialLiquid) * (1 - Math.exp(-k * (frozenMoney - initialStake))) * fineCoefficient;
     }
 
     public void toFine(double fine){
-        if(unpossibleUnfreeze < fine){
-            double notEnough = fine - unpossibleUnfreeze;
-            double lastHasRightToUnfreeeze = hasRightToUnfreeze();
-            unpossibleUnfreeze += notEnough;
-            possibleUnfreeze -= notEnough;
-            strategy.addPossibleUnfreeze(hasRightToUnfreeze() - lastHasRightToUnfreeeze, nodeNumber);
+        if(impossibleUnfreeze < fine){
+            double notEnough = fine - impossibleUnfreeze;
+            addImpossibleUnfreeze(notEnough);
+            addPossibleUnfreeze(-notEnough);
         }
-        double lastHasRightToUnfreeeze = hasRightToUnfreeze();
-        unpossibleUnfreeze -= fine;
-        strategy.addPossibleUnfreeze(hasRightToUnfreeze() - lastHasRightToUnfreeeze, nodeNumber);
-        double lastRep = reputation;
+        addImpossibleUnfreeze(-fine);
         updateReputation();
-        strategy.addFrozen(-fine, nodeNumber);
-        strategy.addReputation(reputation - lastRep, nodeNumber);
     }
 
     public boolean getReady() {
         return this.ready;
+    }
+
+    public int getNodeNumber() {
+        return nodeNumber;
     }
 
     public void setReady(boolean ready) {
@@ -11195,14 +11282,11 @@ public class RemmeNode implements Serializable {
     }*/
 
     public void transferToLiquid(double sum) {
-
-    	double lastHasRightToUnfreeze = hasRightToUnfreeze();
-        sum = Math.min(sum, lastHasRightToUnfreeze);
-        possibleUnfreeze -= sum;
-        realMoney += sum;
-        double lastRep = reputation;
+        double hasRightToUnfreeze = hasRightToUnfreeze();
+        sum = Math.min(sum, hasRightToUnfreeze);
+        addPossibleUnfreeze(-sum);
+        addLiquid(sum);
         updateReputation();
-        strategy.addDiff(sum, -sum, hasRightToUnfreeze() - lastHasRightToUnfreeze, reputation - lastRep, nodeNumber);
     }
 
     public void checkPossibleUnfreeze(double time){
@@ -11218,26 +11302,23 @@ public class RemmeNode implements Serializable {
                 it.remove();
             }
         }
-        sumToUnfreeze = Math.min(sumToUnfreeze, unpossibleUnfreeze);
-        unpossibleUnfreeze -= sumToUnfreeze;
-        possibleUnfreeze += sumToUnfreeze;
-        strategy.addPossibleUnfreeze(hasRightToUnfreeze() - lastHasRightToUnfreeze, nodeNumber);
+        sumToUnfreeze = Math.min(sumToUnfreeze, impossibleUnfreeze);
+        addImpossibleUnfreeze(-sumToUnfreeze);
+        addPossibleUnfreeze(sumToUnfreeze);
     }
 
-    public double getMaxLiquidMoney() {
+    /*public double getMaxLiquidMoney() {
         return realMoney + possibleUnfreeze;
+    }*/
+
+    public boolean hasMoneyForMandatoryBet(double value) {
+        return getFrozenMoney() + realMoney >= value;
     }
-    
-    public boolean hasMoneyForMandatoryBet(Bet bet) {
-    	return getFrozenMoney() + realMoney >= bet.getValue();
-    }
-    
-    public void exactMandatoryBet(Bet bet) {
-    	double fine = Math.max(bet.getValue() - realMoney, 0);
-    	realMoney -= (bet.getValue() - fine);
-    	strategy.addLiquid(bet.getValue() - fine, nodeNumber);
-    	toFine(fine);
-    	
+
+    public void exactMandatoryBet(double value) {
+        double fine = Math.max(value - realMoney, 0);
+        addLiquid(-(value - fine));
+        toFine(fine);
     }
 
     public boolean hasMoneyForBet(Bet bet) {
@@ -11247,7 +11328,7 @@ public class RemmeNode implements Serializable {
         else {
             double needToTransfer = Math.max(bet.getValue() - realMoney, 0);
             if(needToTransfer != 0) {
-            	checkPossibleUnfreeze(main.time(SECOND));
+                checkPossibleUnfreeze(main.time(SECOND));
             }
             //traceln(realMoney + transfered >= bet.getValue() && frozenMoney - transfered >= bet.getValue());
             return getFrozenMoney() - needToTransfer >= bet.getValue() && hasRightToUnfreeze() >= needToTransfer;
@@ -11259,13 +11340,13 @@ public class RemmeNode implements Serializable {
         if(realMoney < bet.getValue()) {
             transferToLiquid(diff);
         }
-        realMoney -= bet.getValue();
-        strategy.addLiquid(-bet.getValue(), nodeNumber);
+        addLiquid(-bet.getValue());
+        //strategy.addLiquid(-bet.getValue(), nodeNumber);
     }
-    
+
     public double hasRightToUnfreeze() {
-    	double stakePossibleUnfreeze = Math.max(getFrozenMoney() - Utils.stake, 0);
-    	return Math.min(possibleUnfreeze, stakePossibleUnfreeze);
+        double stakePossibleUnfreeze = Math.max(getFrozenMoney() - Utils.stake, 0);
+        return Math.min(possibleUnfreeze, stakePossibleUnfreeze);
     }
 
     @Override
@@ -11303,15 +11384,17 @@ public class Algorand {
     private int participians = 0;
     private Random random;
     private double[] harringtonFunctionCoefficients;
-    private Bet mandatoryBet;
+    private double mandatoryBet;
     private Set<Integer> diedNodes;
+    private Set<Integer> unemployedNodes;
     public Algorand(RemmeNode[] remmeNodes){
         candidates = new ArrayList<>();
         this.remmeNodes = remmeNodes;
         random = new Random();
         calculateHarringtonFunctionCoefficients();
-        mandatoryBet = new Bet(-1, null, 1);
+        mandatoryBet = 1;
         diedNodes = new HashSet<>();
+        unemployedNodes = new HashSet<>();
     }
 
     public void addCandidate(Bet bet){
@@ -11319,14 +11402,17 @@ public class Algorand {
         //traceln("addC " + node);
     	if(remmeNodes[bet.getNode()].hasMoneyForMandatoryBet(mandatoryBet)) {
     		remmeNodes[bet.getNode()].exactMandatoryBet(mandatoryBet);
-    		jacpot += mandatoryBet.getValue();
+    		jacpot += mandatoryBet;
             if(remmeNodes[bet.getNode()].hasMoneyForBet(bet)) {
                 candidates.add(bet);
             }
+            else {
+            	unemployedNodes.add(bet.getNode());
+            }
     	}
-    	else if(!diedNodes.contains(bet.getNode())){
+    	else {
+    		unemployedNodes.add(bet.getNode());
     		diedNodes.add(bet.getNode());
-    		traceln(bet.getNode() + " died");
     	}
         participians++;
         remmeNodes[bet.getNode()].setReady(false);
@@ -11371,7 +11457,7 @@ public class Algorand {
         double[] hashes = new double[candidates.size()];
         for(int i = 0; i < hashes.length; i++){
             Bet curBet = candidates.get(i);
-            hashes[i] = random.nextDouble() / ( remmeNodes[curBet.getNode()].getFrozenMoney() * (curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney()));
+            hashes[i] = random.nextDouble() / ((curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney()));
         }
         int winner = 0;
         for(int i = 1; i < hashes.length; i++){
@@ -11393,6 +11479,14 @@ public class Algorand {
         double delta = 0.0001;
         harringtonFunctionCoefficients[1] = Math.log(Math.log(1/(1-delta))) / (1 - Utils.normalHonesty);
         harringtonFunctionCoefficients[0] = -harringtonFunctionCoefficients[1] * Utils.normalHonesty;
+    }
+    
+    public int getDiedNodesQuantity() {
+    	return diedNodes.size();
+    }
+    
+    public int getUnemployedNodesQuantity() {
+    	return unemployedNodes.size();
     }
 
     private double harringtonFunction(double x){
@@ -11439,7 +11533,7 @@ public class Utils {
 
     public static final int stake = 250000;
     public static final int startLiquid = 250000;
-    public static final double minHonesty = 0;
+    public static final double minHonesty = 0.9;
     public static final double normalHonesty = minHonesty;
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
@@ -11649,15 +11743,33 @@ public class ExecutedOrder implements Serializable {
 			<Text><![CDATA[/**
  * Strategy
  */
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+
 public class Strategy implements Serializable {
+
+    private class RemmeNodeStatistic{
+        private double liquid;
+        private double frozen;
+        private double possibleUnfreeze;
+        private double reputation;
+        private RemmeNodeStatistic(double liquid, double frozen, double possibleUnfreeze, double reputation){
+            this.liquid = liquid;
+            this.frozen = frozen;
+            this.possibleUnfreeze = possibleUnfreeze;
+            this.reputation = reputation;
+        }
+    }
     private static double epsillon = 0.01;
     private double avgLiquid;
     private double avgPossibleUnfreeze;
     private double avgFrozen;
     private double avgReputation;
-    private int nodesQ;
+    //private int nodesQ;
+    private Map<Integer, RemmeNodeStatistic> remmeNodesStatistic;
     //private int lastAvgTotal;
     //private int lastAvgLiquid;
     //private int lastAvgFrozen;
@@ -11669,7 +11781,8 @@ public class Strategy implements Serializable {
         avgPossibleUnfreeze = 0;
         avgFrozen = 0;
         avgReputation = 0;
-        nodesQ = 0;
+        //nodesQ = 0;
+        remmeNodesStatistic = new HashMap<>();
         //lastAvgTotal = 0;
         //lastAvgLiquid = 0;
         //lastAvgFrozen = 0;
@@ -11679,30 +11792,43 @@ public class Strategy implements Serializable {
     }
 
     public void addNode(RemmeNode node) {
+        double nodesQ = remmeNodesStatistic.size();
+        remmeNodesStatistic.put(node.getNodeNumber(), new RemmeNodeStatistic(node.getRealMoney(), node.getFrozenMoney(), node.hasRightToUnfreeze(), node.getReputation()));
         avgLiquid = (avgLiquid * nodesQ + node.getRealMoney()) / (nodesQ + 1);
         avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney()) / (nodesQ + 1);
-        avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + node.getPossibleUnfreeze()) / (nodesQ + 1);
+        avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + node.hasRightToUnfreeze()) / (nodesQ + 1);
         avgReputation = (avgReputation * nodesQ + node.getReputation()) / (nodesQ + 1);
         //updateTexts();
-        nodesQ++;
     }
 
-    public void addLiquid(double sum, int nodeNum) {
-        avgLiquid = (avgLiquid * nodesQ + sum) / nodesQ;
+    public void setLiquid(double sum, int nodeNum) {
+        RemmeNodeStatistic remmeNodeStatistic = remmeNodesStatistic.get(nodeNum);
+        double diff = sum - remmeNodeStatistic.liquid;
+        remmeNodeStatistic.liquid = sum;
+        avgLiquid = avgLiquid + diff / remmeNodesStatistic.size();
         //updateTexts();
     }
 
-    public void addFrozen(double sum, int nodeNum) {
-        avgFrozen = (avgFrozen * nodesQ + sum) / nodesQ;
+    public void setFrozen(double sum, int nodeNum) {
+        RemmeNodeStatistic remmeNodeStatistic = remmeNodesStatistic.get(nodeNum);
+        double diff = sum - remmeNodeStatistic.frozen;
+        remmeNodeStatistic.frozen = sum;
+        avgFrozen = avgFrozen + diff / remmeNodesStatistic.size();
         //updateTexts();
     }
 
-    public void addReputation(double sum, int nodeNum) {
-        avgReputation = (avgReputation * nodesQ + sum) / nodesQ;
+    public void setReputation(double sum, int nodeNum) {
+        RemmeNodeStatistic remmeNodeStatistic = remmeNodesStatistic.get(nodeNum);
+        double diff = sum - remmeNodeStatistic.reputation;
+        remmeNodeStatistic.reputation = sum;
+        avgReputation = avgReputation + diff / remmeNodesStatistic.size();
     }
 
-    public void addPossibleUnfreeze(double sum, int nodeNum){
-        avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + sum) / nodesQ;
+    public void setPossibleUnfreeze(double sum, int nodeNum){
+        RemmeNodeStatistic remmeNodeStatistic = remmeNodesStatistic.get(nodeNum);
+        double diff = sum - remmeNodeStatistic.possibleUnfreeze;
+        remmeNodeStatistic.possibleUnfreeze = sum;
+        avgPossibleUnfreeze = avgPossibleUnfreeze + diff / remmeNodesStatistic.size();
     }
 
     public double getAvgPossibleUnfreeze() {
@@ -11725,11 +11851,11 @@ public class Strategy implements Serializable {
         return avgReputation;
     }
 
-    public void addDiff(double deltaLiquid, double deltaFrozen, double deltaPossibleUnfreeze, double deltaReputation, int nodeNum) {
-        addLiquid(deltaLiquid, nodeNum);
-        addPossibleUnfreeze(deltaPossibleUnfreeze, nodeNum);
-        addFrozen(deltaFrozen, nodeNum);
-        addReputation(deltaReputation, nodeNum);
+    public void setValues(double liquid, double frozen, double possibleUnfreeze, double reputation, int nodeNum) {
+        setLiquid(liquid, nodeNum);
+        setPossibleUnfreeze(possibleUnfreeze, nodeNum);
+        setFrozen(frozen, nodeNum);
+        setReputation(reputation, nodeNum);
     }
 
     /*public void updateTexts() {
