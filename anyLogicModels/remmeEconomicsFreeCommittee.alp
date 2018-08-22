@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsFreeCommittee]]></Name>
@@ -348,7 +348,22 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Algorand]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new Algorand(remmeNodes);]]></Code>
+							<Code><![CDATA[new Algorand(remmeNodes, committeeFactory);]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1534927729715</Id>
+					<Name><![CDATA[committeeFactory]]></Name>
+					<X>390</X><Y>-430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[CommitteeFactory]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new CommitteeFactory(remmeNodes, Utils.committeeSize, Utils.rotation)]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -9490,7 +9505,115 @@ updateSourceRate();]]></ActionCode>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Text>
+					<Id>1534929310496</Id>
+					<Name><![CDATA[text29]]></Name>
+					<X>790</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Committee size]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1534929376375</Id>
+					<Name><![CDATA[text37]]></Name>
+					<X>840</X><Y>310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Rotation]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
+			<Controls>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534929417612</Id>
+					<Name><![CDATA[committeeSize]]></Name>
+					<X>900</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="12" Style="0"/>
+						<DefaultValueCode><![CDATA[Integer.toString(committeeFactory.getCommitteeSize())]]></DefaultValueCode>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534929426226</Id>
+					<Name><![CDATA[rotation]]></Name>
+					<X>900</X><Y>310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="12" Style="0"/>
+						<DefaultValueCode><![CDATA[Integer.toString(committeeFactory.getRotation())]]></DefaultValueCode>
+						<LinkTo>false</LinkTo>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1534929855418</Id>
+					<Name><![CDATA[committeConfirm]]></Name>
+					<X>940</X><Y>295</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="30" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[committeeFactory.rewriteCommittee(committeeSize.getIntValue(), rotation.getIntValue());
+committeeSize.setText(Integer.toString(committeeFactory.getCommitteeSize()));
+rotation.setText(Integer.toString(committeeFactory.getRotation()));]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[OK]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+			</Controls>
 			<Areas>
 				<Area>
 					<Id>1533292869911</Id>
@@ -11380,6 +11503,7 @@ public class Algorand {
     //private static int nodesForRun = 150;
     // private static final double standartFine = 0.15;
     private RemmeNode[] remmeNodes;
+    private CommitteeFactory committeeFactory;
     private List<Bet> candidates;
     private int participians = 0;
     private Random random;
@@ -11387,9 +11511,12 @@ public class Algorand {
     private double mandatoryBet;
     private Set<Integer> diedNodes;
     private Set<Integer> unemployedNodes;
-    public Algorand(RemmeNode[] remmeNodes){
+    private List<RemmeNode> committee;
+    public Algorand(RemmeNode[] remmeNodes, CommitteeFactory committeeFactory){
         candidates = new ArrayList<>();
         this.remmeNodes = remmeNodes;
+        this.committeeFactory = committeeFactory;
+        this.committee = committeeFactory.getCommittee();
         random = new Random();
         calculateHarringtonFunctionCoefficients();
         mandatoryBet = 1;
@@ -11398,25 +11525,27 @@ public class Algorand {
     }
 
     public void addCandidate(Bet bet){
-    	double jacpot = 0;
+        double jacpot = 0;
         //traceln("addC " + node);
-    	if(remmeNodes[bet.getNode()].hasMoneyForMandatoryBet(mandatoryBet)) {
-    		remmeNodes[bet.getNode()].exactMandatoryBet(mandatoryBet);
-    		jacpot += mandatoryBet;
-            if(remmeNodes[bet.getNode()].hasMoneyForBet(bet)) {
-                candidates.add(bet);
+        if(committee.contains(remmeNodes[bet.getNode()])) {
+            if (remmeNodes[bet.getNode()].hasMoneyForMandatoryBet(mandatoryBet)) {
+                remmeNodes[bet.getNode()].exactMandatoryBet(mandatoryBet);
+                jacpot += mandatoryBet;
+                if (remmeNodes[bet.getNode()].hasMoneyForBet(bet)) {
+                    if (remmeNodes[bet.getNode()].getHonesty() >= Math.random()) {
+                        candidates.add(bet);
+                    }
+                } else {
+                    unemployedNodes.add(bet.getNode());
+                }
+            } else {
+                unemployedNodes.add(bet.getNode());
+                diedNodes.add(bet.getNode());
             }
-            else {
-            	unemployedNodes.add(bet.getNode());
-            }
-    	}
-    	else {
-    		unemployedNodes.add(bet.getNode());
-    		diedNodes.add(bet.getNode());
-    	}
+        }
         participians++;
         remmeNodes[bet.getNode()].setReady(false);
-        if(participians == remmeNodes.length){
+        if (participians == remmeNodes.length) {
             runAlgorand(jacpot);
         }
     }
@@ -11472,6 +11601,8 @@ public class Algorand {
     private void getReadyForNewRound() {
         candidates.clear();
         participians = 0;
+        committeeFactory.updateCommittee();
+        committee = committeeFactory.getCommittee();
     }
 
     private void calculateHarringtonFunctionCoefficients(){
@@ -11480,21 +11611,20 @@ public class Algorand {
         harringtonFunctionCoefficients[1] = Math.log(Math.log(1/(1-delta))) / (1 - Utils.normalHonesty);
         harringtonFunctionCoefficients[0] = -harringtonFunctionCoefficients[1] * Utils.normalHonesty;
     }
-    
+
     public int getDiedNodesQuantity() {
-    	return diedNodes.size();
+        return diedNodes.size();
     }
-    
+
     public int getUnemployedNodesQuantity() {
-    	return unemployedNodes.size();
+        return unemployedNodes.size();
     }
 
     private double harringtonFunction(double x){
         return Math.exp(-Math.exp((harringtonFunctionCoefficients[0] + harringtonFunctionCoefficients[1] * x)));
     }
     private static final long serialVersionUID = 2L;
-}
-]]></Text>
+}]]></Text>
 		</JavaClass>
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>
@@ -11538,6 +11668,8 @@ public class Utils {
     public static final double tax = 0.1;
     public static final double minPrice = 12.5;
     public static final int initialBlockSize = 100;
+    public static final int committeeSize = 10;
+    public static final int rotation = 2;
 
     public enum TimePeriod{
         SECOND(1){
@@ -11883,14 +12015,6 @@ public class Strategy implements Serializable {
 		</JavaClass>
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>
-			<Id>1533579734128</Id>
-			<Name><![CDATA[TimeWrapper]]></Name>
-			<Text><![CDATA[public interface TimeWrapper {
-    double getTime();
-}]]></Text>
-		</JavaClass>
-		<!--   =========   Java Class   ========  -->
-		<JavaClass>
 			<Id>1533757419152</Id>
 			<Name><![CDATA[BlockStatistic]]></Name>
 			<Text><![CDATA[import java.util.Iterator;
@@ -11968,44 +12092,72 @@ public class BlockStatistic {
 		<JavaClass>
 			<Id>1534883932230</Id>
 			<Name><![CDATA[CommitteeFactory]]></Name>
-			<Text><![CDATA[import java.util.Arrays;
-import java.util.List;
+			<Text><![CDATA[import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CommitteeFactory {
+    private RemmeNode[] remmeNodes;
     private int committeeSize;
     private int rotation;
     private List<RemmeNode> lastCommittee;
     private List<RemmeNode> queue;
+    private boolean rewrittenCommittee;
     public CommitteeFactory(RemmeNode[] remmeNodes, int committeeSize, int rotation) {
-        this.queue = Arrays.asList(remmeNodes);
-        this.committeeSize = committeeSize;
-        this.rotation = rotation;
+        this.remmeNodes = remmeNodes;
+        rewriteCommittee(committeeSize, rotation);
     }
+
     public List<RemmeNode> getCommittee(){
-        if(lastCommittee == null){
-        	queue.sort(this::compareByFrozen);
-            lastCommittee = queue.stream().limit(committeeSize).collect(Collectors.toList());
-            queue = queue.stream().skip(committeeSize).collect(Collectors.toList());
+        rewrittenCommittee = false;
+        return lastCommittee;
+    }
+
+    public void updateCommittee(){
+        if(rewrittenCommittee){
+            rewrittenCommittee = false;
         }
         else{
             lastCommittee.sort(this::compareByFrozen);
             queue.sort(this::compareByFrozen);
-            List<RemmeNode> newCommittee = Stream.concat(lastCommittee.stream().limit(committeeSize - rotation), queue.stream().limit(rotation)).collect(Collectors.toList());
-            List<RemmeNode> newQueue = Stream.concat(lastCommittee.stream().skip(committeeSize - rotation), queue.stream().skip(rotation)).collect(Collectors.toList());
+            Random random = new Random();
+            //random.ints(rotation, committeeSize - rotation, queue.size())
+            List<RemmeNode> newQueue = Stream.concat(lastCommittee.stream().skip(committeeSize - rotation), queue.stream()).collect(Collectors.toList());
+            //List<RemmeNode> newCommittee = Stream.concat(lastCommittee.stream().limit(committeeSize - rotation), queue.stream().limit(rotation)).collect(Collectors.toList());
+            List<RemmeNode> newCommittee = new ArrayList<>(committeeSize);
+            Collections.shuffle(newQueue);
+            newCommittee.addAll(lastCommittee.subList(0, committeeSize - rotation));
+            for(int i = 0; i < rotation; i++){
+                newCommittee.add(newQueue.get(i));
+            }
             lastCommittee = newCommittee;
-            queue = newQueue;
+            queue = newQueue.subList(rotation, newQueue.size());
         }
-        return lastCommittee;
+    }
+
+    public void rewriteCommittee(int committeeSize, int rotation){
+        this.queue = Arrays.asList(remmeNodes);
+        this.committeeSize = committeeSize;
+        this.rotation = Math.min(rotation, committeeSize);
+        queue.sort(this::compareByFrozen);
+        lastCommittee = queue.stream().limit(committeeSize).collect(Collectors.toList());
+        queue = queue.stream().skip(committeeSize).collect(Collectors.toList());
+        rewrittenCommittee = true;
+    }
+
+    public int getCommitteeSize() {
+        return committeeSize;
+    }
+
+    public int getRotation() {
+        return rotation;
     }
 
     private int compareByFrozen(RemmeNode a, RemmeNode b){
         return (int)Math.signum(b.getFrozenMoney() - a.getFrozenMoney());
     }
     private static final long serialVersionUID = 2L;
-}
-]]></Text>
+}]]></Text>
 		</JavaClass>
 	</JavaClasses>
     <RequiredLibraryReference>
