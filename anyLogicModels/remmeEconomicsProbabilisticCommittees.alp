@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsFreeCommittee]]></Name>
+	<Name><![CDATA[remmeEconomicsRandomAndReputation]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -363,7 +363,7 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[CommitteeFactory]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new CommitteeFactory(remmeNodes, Utils.committeeSize, Utils.rotation)]]></Code>
+							<Code><![CDATA[new CommitteeFactory(remmeNodes, Utils.committeeSize, Utils.randomSize)]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -691,74 +691,6 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>0</X><Y>40</Y></Point>
 						<Point><X>10</X><Y>40</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870213</Id>
-					<Name><![CDATA[connector24]]></Name>
-					<X>460</X><Y>390</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[outCopy]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split3]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>40</Y></Point>
-						<Point><X>10</X><Y>40</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870215</Id>
-					<Name><![CDATA[connector26]]></Name>
-					<X>430</X><Y>260</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split6]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split1]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-90</Y></Point>
-						<Point><X>10</X><Y>-90</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1204,176 +1136,6 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1533292870199</Id>
-					<Name><![CDATA[connector5]]></Name>
-					<X>490</X><Y>330</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split5]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[nodeBlock4]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Wait]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-20</Y></Point>
-						<Point><X>10</X><Y>-20</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870191</Id>
-					<Name><![CDATA[connector]]></Name>
-					<X>490</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split7]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[nodeBlock0]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Wait]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-10</Y></Point>
-						<Point><X>10</X><Y>-10</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870243</Id>
-					<Name><![CDATA[connector23]]></Name>
-					<X>460</X><Y>370</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split2]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split5]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-40</Y></Point>
-						<Point><X>10</X><Y>-40</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870245</Id>
-					<Name><![CDATA[connector21]]></Name>
-					<X>460</X><Y>170</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split1]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split7]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-50</Y></Point>
-						<Point><X>10</X><Y>-50</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1533292870219</Id>
-					<Name><![CDATA[connector12]]></Name>
-					<X>400</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[remme]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[split6]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Split]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-310</Y></Point>
-						<Point><X>10</X><Y>-310</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1533374102177</Id>
 					<Name><![CDATA[connector35]]></Name>
 					<X>930</X><Y>360</Y>
@@ -1569,6 +1331,244 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>170</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870213</Id>
+					<Name><![CDATA[connector24]]></Name>
+					<X>460</X><Y>390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[outCopy]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split3]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>40</Y></Point>
+						<Point><X>10</X><Y>40</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870215</Id>
+					<Name><![CDATA[connector26]]></Name>
+					<X>430</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split6]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split1]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-90</Y></Point>
+						<Point><X>10</X><Y>-90</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870199</Id>
+					<Name><![CDATA[connector5]]></Name>
+					<X>490</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split5]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[nodeBlock4]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-20</Y></Point>
+						<Point><X>10</X><Y>-20</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870191</Id>
+					<Name><![CDATA[connector]]></Name>
+					<X>490</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split7]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[nodeBlock0]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-10</Y></Point>
+						<Point><X>10</X><Y>-10</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870243</Id>
+					<Name><![CDATA[connector23]]></Name>
+					<X>460</X><Y>370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split2]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split5]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-40</Y></Point>
+						<Point><X>10</X><Y>-40</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870245</Id>
+					<Name><![CDATA[connector21]]></Name>
+					<X>460</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split1]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split7]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-50</Y></Point>
+						<Point><X>10</X><Y>-50</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1533292870219</Id>
+					<Name><![CDATA[connector12]]></Name>
+					<X>400</X><Y>570</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[remme]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[split6]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Split]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-310</Y></Point>
+						<Point><X>10</X><Y>-310</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -5693,7 +5693,7 @@ updateSourceRate();]]></ActionCode>
 				<Group>
 					<Id>1534418211750</Id>
 					<Name><![CDATA[Reputation]]></Name>
-					<X>765</X><Y>160</Y>
+					<X>760</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8987,7 +8987,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534496112894</Id>
 					<Name><![CDATA[image6]]></Name>
-					<X>380</X><Y>280</Y>
+					<X>380</X><Y>278</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8996,7 +8996,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>166</Width>
-					<Height>19</Height>
+					<Height>17</Height>
 					<Rotation>180.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
@@ -9058,7 +9058,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>165</Width>
-					<Height>19</Height>
+					<Height>17</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
@@ -9141,7 +9141,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>165</Width>
-					<Height>19</Height>
+					<Height>17</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
@@ -9151,7 +9151,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498527265</Id>
 					<Name><![CDATA[image7]]></Name>
-					<X>380</X><Y>520</Y>
+					<X>380</X><Y>518</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9160,7 +9160,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>166</Width>
-					<Height>19</Height>
+					<Height>17</Height>
 					<Rotation>180.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
@@ -9286,7 +9286,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>165</Width>
-					<Height>19</Height>
+					<Height>17</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
@@ -9296,7 +9296,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498965685</Id>
 					<Name><![CDATA[image9]]></Name>
-					<X>970</X><Y>280</Y>
+					<X>970</X><Y>278</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9305,7 +9305,7 @@ updateSourceRate();]]></ActionCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>166</Width>
-					<Height>19</Height>
+					<Height>17</Height>
 					<Rotation>180.0</Rotation>
 					<ImageFiles>
 						<ImageFile><![CDATA[gradient.jpg]]></ImageFile>
@@ -9529,7 +9529,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534929376375</Id>
 					<Name><![CDATA[text37]]></Name>
-					<X>840</X><Y>310</Y>
+					<X>810</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9539,7 +9539,7 @@ updateSourceRate();]]></ActionCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Rotation]]></Text>
+					<Text><![CDATA[Random size]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -9573,7 +9573,7 @@ updateSourceRate();]]></ActionCode>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534929426226</Id>
-					<Name><![CDATA[rotation]]></Name>
+					<Name><![CDATA[randomSize]]></Name>
 					<X>900</X><Y>310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -9587,7 +9587,7 @@ updateSourceRate();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="12" Style="0"/>
-						<DefaultValueCode><![CDATA[Integer.toString(committeeFactory.getRotation())]]></DefaultValueCode>
+						<DefaultValueCode><![CDATA[Integer.toString(committeeFactory.getRandomSize())]]></DefaultValueCode>
 						<LinkTo>false</LinkTo>
 					</ExtendedProperties>
 				</Control>
@@ -9604,9 +9604,9 @@ updateSourceRate();]]></ActionCode>
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[committeeFactory.rewriteCommittee(committeeSize.getIntValue(), rotation.getIntValue());
+						<ActionCode><![CDATA[committeeFactory.rewriteCommittee(committeeSize.getIntValue(), randomSize.getIntValue());
 committeeSize.setText(Integer.toString(committeeFactory.getCommitteeSize()));
-rotation.setText(Integer.toString(committeeFactory.getRotation()));]]></ActionCode>
+randomSize.setText(Integer.toString(committeeFactory.getRandomSize()));]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
@@ -11669,7 +11669,7 @@ public class Utils {
     public static final double minPrice = 12.5;
     public static final int initialBlockSize = 100;
     public static final int committeeSize = 10;
-    public static final int rotation = 2;
+    public static final int randomSize = 20;
 
     public enum TimePeriod{
         SECOND(1){
@@ -12097,15 +12097,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CommitteeFactory {
-    private RemmeNode[] remmeNodes;
+    //private RemmeNode[] remmeNodes;
     private int committeeSize;
-    private int rotation;
+    private int randomSize;
     private List<RemmeNode> lastCommittee;
     private List<RemmeNode> queue;
     private boolean rewrittenCommittee;
-    public CommitteeFactory(RemmeNode[] remmeNodes, int committeeSize, int rotation) {
-        this.remmeNodes = remmeNodes;
-        rewriteCommittee(committeeSize, rotation);
+    public CommitteeFactory(RemmeNode[] remmeNodes, int committeeSize, int randomSize) {
+        queue = new ArrayList(Arrays.asList(remmeNodes));
+        rewriteCommittee(committeeSize, randomSize);
     }
 
     public List<RemmeNode> getCommittee(){
@@ -12114,34 +12114,31 @@ public class CommitteeFactory {
     }
 
     public void updateCommittee(){
-        if(rewrittenCommittee){
-            rewrittenCommittee = false;
-        }
-        else{
-            lastCommittee.sort(this::compareByFrozen);
-            queue.sort(this::compareByFrozen);
-            Random random = new Random();
-            //random.ints(rotation, committeeSize - rotation, queue.size())
-            List<RemmeNode> newQueue = Stream.concat(lastCommittee.stream().skip(committeeSize - rotation), queue.stream()).collect(Collectors.toList());
-            //List<RemmeNode> newCommittee = Stream.concat(lastCommittee.stream().limit(committeeSize - rotation), queue.stream().limit(rotation)).collect(Collectors.toList());
-            List<RemmeNode> newCommittee = new ArrayList<>(committeeSize);
-            Collections.shuffle(newQueue);
-            newCommittee.addAll(lastCommittee.subList(0, committeeSize - rotation));
-            for(int i = 0; i < rotation; i++){
-                newCommittee.add(newQueue.get(i));
+        synchronized(this) {
+            if (rewrittenCommittee) {
+                rewrittenCommittee = false;
+            } else {
+                //lastCommittee.sort(this::compareByFrozen);
+                //queue.sort(this::compareByFrozen);
+                //random.ints(rotation, committeeSize - rotation, queue.size())
+                //List<RemmeNode> newQueue = Stream.concat(lastCommittee.stream().skip(committeeSize - rotation), queue.stream()).collect(Collectors.toList());
+                //List<RemmeNode> newCommittee = Stream.concat(lastCommittee.stream().limit(committeeSize - rotation), queue.stream().limit(rotation)).collect(Collectors.toList());
+                //List<RemmeNode> newCommittee = new ArrayList<>(committeeSize);
+                Collections.shuffle(queue);
+                List<RemmeNode> randomList = queue.subList(0, randomSize);
+                randomList.sort(this::compareByFrozen);
+                lastCommittee = new ArrayList<>();
+                lastCommittee.addAll(randomList.subList(0, committeeSize));
+                //lastCommittee.forEach((e) -> trace(e.getNodeNumber() + " "));
+                //traceln();
             }
-            lastCommittee = newCommittee;
-            queue = newQueue.subList(rotation, newQueue.size());
         }
     }
 
-    public void rewriteCommittee(int committeeSize, int rotation){
-        this.queue = Arrays.asList(remmeNodes);
-        this.committeeSize = committeeSize;
-        this.rotation = Math.min(rotation, committeeSize);
-        queue.sort(this::compareByFrozen);
-        lastCommittee = queue.stream().limit(committeeSize).collect(Collectors.toList());
-        queue = queue.stream().skip(committeeSize).collect(Collectors.toList());
+    public void rewriteCommittee(int committeeSize, int randomSize){
+        this.randomSize = randomSize;
+        this.committeeSize = Math.min(committeeSize, this.randomSize);
+        updateCommittee();
         rewrittenCommittee = true;
     }
 
@@ -12149,8 +12146,8 @@ public class CommitteeFactory {
         return committeeSize;
     }
 
-    public int getRotation() {
-        return rotation;
+    public int getRandomSize() {
+        return randomSize;
     }
 
     private int compareByFrozen(RemmeNode a, RemmeNode b){
