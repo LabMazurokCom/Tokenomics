@@ -4,10 +4,10 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsRandomAndReputation]]></Name>
+	<Name><![CDATA[remmeEconomicsProbabilisticCommittees]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -12092,9 +12092,10 @@ public class BlockStatistic {
 		<JavaClass>
 			<Id>1534883932230</Id>
 			<Name><![CDATA[CommitteeFactory]]></Name>
-			<Text><![CDATA[import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+			<Text><![CDATA[import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class CommitteeFactory {
     //private RemmeNode[] remmeNodes;
@@ -12117,20 +12118,30 @@ public class CommitteeFactory {
         synchronized(this) {
             if (rewrittenCommittee) {
                 rewrittenCommittee = false;
-            } else {
-                //lastCommittee.sort(this::compareByFrozen);
-                //queue.sort(this::compareByFrozen);
-                //random.ints(rotation, committeeSize - rotation, queue.size())
-                //List<RemmeNode> newQueue = Stream.concat(lastCommittee.stream().skip(committeeSize - rotation), queue.stream()).collect(Collectors.toList());
-                //List<RemmeNode> newCommittee = Stream.concat(lastCommittee.stream().limit(committeeSize - rotation), queue.stream().limit(rotation)).collect(Collectors.toList());
-                //List<RemmeNode> newCommittee = new ArrayList<>(committeeSize);
-                Collections.shuffle(queue);
-                List<RemmeNode> randomList = queue.subList(0, randomSize);
-                randomList.sort(this::compareByFrozen);
-                lastCommittee = new ArrayList<>();
-                lastCommittee.addAll(randomList.subList(0, committeeSize));
-                //lastCommittee.forEach((e) -> trace(e.getNodeNumber() + " "));
-                //traceln();
+            }
+            else {
+                double sum = queue.stream().mapToDouble((e) -> e.getFrozenMoney()).sum();
+                traceln(sum + " " + queue.size());
+                List<Double> probabilities = new ArrayList<>(queue.size());
+                probabilities.add(queue.get(0).getFrozenMoney() / sum);
+                for(int i = 0; i < probabilities.size() - 1; i++){
+                    probabilities.add(probabilities.get(i - 1) + queue.get(i).getFrozenMoney() / sum);
+                }
+                probabilities.add(1.0);
+                List<Integer> newNumberCommittee = new ArrayList<>();
+                for(int i = 0; i < committeeSize; i++){
+                    int winner;
+                    do{
+                        winner = Collections.binarySearch(probabilities, Math.random(), (a, b) -> {
+                        	if(b >= a) return 0;
+                        	else return -1;
+                        });
+                        traceln(winner);
+                    }while(!newNumberCommittee.contains(winner));
+                    newNumberCommittee.add(winner);
+                }
+                List<RemmeNode> newCommittee = new ArrayList<>();
+                newNumberCommittee.forEach((e) -> newCommittee.add(queue.get(e)));
             }
         }
     }
@@ -12154,7 +12165,8 @@ public class CommitteeFactory {
         return (int)Math.signum(b.getFrozenMoney() - a.getFrozenMoney());
     }
     private static final long serialVersionUID = 2L;
-}]]></Text>
+}
+]]></Text>
 		</JavaClass>
 	</JavaClasses>
     <RequiredLibraryReference>
