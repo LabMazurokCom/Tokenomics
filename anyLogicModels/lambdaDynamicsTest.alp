@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
 <Model>
 	<Id>1534843128078</Id>
-	<Name><![CDATA[lambdaDynamicsPlateauTest]]></Name>
+	<Name><![CDATA[lambdaDynamicsTest]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[algorand]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -150,7 +150,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
+							<Code><![CDATA[lambdaStart]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -207,7 +207,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[4]]></Code>
+							<Code><![CDATA[bigLambdaStart]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -442,7 +442,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535018255135</Id>
 					<Name><![CDATA[i]]></Name>
-					<X>700</X><Y>-130</Y>
+					<X>630</X><Y>-130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -457,7 +457,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535024486419</Id>
 					<Name><![CDATA[formatFourDigitsAfterDot]]></Name>
-					<X>700</X><Y>-100</Y>
+					<X>700</X><Y>-130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -483,8 +483,8 @@
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1535025986872</Id>
-					<Name><![CDATA[step]]></Name>
-					<X>620</X><Y>-130</Y>
+					<Name><![CDATA[upStep]]></Name>
+					<X>700</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -493,6 +493,51 @@
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0.001]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1535097476067</Id>
+					<Name><![CDATA[lambdaStart]]></Name>
+					<X>240</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1535097485603</Id>
+					<Name><![CDATA[bigLambdaStart]]></Name>
+					<X>390</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[4]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1535100423584</Id>
+					<Name><![CDATA[downStep]]></Name>
+					<X>700</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.0001]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1477,7 +1522,7 @@ next++;	]]></Code>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[if(halt + next + per == count){
-	if(count == 10000){
+	if(count == 5000){
 		text.setText(0);
 		text16.setText(0);
 		if(bestTime > time / (halt + next)){
@@ -1490,8 +1535,8 @@ next++;	]]></Code>
 		halt = 0;
 		next = 0;
 		per = 0;
-		lambda = 2;
-		bigLambda = 4;
+		lambda = lambdaStart;
+		bigLambda = bigLambdaStart;
 		text14.setText(bigLambda);
 		text15.setText(lambda);
 		text19.setText(formatFourDigitsAfterDot.format(bestTime));
@@ -1501,15 +1546,15 @@ next++;	]]></Code>
 		successLambda = 0;
 		successBigLambda = 0;
 		time = 0;
-		up += step;
-		bigUp += step;
+		up += upStep;
+		bigUp += upStep;
 		i++;
 		if(up > 1.2){
-			up -= i * step;
-			bigUp -= i * step;
+			up -= i * upStep;
+			bigUp -= i * upStep;
 			i = 0;
-			down -= step;
-			bigDown -= step;
+			down -= downStep;
+			bigDown -= downStep;
 			if(down < 0.9)
 				pauseSimulation(); 
 		}
@@ -2516,7 +2561,7 @@ per++;]]></Code>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<DefaultValueCode><![CDATA["0.5"]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>lambda</Link>
+						<Link>lambdaStart</Link>
 					</ExtendedProperties>
 				</Control>
 				<Control Type="EditBox">
@@ -2604,7 +2649,7 @@ per++;]]></Code>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<DefaultValueCode><![CDATA["0.5"]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>bigLambda</Link>
+						<Link>bigLambdaStart</Link>
 					</ExtendedProperties>
 				</Control>
 				<Control Type="EditBox">
