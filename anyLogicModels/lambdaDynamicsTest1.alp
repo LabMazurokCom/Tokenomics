@@ -18,10 +18,6 @@
 			<Name><![CDATA[Main]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Import><![CDATA[import java.text.DecimalFormat;]]></Import>
-			<StartupCode><![CDATA[for(int i=0; i<10000; i++) {
-	rTestValue[i] = rTest.readDouble();
-	RTestValue[i] = RTest.readDouble();
-}	]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1534843128082</Id>
@@ -323,7 +319,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535017421997</Id>
 					<Name><![CDATA[halt]]></Name>
-					<X>630</X><Y>-220</Y>
+					<X>630</X><Y>-250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -338,7 +334,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535017429218</Id>
 					<Name><![CDATA[next]]></Name>
-					<X>630</X><Y>-190</Y>
+					<X>630</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -353,7 +349,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535017435527</Id>
 					<Name><![CDATA[per]]></Name>
-					<X>700</X><Y>-190</Y>
+					<X>700</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -368,7 +364,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535017447559</Id>
 					<Name><![CDATA[count]]></Name>
-					<X>700</X><Y>-220</Y>
+					<X>700</X><Y>-250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -398,7 +394,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535017840981</Id>
 					<Name><![CDATA[bestUp]]></Name>
-					<X>630</X><Y>-160</Y>
+					<X>630</X><Y>-190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -410,7 +406,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535017842998</Id>
 					<Name><![CDATA[bestDown]]></Name>
-					<X>700</X><Y>-160</Y>
+					<X>700</X><Y>-190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -422,7 +418,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535018255135</Id>
 					<Name><![CDATA[i]]></Name>
-					<X>630</X><Y>-130</Y>
+					<X>630</X><Y>-160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -437,7 +433,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535024486419</Id>
 					<Name><![CDATA[formatFourDigitsAfterDot]]></Name>
-					<X>700</X><Y>-130</Y>
+					<X>700</X><Y>-160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -464,7 +460,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535025986872</Id>
 					<Name><![CDATA[upStep]]></Name>
-					<X>700</X><Y>-100</Y>
+					<X>700</X><Y>-130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -509,7 +505,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1535100423584</Id>
 					<Name><![CDATA[downStep]]></Name>
-					<X>700</X><Y>-70</Y>
+					<X>700</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -552,32 +548,17 @@
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1535368767763</Id>
-					<Name><![CDATA[rTestValue]]></Name>
+					<Id>1535446301532</Id>
+					<Name><![CDATA[period]]></Name>
 					<X>550</X><Y>-250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double[]]]></Type>        
+						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new double[10000]]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1535372934560</Id>
-					<Name><![CDATA[RTestValue]]></Name>
-					<X>630</X><Y>-250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double[]]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new double[10000]]]></Code>
+							<Code><![CDATA[80]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -619,7 +600,7 @@
 				<Connector>
 					<Id>1534845293399</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>610</X><Y>-80</Y>
+					<X>650</X><Y>-110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -831,7 +812,7 @@
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//double r = Math.random();
 //traceln(r);
-return lambdaRandom + (rTestValue[count - 1] - 0.5) * lambdaMean * range;]]></Body>
+return lambdaMean + range * lambdaMean * Math.sin(2 * Math.PI * time / ((2 * lambdaMean + bigLambdaMean) * period));]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -845,39 +826,9 @@ return lambdaRandom + (rTestValue[count - 1] - 0.5) * lambdaMean * range;]]></Bo
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//double r = Math.random();
 //traceln(r);
-return bigLambdaRandom + (RTestValue[count - 1] - 0.5) * bigLambdaMean * range;]]></Body>
+return bigLambdaMean + range * bigLambdaMean * Math.sin(2 * Math.PI * time / ((2 * lambdaMean + bigLambdaMean) * period));]]></Body>
 				</Function>
 			</Functions>
-			<Connectivity>
-				<TextFile>
-					<Id>1535369322901</Id>
-					<Name><![CDATA[rTest]]></Name>
-					<X>30</X><Y>-260</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<FileType>FILE</FileType>
-					<FileName><![CDATA[/Users/admin/Desktop/kostya1.txt]]></FileName>
-					<FileMode>READ</FileMode>
-					<CharsetName>null</CharsetName>
-					<Separators> </Separators>
-				</TextFile>
-				<TextFile>
-					<Id>1535372928495</Id>
-					<Name><![CDATA[RTest]]></Name>
-					<X>30</X><Y>-240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<FileType>FILE</FileType>
-					<FileName><![CDATA[/Users/admin/Desktop/kostya2.txt]]></FileName>
-					<FileMode>READ</FileMode>
-					<CharsetName>null</CharsetName>
-					<Separators> </Separators>
-				</TextFile>
-			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1534843128079</Id>
@@ -1462,7 +1413,7 @@ next++;	]]></Code>
 				<EmbeddedObject>
 					<Id>1534845287178</Id>
 					<Name><![CDATA[source1]]></Name>
-					<X>550</X><Y>-90</Y>
+					<X>590</X><Y>-120</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1600,7 +1551,7 @@ next++;	]]></Code>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[if(halt + next + per == count){
-	if(count == 10000){
+	if(count == 2000){
 		text.setText(0);
 		text16.setText(0);
 		if(bestTime > time / (halt + next)){
@@ -1629,7 +1580,7 @@ next++;	]]></Code>
 		up += upStep;
 		bigUp += upStep;
 		i++;
-		if(up > 1.2){
+		if(up > 1.5){
 			up -= i * upStep;
 			bigUp -= i * upStep;
 			i = 0;
@@ -1700,7 +1651,7 @@ text15.setText(lambda);]]></Code>
 				<EmbeddedObject>
 					<Id>1534845291513</Id>
 					<Name><![CDATA[sink]]></Name>
-					<X>610</X><Y>-90</Y>
+					<X>650</X><Y>-120</Y>
 					<Label><X>-5</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2072,7 +2023,7 @@ per++;]]></Code>
 				<Text>
 					<Id>1534846106971</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>630</X><Y>360</Y>
+					<X>680</X><Y>360</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2531,6 +2482,27 @@ per++;]]></Code>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Text>
+					<Id>1535449916125</Id>
+					<Name><![CDATA[text27]]></Name>
+					<X>580</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[period]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Controls>
 				<Control Type="EditBox">
@@ -2603,7 +2575,7 @@ per++;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534846019700</Id>
 					<Name><![CDATA[editbox3]]></Name>
-					<X>580</X><Y>360</Y>
+					<X>630</X><Y>360</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2773,6 +2745,28 @@ per++;]]></Code>
 						<DefaultValueCode><![CDATA["1.5"]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
 						<Link>plateauBigLambda</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1535449916131</Id>
+					<Name><![CDATA[editbox11]]></Name>
+					<X>530</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA["0.2"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>period</Link>
 					</ExtendedProperties>
 				</Control>
 			</Controls>

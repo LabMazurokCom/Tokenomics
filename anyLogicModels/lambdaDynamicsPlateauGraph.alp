@@ -345,6 +345,21 @@
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1535451085446</Id>
+					<Name><![CDATA[period]]></Name>
+					<X>550</X><Y>-160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[40]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -593,9 +608,9 @@
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double r = Math.random();
+					<Body><![CDATA[//double r = Math.random();
 //traceln(r);
-return lambdaRandom + (r - 0.5) * lambdaMean * range;]]></Body>
+return lambdaMean + range * lambdaMean * Math.sin(2 * Math.PI * time / ((2 * lambdaMean + bigLambdaMean) * period));]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -607,9 +622,9 @@ return lambdaRandom + (r - 0.5) * lambdaMean * range;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double r = Math.random();
+					<Body><![CDATA[//double r = Math.random();
 //traceln(r);
-return bigLambdaRandom + (r - 0.5) * bigLambdaMean * range;]]></Body>
+return bigLambdaMean + range * bigLambdaMean * Math.sin(2 * Math.PI * time / ((2 * lambdaMean + bigLambdaMean) * period));]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -1140,7 +1155,7 @@ if(successBigLambda > plateauBigLambda)
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[time += bigLambda + 4 * lambda;
+								<Code><![CDATA[time += bigLambda + 2 * lambda * ((int)(lambdaRandom / lambda) + 1);
 successBigLambda++;
 successLambda = 0;
 lambda *= up;
@@ -1656,7 +1671,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534845554465</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>500</X><Y>90</Y>
+					<X>500</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1677,7 +1692,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534845662251</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>440</X><Y>60</Y>
+					<X>440</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1698,7 +1713,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534846059556</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>540</X><Y>160</Y>
+					<X>540</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1719,7 +1734,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534846075449</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>540</X><Y>200</Y>
+					<X>540</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1740,7 +1755,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534846085177</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>540</X><Y>240</Y>
+					<X>540</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1761,7 +1776,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534846106971</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>630</X><Y>360</Y>
+					<X>690</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1782,7 +1797,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534846788204</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>540</X><Y>280</Y>
+					<X>540</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1803,7 +1818,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534927272133</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>698</X><Y>159</Y>
+					<X>698</X><Y>119</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1824,7 +1839,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534927272135</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>698</X><Y>199</Y>
+					<X>698</X><Y>159</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1845,7 +1860,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534927272137</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>698</X><Y>239</Y>
+					<X>698</X><Y>199</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1866,7 +1881,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534927272139</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>698</X><Y>279</Y>
+					<X>698</X><Y>239</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1887,7 +1902,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534936013377</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>70</X><Y>60</Y>
+					<X>70</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1908,7 +1923,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534936015853</Id>
 					<Name><![CDATA[text12]]></Name>
-					<X>190</X><Y>60</Y>
+					<X>190</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1929,7 +1944,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534936019677</Id>
 					<Name><![CDATA[text13]]></Name>
-					<X>340</X><Y>60</Y>
+					<X>340</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1950,7 +1965,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534936083435</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>240</X><Y>90</Y>
+					<X>240</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1971,7 +1986,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534936085064</Id>
 					<Name><![CDATA[text15]]></Name>
-					<X>100</X><Y>90</Y>
+					<X>100</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1992,7 +2007,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1534936091594</Id>
 					<Name><![CDATA[text16]]></Name>
-					<X>370</X><Y>90</Y>
+					<X>370</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2013,7 +2028,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1535012016998</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>540</X><Y>320</Y>
+					<X>540</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2034,7 +2049,7 @@ bigLambda *= bigUp;]]></Code>
 				<Text>
 					<Id>1535012175531</Id>
 					<Name><![CDATA[text18]]></Name>
-					<X>700</X><Y>320</Y>
+					<X>700</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2052,13 +2067,34 @@ bigLambda *= bigUp;]]></Code>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Text>
+					<Id>1535451104038</Id>
+					<Name><![CDATA[text19]]></Name>
+					<X>590</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[period]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Controls>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534845842687</Id>
 					<Name><![CDATA[editbox]]></Name>
-					<X>490</X><Y>160</Y>
+					<X>490</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2080,7 +2116,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534845902822</Id>
 					<Name><![CDATA[editbox1]]></Name>
-					<X>490</X><Y>200</Y>
+					<X>490</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2102,7 +2138,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534845981082</Id>
 					<Name><![CDATA[editbox2]]></Name>
-					<X>490</X><Y>240</Y>
+					<X>490</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2124,7 +2160,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534846019700</Id>
 					<Name><![CDATA[editbox3]]></Name>
-					<X>580</X><Y>360</Y>
+					<X>640</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2146,7 +2182,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534846586461</Id>
 					<Name><![CDATA[editbox4]]></Name>
-					<X>490</X><Y>280</Y>
+					<X>490</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2168,7 +2204,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534927272141</Id>
 					<Name><![CDATA[editbox5]]></Name>
-					<X>648</X><Y>159</Y>
+					<X>648</X><Y>119</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2190,7 +2226,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534927272144</Id>
 					<Name><![CDATA[editbox6]]></Name>
-					<X>648</X><Y>199</Y>
+					<X>648</X><Y>159</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2212,7 +2248,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534927272146</Id>
 					<Name><![CDATA[editbox7]]></Name>
-					<X>648</X><Y>239</Y>
+					<X>648</X><Y>199</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2234,7 +2270,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1534927272149</Id>
 					<Name><![CDATA[editbox8]]></Name>
-					<X>648</X><Y>279</Y>
+					<X>648</X><Y>239</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2256,7 +2292,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1535011993106</Id>
 					<Name><![CDATA[editbox9]]></Name>
-					<X>490</X><Y>320</Y>
+					<X>490</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2278,7 +2314,7 @@ bigLambda *= bigUp;]]></Code>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1535012175535</Id>
 					<Name><![CDATA[editbox10]]></Name>
-					<X>648</X><Y>320</Y>
+					<X>648</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2296,12 +2332,34 @@ bigLambda *= bigUp;]]></Code>
 						<Link>plateauBigLambda</Link>
 					</ExtendedProperties>
 				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1535451104040</Id>
+					<Name><![CDATA[editbox11]]></Name>
+					<X>540</X><Y>320</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA["0.2"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>period</Link>
+					</ExtendedProperties>
+				</Control>
 			</Controls>
 			<Charts>
     			<TimePlot>
 					<Id>1535113003625</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>70</X><Y>310</Y>
+					<X>10</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2363,6 +2421,80 @@ bigLambda *= bigUp;]]></Code>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-6632142</Color>
 					<Expression2><![CDATA[lambdaRandom]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1535451598157</Id>
+					<Name><![CDATA[plot1]]></Name>
+					<X>420</X><Y>340</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1535184000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>390</Width>
+					<Height>240</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>310</Width>
+						<Height>150</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[big lambda]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-14774017</Color>
+					<Expression2><![CDATA[bigLambda]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[big lambda random]]></Title>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-6632142</Color>
+					<Expression2><![CDATA[bigLambdaRandom]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
