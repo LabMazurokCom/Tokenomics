@@ -28,10 +28,10 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-        </dependency>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>

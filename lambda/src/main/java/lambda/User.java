@@ -15,6 +15,8 @@ public class User {
         this.consensusQuantity = 0;
     }
 
+    public User(){}
+
     public UUID getKey() {
         return key;
     }
@@ -29,5 +31,21 @@ public class User {
 
     public int getConsensusQuantity() {
         return consensusQuantity;
+    }
+
+    public void setKey(UUID key) {
+        this.key = key;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastLambda(double lastLambda) {
+        this.lastLambda = lastLambda;
+    }
+
+    public void setConsensusQuantity(int consensusQuantity) {
+        this.consensusQuantity = consensusQuantity;
     }
 }
