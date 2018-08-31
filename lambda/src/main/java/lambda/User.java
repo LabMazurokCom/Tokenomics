@@ -1,7 +1,8 @@
 package lambda;
 
-import java.util.UUID;
+import org.springframework.context.annotation.Bean;
 
+import java.util.UUID;
 public class User {
     private UUID key;
     private String name;
