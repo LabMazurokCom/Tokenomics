@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsProbabilisticCommittees]]></Name>
@@ -46,6 +46,14 @@ for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
 	//liquidChart.get(i).setValue(remmeNodes[i].getRealMoney());
 	reputationChart.get(i).setValue(remmeNodes[i].getReputation() * 100);
 }*/
+for(int i = 0; i < remmeNodes.length / 2; i++){
+	Color nodeColor = new Color((int)(255-(double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), (int)((double)(i % (remmeNodes.length / 2)) * 2* 255 / remmeNodes.length), 0);
+	paybackChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+}
+for(int i = remmeNodes.length / 2; i < remmeNodes.length; i++){
+	Color nodeColor = new Color((int)(255-(double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), (int)((double)(remmeNodes.length - i) * 2* 255 / remmeNodes.length), 0);
+	paybackChart.addDataItem(new DataItem(), Integer.toString(i), nodeColor);
+}
 ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 scheduledExecutorService.schedule(this::pauseSimulation, 0, TimeUnit.MILLISECONDS);
 ScheduledExecutorService scheduledChartUpdater = Executors.newSingleThreadScheduledExecutor();
@@ -303,7 +311,7 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Strategy]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new Strategy()]]></Code>
+							<Code><![CDATA[new Strategy(this)]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -318,7 +326,7 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Strategy]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new Strategy()]]></Code>
+							<Code><![CDATA[new Strategy(this)]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1710,30 +1718,27 @@ for(int i = quantity / 2; i < quantity; i++) {
     remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 10000 * (quantity - i - 1) + 2000000 / (1 + Math.exp(-((quantity - i - 1) - 60))), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
 }*/
-/*for(int i = 0; i < quantity / 2; i++) {
-    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * 2 * Utils.stake * i / (remmeNodes.length - 2), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy, this);
+for(int i = 0; i < quantity / 2; i++) {
+    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * (2 * Utils.stake * i / (remmeNodes.length - 2)), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy, this);
     noUnfreezeStrategy.addNode(remmeNodes[i]);//remmeNodes[quantity -] = new RemmeNode(0, stake, nodeBlocks[(i + quantity / 2) * nodeBlocks.length / quantity], i + quantity / 2, tax, nodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / quantity);
 }
 for(int i = quantity / 2; i < quantity; i++) {
-    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * 2 * Utils.stake * (remmeNodes.length - i - 1) / (remmeNodes.length - 2), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
+    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * (2 * Utils.stake * (remmeNodes.length - i - 1) / (remmeNodes.length - 2)), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
-}*/
-for(int i = 0; i < quantity / 2; i++) {
+}
+/*for(int i = 0; i < quantity / 2; i++) {
 	int k = 1;
-	if(i == remmeNodes.length / 2 - 1){
-		k = 6;
+	if(i == 74){
+		k = 200;
 	}
     remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake * k, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy, this);
     noUnfreezeStrategy.addNode(remmeNodes[i]);//remmeNodes[quantity -] = new RemmeNode(0, stake, nodeBlocks[(i + quantity / 2) * nodeBlocks.length / quantity], i + quantity / 2, tax, nodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / quantity);
 }
 for(int i = quantity / 2; i < quantity; i++) {
 	int k = 1;
-	if(i == remmeNodes.length / 2){
-		k = 6;
-	}
     remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake * k, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
-}
+}*/
 return remmeNodes;]]></Body>
 				</Function>
 			</Functions>
@@ -5155,10 +5160,10 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-14774017</Color>
-					<Text><![CDATA[PROBABILISTIC COMMITTEES]]></Text>
+					<Text><![CDATA[PROBABILISTIC COMMITTEES BET COEFFICIENT]]></Text>
 					<Font>
 						<Name>Arial</Name>
-						<Size>36</Size>
+						<Size>23</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5755,7 +5760,7 @@ updateSourceRate();]]></ActionCode>
 				<Group>
 					<Id>1534418211750</Id>
 					<Name><![CDATA[Reputation]]></Name>
-					<X>760</X><Y>160</Y>
+					<X>960</X><Y>-380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9295,7 +9300,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498942517</Id>
 					<Name><![CDATA[image8]]></Name>
-					<X>640</X><Y>261</Y>
+					<X>630</X><Y>261</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9314,7 +9319,7 @@ updateSourceRate();]]></ActionCode>
 				<Image>
 					<Id>1534498965685</Id>
 					<Name><![CDATA[image9]]></Name>
-					<X>970</X><Y>278</Y>
+					<X>961</X><Y>278</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9333,7 +9338,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499079460</Id>
 					<Name><![CDATA[text40]]></Name>
-					<X>645</X><Y>260</Y>
+					<X>630</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9355,7 +9360,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499100467</Id>
 					<Name><![CDATA[text41]]></Name>
-					<X>695</X><Y>260</Y>
+					<X>690</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9376,7 +9381,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499116392</Id>
 					<Name><![CDATA[text42]]></Name>
-					<X>795</X><Y>260</Y>
+					<X>830</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9418,7 +9423,7 @@ updateSourceRate();]]></ActionCode>
 				<Text>
 					<Id>1534499193927</Id>
 					<Name><![CDATA[text45]]></Name>
-					<X>920</X><Y>260</Y>
+					<X>910</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9662,6 +9667,180 @@ updateSourceRate();]]></ActionCode>
 			</Shapes>
 
 				</Group>
+				<Group>
+					<Id>1535366956703</Id>
+					<Name><![CDATA[paybackGroup]]></Name>
+					<X>780</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Shapes>
+				<Text>
+					<Id>1535366956705</Id>
+					<Name><![CDATA[text26]]></Name>
+					<X>-150</X><Y>-90</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Paybacks, months]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1535366956709</Id>
+					<Name><![CDATA[text27]]></Name>
+					<X>-140</X><Y>-70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-14774017</Color>
+					<Text><![CDATA[Average No Unfreeze]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1535366956711</Id>
+					<Name><![CDATA[text46]]></Name>
+					<X>160</X><Y>-70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-5952982</Color>
+					<Text><![CDATA[Average Max Unfreeze]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Image>
+					<Id>1535366956715</Id>
+					<Name><![CDATA[image10]]></Name>
+					<X>15</X><Y>-70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>1</Width>
+					<Height>170</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageFile><![CDATA[black.jpg]]></ImageFile>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+			</Shapes>
+			<Charts>
+    			<BarChart>
+					<Id>1535366956868</Id>
+					<Name><![CDATA[paybackChart]]></Name>
+					<X>-190</X><Y>-80</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1534406400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[2]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>390</Width>
+					<Height>190</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>40</XOffset>
+						<YOffset>10</YOffset>
+						<Width>330</Width>
+						<Height>170</Height>
+						<BackgroundColor/>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<ScaleFromExpression><![CDATA[0]]></ScaleFromExpression>
+					<ScaleToExpression><![CDATA[1]]></ScaleToExpression>
+					<ScaleType>AUTO</ScaleType>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+    			</BarChart>
+			</Charts>
+
+				</Group>
+				<Text>
+					<Id>1535367237023</Id>
+					<Name><![CDATA[text47]]></Name>
+					<X>780</X><Y>260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[100%]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Controls>
 				<Control Type="EditBox">
@@ -11673,10 +11852,11 @@ public class Algorand {
     }
 
     private Bet getWinBet(){
+    	double k = 650;
         double[] hashes = new double[candidates.size()];
         for(int i = 0; i < hashes.length; i++){
             Bet curBet = candidates.get(i);
-            hashes[i] = random.nextDouble() / ((curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney()));
+            hashes[i] = random.nextDouble() / ((k * curBet.getValue() + remmeNodes[curBet.getNode()].getFrozenMoney()));
         }
         int winner = 0;
         for(int i = 1; i < hashes.length; i++){
@@ -11714,7 +11894,8 @@ public class Algorand {
         return Math.exp(-Math.exp((harringtonFunctionCoefficients[0] + harringtonFunctionCoefficients[1] * x)));
     }*/
     private static final long serialVersionUID = 2L;
-}]]></Text>
+}
+]]></Text>
 		</JavaClass>
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>
@@ -11978,11 +12159,15 @@ public class Strategy implements Serializable {
         private double frozen;
         private double possibleUnfreeze;
         private double reputation;
-        private RemmeNodeStatistic(double liquid, double frozen, double possibleUnfreeze, double reputation){
+        private double stake;
+        private boolean payback;
+        private RemmeNodeStatistic(double liquid, double frozen, double possibleUnfreeze, double reputation, double stake){
             this.liquid = liquid;
             this.frozen = frozen;
             this.possibleUnfreeze = possibleUnfreeze;
             this.reputation = reputation;
+            this.stake = stake;
+            this.payback = false;
         }
     }
     private static double epsillon = 0.01;
@@ -11990,21 +12175,25 @@ public class Strategy implements Serializable {
     private double avgPossibleUnfreeze;
     private double avgFrozen;
     private double avgReputation;
+    private Main main;
     //private int nodesQ;
     private Map<Integer, RemmeNodeStatistic> remmeNodesStatistic;
+    private BarChart paybackChart;
     //private int lastAvgTotal;
     //private int lastAvgLiquid;
     //private int lastAvgFrozen;
     //private ShapeText textAvgTotal;
     ///private ShapeText textAvgLiquid;
     //private ShapeText textAvgFrozen;
-    public Strategy() {
+    public Strategy(Main main) {
         avgLiquid = 0;
         avgPossibleUnfreeze = 0;
         avgFrozen = 0;
         avgReputation = 0;
         //nodesQ = 0;
         remmeNodesStatistic = new HashMap<>();
+        this.main = main;
+        this.paybackChart = paybackChart;
         //lastAvgTotal = 0;
         //lastAvgLiquid = 0;
         //lastAvgFrozen = 0;
@@ -12015,7 +12204,7 @@ public class Strategy implements Serializable {
 
     public void addNode(RemmeNode node) {
         double nodesQ = remmeNodesStatistic.size();
-        remmeNodesStatistic.put(node.getNodeNumber(), new RemmeNodeStatistic(node.getRealMoney(), node.getFrozenMoney(), node.hasRightToUnfreeze(), node.getReputation()));
+        remmeNodesStatistic.put(node.getNodeNumber(), new RemmeNodeStatistic(node.getRealMoney(), node.getFrozenMoney(), node.hasRightToUnfreeze(), node.getReputation(), node.getStake()));
         avgLiquid = (avgLiquid * nodesQ + node.getRealMoney()) / (nodesQ + 1);
         avgFrozen = (avgFrozen * nodesQ + node.getFrozenMoney()) / (nodesQ + 1);
         avgPossibleUnfreeze = (avgPossibleUnfreeze * nodesQ + node.hasRightToUnfreeze()) / (nodesQ + 1);
@@ -12028,6 +12217,7 @@ public class Strategy implements Serializable {
         double diff = sum - remmeNodeStatistic.liquid;
         remmeNodeStatistic.liquid = sum;
         avgLiquid = avgLiquid + diff / remmeNodesStatistic.size();
+        checkPayback(nodeNum);
         //updateTexts();
     }
 
@@ -12036,6 +12226,7 @@ public class Strategy implements Serializable {
         double diff = sum - remmeNodeStatistic.frozen;
         remmeNodeStatistic.frozen = sum;
         avgFrozen = avgFrozen + diff / remmeNodesStatistic.size();
+        checkPayback(nodeNum);
         //updateTexts();
     }
 
@@ -12051,6 +12242,7 @@ public class Strategy implements Serializable {
         double diff = sum - remmeNodeStatistic.possibleUnfreeze;
         remmeNodeStatistic.possibleUnfreeze = sum;
         avgPossibleUnfreeze = avgPossibleUnfreeze + diff / remmeNodesStatistic.size();
+        checkPayback(nodeNum);
     }
 
     public double getAvgPossibleUnfreeze() {
@@ -12068,7 +12260,7 @@ public class Strategy implements Serializable {
     public double getAvgTotal() {
         return avgFrozen + avgLiquid;
     }
-
+    
     public double getAvgReputation() {
         return avgReputation;
     }
@@ -12078,6 +12270,16 @@ public class Strategy implements Serializable {
         setPossibleUnfreeze(possibleUnfreeze, nodeNum);
         setFrozen(frozen, nodeNum);
         setReputation(reputation, nodeNum);
+    }
+    
+    public void checkPayback(int nodeNum) {
+    	RemmeNodeStatistic remmeNode = remmeNodesStatistic.get(nodeNum);
+    	if(!remmeNode.payback) {
+    		if(remmeNode.liquid + remmeNode.possibleUnfreeze >= remmeNode.stake + Utils.startLiquid) {
+    			main.paybackChart.get(nodeNum).setValue(main.time(MONTH));
+    	    	remmeNode.payback = true;
+    		}
+    	}
     }
 
     /*public void updateTexts() {
@@ -12280,6 +12482,15 @@ public class CommitteeFactory {
     private static final long serialVersionUID = 2L;
 }
 ]]></Text>
+		</JavaClass>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1535369179471</Id>
+			<Name><![CDATA[TimeWrapper]]></Name>
+			<Text><![CDATA[public interface TimeWrapper
+{
+	double getCurrentTime(TimeUnits timeUnit);
+}]]></Text>
 		</JavaClass>
 	</JavaClasses>
     <RequiredLibraryReference>
