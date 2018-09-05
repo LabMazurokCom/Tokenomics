@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
 	<Name><![CDATA[remmeEconomicsProbabilisticCommittees]]></Name>
@@ -1719,26 +1719,23 @@ for(int i = quantity / 2; i < quantity; i++) {
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
 }*/
 for(int i = 0; i < quantity / 2; i++) {
-    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * 2 * Utils.stake * i / (remmeNodes.length - 2), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy, this);
+    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * (2 * Utils.stake * i / (remmeNodes.length - 2)), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy, this);
     noUnfreezeStrategy.addNode(remmeNodes[i]);//remmeNodes[quantity -] = new RemmeNode(0, stake, nodeBlocks[(i + quantity / 2) * nodeBlocks.length / quantity], i + quantity / 2, tax, nodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / quantity);
 }
 for(int i = quantity / 2; i < quantity; i++) {
-    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * 2 * Utils.stake * (remmeNodes.length - i - 1) / (remmeNodes.length - 2), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
+    remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake + 5 * (2 * Utils.stake * (remmeNodes.length - i - 1) / (remmeNodes.length - 2)), 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
 }
 /*for(int i = 0; i < quantity / 2; i++) {
 	int k = 1;
-	if(i >= 7 * remmeNodes.length / 15){
-		k = 6;
+	if(i == 74){
+		k = 200;
 	}
     remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake * k, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * i / (quantity - 2), noUnfreezeStrategy, this);
     noUnfreezeStrategy.addNode(remmeNodes[i]);//remmeNodes[quantity -] = new RemmeNode(0, stake, nodeBlocks[(i + quantity / 2) * nodeBlocks.length / quantity], i + quantity / 2, tax, nodeBlocks.length, minHonesty + (1 - minHonesty) * 2 * i / quantity);
 }
 for(int i = quantity / 2; i < quantity; i++) {
 	int k = 1;
-	if(i <  8 * remmeNodes.length / 15){
-		k = 6;
-	}
     remmeNodes[i] = new RemmeNode(Utils.startLiquid, Utils.stake * k, 0, waitNodeBlocks[i * waitNodeBlocks.length / quantity], i, waitNodeBlocks.length, Utils.minHonesty + (1 - Utils.minHonesty) * 2 * (quantity - i - 1) / (quantity - 2), maxUnfreezeStrategy, this);
     maxUnfreezeStrategy.addNode(remmeNodes[i]);
 }*/
@@ -5346,7 +5343,7 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Average Total Reward, REM]]></Text>
+					<Text><![CDATA[Average Total Tokens, REM]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -11896,7 +11893,8 @@ public class Algorand {
         return Math.exp(-Math.exp((harringtonFunctionCoefficients[0] + harringtonFunctionCoefficients[1] * x)));
     }*/
     private static final long serialVersionUID = 2L;
-}]]></Text>
+}
+]]></Text>
 		</JavaClass>
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>

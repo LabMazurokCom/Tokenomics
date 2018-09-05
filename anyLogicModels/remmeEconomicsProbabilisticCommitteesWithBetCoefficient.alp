@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsProbabilisticCommittees]]></Name>
+	<Name><![CDATA[remmeEconomicsProbabilisticCommitteesWithBetCoefficient]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -5343,7 +5343,7 @@ else{
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Average Total Reward, REM]]></Text>
+					<Text><![CDATA[Average Total Tokens, REM]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>14</Size>
@@ -11757,7 +11757,7 @@ public class RemmeNode implements Serializable {
 		<JavaClass>
 			<Id>1532784121534</Id>
 			<Name><![CDATA[Algorand]]></Name>
-			<Text><![CDATA[import javafx.util.Pair;
+			<Text><![CDATA[  import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12505,6 +12505,6 @@ public class CommitteeFactory {
 		<VersionMinor>3</VersionMinor>
 		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
-	<CloudModelUuid><![CDATA[2d2d430d-6985-4b2c-b832-8620258e6551]]></CloudModelUuid>
+	<CloudModelUuid><![CDATA[66553f5d-c044-4ca7-a290-ac5f2e484230]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
