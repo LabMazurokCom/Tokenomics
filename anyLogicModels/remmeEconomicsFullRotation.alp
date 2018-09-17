@@ -4,10 +4,10 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061757" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomicsFreeCommittee]]></Name>
+	<Name><![CDATA[remmeEconomicsFullRotation]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -162,16 +162,16 @@ scheduledChartUpdater.scheduleAtFixedRate(() -> {
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1534429050475</Id>
-					<Name><![CDATA[remmeNodesNode]]></Name>
+					<Name><![CDATA[remmeTaxNode]]></Name>
 					<X>220</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[RemmeremmeNodesNode]]></Type>        
+						<Type><![CDATA[RemmeTaxNode]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new RemmeremmeNodesNode()]]></Code>
+							<Code><![CDATA[new RemmeTaxNode()]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -4539,10 +4539,10 @@ reputationChart.get(agent.executor).setValue(remmeNodes[agent.executor].getReput
 						<Parameter>
 							<Name><![CDATA[remmeService_onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[remmeNodesNode.collectTax(agent);
-//chart.get(0).setValue(remmeNodesNode.getMoney());
-taxDataSet.add(time(SECOND), remmeNodesNode.getMoney());
-genesisNodeMoney = remmeNodesNode.getMoney();
+								<Code><![CDATA[remmeTaxNode.collectTax(agent);
+//chart.get(0).setValue(remmeTaxNode.getMoney());
+taxDataSet.add(time(SECOND), remmeTaxNode.getMoney());
+genesisNodeMoney = remmeTaxNode.getMoney();
 if(time(YEAR) >= 7.25){
 	//pauseSimulation();
 }]]></Code>
@@ -11629,15 +11629,15 @@ public class Algorand {
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>
 			<Id>1532853763265</Id>
-			<Name><![CDATA[RemmeremmeNodesNode]]></Name>
+			<Name><![CDATA[RemmeTaxNode]]></Name>
 			<Text><![CDATA[import java.io.Serializable;
 
 /**
  * RemmeMaterNode
  */
-public class RemmeremmeNodesNode implements Serializable {
+public class RemmeTaxNode implements Serializable {
     private double money;
-    RemmeremmeNodesNode(){
+    RemmeTaxNode(){
     }
 
     public void collectTax(Order order){

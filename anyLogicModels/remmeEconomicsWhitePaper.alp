@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061754" AlpVersion="8.3.1">
 <Model>
 	<Id>1532705097248</Id>
-	<Name><![CDATA[remmeEconomics]]></Name>
+	<Name><![CDATA[remmeEconomicsWhitePaper]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[remme]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Second]]></ModelTimeUnit>
@@ -165,9 +165,9 @@ import java.text.DecimalFormat;]]></Import>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[RemmeMasterNode]]></Type>        
+						<Type><![CDATA[RemmeTaxNode]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[new RemmeMasterNode(tax)]]></Code>
+							<Code><![CDATA[new RemmeTaxNode(tax)]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -8359,16 +8359,16 @@ public class Algorand {
 		<!--   =========   Java Class   ========  -->
 		<JavaClass>
 			<Id>1532853763265</Id>
-			<Name><![CDATA[RemmeMasterNode]]></Name>
+			<Name><![CDATA[RemmeTaxNode]]></Name>
 			<Text><![CDATA[import java.io.Serializable;
 
 /**
  * RemmeMaterNode
  */
-public class RemmeMasterNode implements Serializable {
+public class RemmeTaxNode implements Serializable {
     private double tax;
     public double money;
-    RemmeMasterNode(double tax){
+    RemmeTaxNode(double tax){
         this.tax = tax;
     }
 
